@@ -7,6 +7,13 @@ font-family: 'Noto Sans KR', sans-serif;
 font-family: 'Noto Sans', sans-serif;
 box-sizing: border-box;
 margin: 0;
+/* 아래쪽은 레이아웃용 */
+display: -webkit-flex;
+display: flex;
+padding: 0;
+min-height: 100vh;
+flex-direction: column;
+text-align: center;
 }
 
 .header {
@@ -142,4 +149,39 @@ margin-left: 3px;
 .course .info .lecturer .name {
 vertical-align: middle;
 margin-left: 5px;
+}
+
+
+
+/* 레이아웃 */
+/* 레이아웃 */
+
+footer {
+font-family: 'Poppins', sans-serif;
+background: #9c9c9ca4;
+width: 100%;
+padding: 2% 0;
+color: #fff;
+flex: 0;
+}
+
+.holyGrail {
+display: flex;
+flex: 1;
+}
+
+.content {
+flex: 1;
+}
+
+.side-nav,
+.side-bar{
+font-family: 'Poppins', sans-serif;
+text-align: center;
+width: 300px;
+background: #ffffff;
+}
+
+.side-nav {
+order: -1;
 }

@@ -15,36 +15,37 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="logo" src="/static/img/Logo.png" alt="Logo"></a>
-            <div class="header">
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">FESTIVAL</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">JOIN</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">MYPAGE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a type="button" class="nav-link">LOGIN</a>
-                    </li>
-                    
-                </ul>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img class="logo" src="/static/img/Logo.png" alt="Logo"></a>
+                <div class="header">
+                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button> -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:5500/templates/festival.html">FESTIVAL</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">JOIN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">MYPAGE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a type="button" class="nav-link">LOGIN</a>
+                        </li>
+                        
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    
+        </nav>
+    </header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -85,124 +86,131 @@
         </a>
     </div>
     
-    <div class="container">
-        <div class="row">
-        <div class="col-12">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <div class="notice"><strong>축제를 즐겨보세요!</strong> &nbsp;지역선택에 따라 추천되는 축제입니다.</div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+    <div class="holyGrail">
+        <main class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <div class="notice"><strong>축제를 즐겨보세요!</strong> &nbsp;지역선택에 따라 추천되는 축제입니다.</div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <a href="#" class="course">
+                        <img src="https://i.postimg.cc/J0rxtvHL/image.png" width="100%" class="course-img">
+                
+                        <div class="info">
+                            <h4>카페 산아래</h4>
+                            <div class="lecturer">
+                            <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">서울 강북구</span>
+                        </div>
+                        </div>
+                        </a>
+                    </div>
+                
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <a href="#" class="course">
+                        <img src="https://i.postimg.cc/Kc5FVTZk/image.png" width="100%" class="course-img">
+                
+                        <div class="info">
+                            <h4>로스트 인 내츄럴</h4>
+                            <div class="lecturer">
+                            <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">서울 성동구</span>
+                        </div>
+                        </div>
+                        </a>
+                    </div>
+                
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <a href="#" class="course">
+                        <img src="https://i.postimg.cc/ThM5sWj3/image.png" width="100%" class="course-img">
+                
+                        <div class="info">
+                            <h4>꾸비올로</h4>
+                            <div class="lecturer">
+                            <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">서울 마포구</span>
+                        </div>
+                        </div>
+                        </a>
+                    </div>
+                
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <a href="#" class="course">
+                        <img src="https://i.postimg.cc/15X9xz79/image.png" width="100%" class="course-img">
+                
+                        <div class="info">
+                            <h4>여여로</h4>
+                            <div class="lecturer">
+                            <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">경기 이천시</span>
+                        </div>
+                        </div>
+                        </a>
+                    </div>
+                
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <a href="#" class="course">
+                        <img src="https://i.postimg.cc/mZ5QWPZj/image.png" width="100%" class="course-img">
+                
+                        <div class="info">
+                            <h4>타이프삼청</h4>
+                            <div class="lecturer">
+                            <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">서울 종로구</span>
+                        </div>
+                        </div>
+                        </a>
+                    </div>
+                
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <a href="#" class="course">
+                        <img src="https://i.postimg.cc/zGxNxH1w/image.png" width="100%" class="course-img">
+                
+                        <div class="info">
+                            <h4>엔학고레</h4>
+                            <div class="lecturer">
+                            <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">충남 공주시</span>
+                        </div>
+                        </div>
+                        </a>
+                    </div>
+                
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <a href="#" class="course">
+                        <img src="https://i.postimg.cc/LsjSkCv7/folki.png" width="100%" class="course-img">
+                
+                        <div class="info">
+                            <h4>FOLKI</h4>
+                            <div class="lecturer">
+                            <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">서울 종로구</span>
+                        </div>
+                        </div>
+                        </a>
+                    </div>
+                
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <a href="#" class="course">
+                        <img src="https://i.postimg.cc/SsFm9FhH/cafedoh.png" width="100%" class="course-img">
+                
+                        <div class="info">
+                            <h4>cafedoh</h4>
+                            <div class="lecturer">
+                            <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">충남 대전시</span>
+                        </div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <nav class="side-nav"></nav>
+        <aside class="side-bar"></aside>
     </div>
-        
-        <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <a href="#" class="course">
-            <img src="https://i.postimg.cc/J0rxtvHL/image.png" width="100%" class="course-img">
-    
-            <div class="info">
-                <h4>카페 산아래</h4>
-                <div class="lecturer">
-                <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">서울 강북구</span>
-            </div>
-            </div>
-            </a>
-        </div>
-    
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <a href="#" class="course">
-            <img src="https://i.postimg.cc/Kc5FVTZk/image.png" width="100%" class="course-img">
-    
-            <div class="info">
-                <h4>로스트 인 내츄럴</h4>
-                <div class="lecturer">
-                <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">서울 성동구</span>
-            </div>
-            </div>
-            </a>
-        </div>
-    
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <a href="#" class="course">
-            <img src="https://i.postimg.cc/ThM5sWj3/image.png" width="100%" class="course-img">
-    
-            <div class="info">
-                <h4>꾸비올로</h4>
-                <div class="lecturer">
-                <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">서울 마포구</span>
-            </div>
-            </div>
-            </a>
-        </div>
-    
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <a href="#" class="course">
-            <img src="https://i.postimg.cc/15X9xz79/image.png" width="100%" class="course-img">
-    
-            <div class="info">
-                <h4>여여로</h4>
-                <div class="lecturer">
-                <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">경기 이천시</span>
-            </div>
-            </div>
-            </a>
-        </div>
-    
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <a href="#" class="course">
-            <img src="https://i.postimg.cc/mZ5QWPZj/image.png" width="100%" class="course-img">
-    
-            <div class="info">
-                <h4>타이프삼청</h4>
-                <div class="lecturer">
-                <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">서울 종로구</span>
-            </div>
-            </div>
-            </a>
-        </div>
-    
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <a href="#" class="course">
-            <img src="https://i.postimg.cc/zGxNxH1w/image.png" width="100%" class="course-img">
-    
-            <div class="info">
-                <h4>엔학고레</h4>
-                <div class="lecturer">
-                <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">충남 공주시</span>
-            </div>
-            </div>
-            </a>
-        </div>
-    
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <a href="#" class="course">
-            <img src="https://i.postimg.cc/LsjSkCv7/folki.png" width="100%" class="course-img">
-    
-            <div class="info">
-                <h4>FOLKI</h4>
-                <div class="lecturer">
-                <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">서울 종로구</span>
-            </div>
-            </div>
-            </a>
-        </div>
-    
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <a href="#" class="course">
-            <img src="https://i.postimg.cc/SsFm9FhH/cafedoh.png" width="100%" class="course-img">
-    
-            <div class="info">
-                <h4>cafedoh</h4>
-                <div class="lecturer">
-                <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">충남 대전시</span>
-            </div>
-            </div>
-            </a>
-        </div>
-    
-        </div>   
-    </div>
+    <footer>footer</footer>
 </body>
 <!-- Script -->
 <script src="/static/js/main.js"></script>
