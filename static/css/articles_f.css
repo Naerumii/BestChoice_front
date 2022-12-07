@@ -14,7 +14,7 @@ ul, li{
 #mainWrapper{
     font-family: 'HallymGothic-Regular';
     width: 100%;
-    min-width: 400px;
+    min-width: 500px;
     margin: 0 auto; /*가운데 정렬*/
 }
 

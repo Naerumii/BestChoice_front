@@ -158,10 +158,10 @@ margin-left: 5px;
 
 footer {
 font-family: 'Poppins', sans-serif;
-background: #9c9c9ca4;
+background: #dddddd81;
 width: 100%;
 padding: 2% 0;
-color: #fff;
+color: rgb(104, 104, 104);
 flex: 0;
 }
 
@@ -184,4 +184,19 @@ background: #ffffff;
 
 .side-nav {
 order: -1;
+}
+
+.side-button{
+margin-top: 20px;
+}
+
+.container_checkbox1 {
+font-family: "Open Sans", sans-serif;
+width: 250px;
+margin: 50px auto 15px 50px;
+padding-bottom: 15px;
+
+border: 1px solid #9c9c9c;
+border-radius: 5px;
+box-shadow: 0 2px 10px 2px #bcbcbc;
 }
