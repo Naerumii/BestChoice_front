@@ -66,11 +66,11 @@ async function handleSignin() {
     localStorage.setItem("payload", jsonPayload);
     window.location.replace("http://127.0.0.1:5500/templates/main.html");
 
-    // if (response.status==200){
-    //     window.location.replace('http://127.0.0.1:8000/users/signup/');
-    // } else {
-    //     alert(response.status)
-    // }
+    if (response.status==200){
+        window.location.replace('http://127.0.0.1:8000/users/signup/');
+    } else {
+        alert(response.status)
+    }
 }
 
 //로그아웃
