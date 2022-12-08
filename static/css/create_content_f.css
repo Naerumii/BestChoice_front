@@ -129,7 +129,7 @@ display: flex;
 }
 
 #btn button:first-child {
-background: #ccc;
+background: #555;
 color: #fff;
 }
 
@@ -142,13 +142,13 @@ width: 50%;
 height: 50px;
 margin: 10px 5px 20px 5px;
 border-radius: 5px;
-background: #444;
+background: #555;
 color: #fff;
 font-size: 1rem;
 }
 
 #btn button:hover {
-background: #000;
+background: #aaa;
 }
 
 
