@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Script -->
     <!-- Css -->
-    <link rel="stylesheet" href="/static/css/sign_f.css">
+    <link rel="stylesheet" href="/static/css/sign.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap">
+    <link rel="short icon" href="#">
     <title>회원가입 | 로그인</title>
 </head>
 <body>
@@ -18,12 +19,12 @@
         <div class="formBx">
             <form action="" onsubmit="return false;">
             <h2>Sign In</h2>
-            <input type="email" name="email" id="email"  placeholder="Email" />
-            <input type="password" name="password1" id="password1" placeholder="Password" />
-            <input type="button" name="" value="Login" />
+            <input type="email" name="email" id="signin-email"  placeholder="Email" />
+            <input type="password" name="password1" id="signin-password1" placeholder="Password" />
+            <input type="button" name="" onclick="handleSignin();" value="Login" />
             <p class="signup">
                 Don't have an account ?
-                <a href="#" onclick="toggleForm();">Sign Up.</a>
+                <a href="#" onclick="toggleForm();">Sign Up</a>
             </p>
             </form>
         </div>
@@ -32,12 +33,12 @@
         <div class="formBx">
             <form action="" onsubmit="return false;">
             <h2>Create an account</h2>
-            <input type="email" name="email" id="email"  placeholder="Email" />
-            <input type="text" name="nickname" id="nickname" placeholder="NickName" />
-            <input type="text" name="phone" id="phone" placeholder="Phone Number" />            
-            <input type="password" name="password1" id="password1" placeholder="Password" />
-            <input type="password" name="password2" id="password2" placeholder="Check Password" />
-            <select class="form-control" name="job">
+            <input type="email" name="email" id="signup-email"  placeholder="Email" />
+            <input type="text" name="nickname" id="signup-nickname" placeholder="NickName" />
+            <input type="text" name="phone" id="signup-phone" placeholder="Phone Number" />            
+            <input type="password" name="password1" id="signup-password1" placeholder="Password" />
+            <input type="password" name="password2" id="signup-password2" placeholder="Check Password" />
+            <select class="form-control" name="job" id="signup-address">
                 <option value="00">지역선택</option>
                 <option value="01">서울시</option>
                 <option value="02">부산시</option>
@@ -57,10 +58,10 @@
                 <option value="16">경상남도</option>
                 <option value="17">제주도</option>
             </select>
-            <input type="button" name="" value="Sign Up" />
+            <input type="button" name="" onclick="handleSignup();" value="Sign Up" />
             <p class="signup">
                 Already have an account ?
-                <a href="#" onclick="toggleForm();">Sign in.</a>
+                <a href="#" onclick="toggleForm();">Sign in</a>
             </p>
             </form>
         </div>
@@ -70,7 +71,7 @@
     </section>
 </body>
 <!-- Script -->
-<script src="/static/js/sign_f.js"></script>
+<script src="/static/js/sign.js"></script>
 <script src="/static/js/api.js"></script>
 <script src="/static/js/articles.js"></script>
 </html>
