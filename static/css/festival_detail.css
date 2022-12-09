@@ -1,0 +1,14 @@
+* {font-family: 'Yeon Sung', cursive;}
+        h1,h4 {display: inline-block;}
+        .wrap {margin: auto;  width: 700px;}
+        h1 {font-size: 44px;}
+        p {font-size: 26px;}
+        .btn-order {display: block; margin: auto;}
+        .item-img {
+            margin-top: 50px;
+            width: 700px;
+            height: 500px;
+            background-image:url("https://t1.daumcdn.net/cfile/tistory/997E2C395B988B3619");
+            background-position: center;
+            background-size: cover;
+            }
