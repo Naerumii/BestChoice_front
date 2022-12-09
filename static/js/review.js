@@ -1,3 +1,8 @@
+  // 팝업창
+  function openPopup1(){
+    window.open("http://127.0.0.1:5500/templates/create_review.html", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=850, left=700, top=250" );
+}
+
 
 //댓글 - 드롭다운 신고 버튼
 function openToc1() {

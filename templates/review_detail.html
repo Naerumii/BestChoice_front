@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Script -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="http://flaviusmatis.github.io/simplePagination.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js"></script>
+    <!-- Css -->
+    <link rel="stylesheet" href="/static/css/review_f.css">
+    <link rel="stylesheet" href="/static/css/post_f.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>REVIEW_DETAIL | 상세페이지</title>
+</head>
+<body>
+    <div class="body1">
+        <article class="board-sec">
+        <div class="box">
+        <!-- 타이틀이 보이는곳 -->
+        <h3>리뷰 보기</h3>
+        <article class="post-box">
+            <!--게시글 제목(상단)--->
+            <div>    
+                <div class="post-head">
+                    <p class="gray-text">작성일 : 2022.06.14</p>
+                    <div>
+                        <p>조회수<span class="gray-text">312</span></p>
+                    </div>
+                </div>
+            </div>
+    
+            <!--게시글 실제 컨텐츠 --->
+            <div class="post-content">
+                <img src="https://user-images.githubusercontent.com/110369667/189028956-d8e57f78-987d-4d06-903c-487207be6b3b.jpg" alt="">
+                <p>세계 1위 만두 비비고 왕교자</p>
+                <p>육즙이 가득 비비고 소고기 한섬만두</p>
+            </div>
+    
+            <!---공유 버튼 저장으로 변경가능--->
+            <div class="post-btn">
+            <button class="btn-rank2"><img src="https://user-images.githubusercontent.com/110369667/189028950-15d50552-c99c-4c9d-a35c-6d8527fe5f40.png" alt="like"><span>24</span></button>
+            <button class="btn-rank2"><img src="https://user-images.githubusercontent.com/110369667/189028948-f31466fc-f523-46d1-b0fa-7301b2e20fdd.png" alt="share"><span>공유</span></button>
+            </div>
+    
+            <!--댓글 시작---->
+            <article class="post-comment">
+            <p>댓글 2개</p>
+            <ul class="coment-box">
+                <li class="flex-box">
+                <div class="user-text">
+                    <p>cjlover</p>
+                    <p>정말 맛있고 건강한 재료들이 들어가서 좋아요.</p>
+                    <small class="gray-text">1시간 전</small>
+                </div>
+                <div onclick="openToc1()" class="dropdown-btn">
+                    <div class="drop-menu" id="more1">
+                    <a href="#">수정</a>
+                    <a href="#">삭제</a>
+                    </div>
+                </div>
+                </li>
+                <li class="flex-box">
+                <div class="user-text">
+                    <p>shrimpmania</p>
+                    <p>새우살이 탱글탱글하게 씹혀요!</p>
+                    <small class="gray-text">1시간 전</small>
+                </div>
+                <div onclick="openToc2()" class="dropdown-btn">
+                    <div class="drop-menu" id="more2">
+                    <a href="#">수정</a>
+                    <a href="#">삭제</a>
+                    </div>
+                </div>
+                </li>
+            </ul>
+            <!--댓글입력 폼 시작---->
+            <div class="coment-writer">
+                <textarea rows="4" placeholder="댓글을 입력해주세요"></textarea>
+                <div class="flex-box">
+                <div>
+                    <input type="checkbox" name="" value="" id="secret" class="">
+                    <label for="secret">
+                    비밀글
+                    </label>
+                </div>
+                <button class="btn-rank2">등록하기</button>
+                </div>
+            </div>
+            </article>
+            <!--▲까지 댓글 아티클 끝!---->
+        </article>
+        </div>
+        </article>
+    </div>
+</body>
+<!-- Script -->
+<script src="/static/js/review.js"></script>
+<script src="/static/js/api.js"></script>
+<script src="/static/js/articles.js"></script>
+</html>
