@@ -21,3 +21,14 @@ var items = $(".list-wrapper .list-item");
             items.hide().slice(showFrom, showTo).show();
         }
     });
+
+// 위로가기 버튼
+const scrollButton = document.querySelector(".scroll-top");
+scrollButton.addEventListener("click", () => {
+    window.scrollTo(0, 0);
+});
+
+  // 팝업창
+    function openPopup2(){
+    window.open("http://127.0.0.1:5500/templates/join_page.html", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=1200, height=750, left=600, top=100" );
+}
