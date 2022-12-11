@@ -16,35 +16,37 @@
     <div class="wrap">
         <div class="item-img"></div>
         <p>
-        <h1>축제명</h1>
+        <h1 id="festival_title">축제명</h1>
         <div class="wrap2">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">축제설명</span>
                 </div>
-                <p type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">이 양초는 사실 특별한 힘을 가지고 있어요. 양초를 켜고 소원을 빌면 짜자잔 뭐든지 이뤄지게 된답니다. 하나 사가세요! 대나무 향이 아주 좋아요</p>
+                <p id="festival_desc" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">이 양초는 사실 특별한 힘을 가지고 있어요. 양초를 켜고 소원을 빌면 짜자잔 뭐든지 이뤄지게 된답니다. 하나 사가세요! 대나무 향이 아주 좋아요</p>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">축제기간</span>
                 </div>
-                <p type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"></p>
+                <p id="festival_period" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"></p>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">주소</span>
                 </div>
-                <p type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"></p>
+                <p id="festival_address" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"></p>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">요금</span>
                 </div>
-                <p type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"></p>
+                <p id="festival_price" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"></p>
             </div>
                 <button type="submit" class="btn btn-primary btn-order">모집하기</button>
             </div>
         </div>
     </div>
 </body>
+<script src="/static/js/api.js"></script>
+<script src="/static/js/festival_detail.js"></script>
 </html>
