@@ -4,70 +4,19 @@ async function loadArticles() {
     $("#article_container").empty();  //초기화 버튼을 위해 기존에 있던 card 모두 제거
     $("input:checkbox[name='region']").prop("checked", false);  //초기화 버튼을 위해 모든 체크 해제
     articles = await getArticles();
-    console.log(articles);
-    const article_list = document.getElementById("article_container");
-  
-    articles.forEach((article) => {
-        console.log(article);
-        const listItem = document.createElement("div");
-        listItem.classList.add("list-item");
 
-        const newArticle = document.createElement("div");
-        newArticle.classList.add("post");
-        console.log(article.pk);
-        
-        const innerArticle = document.createElement("div");
-        innerArticle.classList.add("post-child", "post-left");
-
-        const articleImage = document.createElement("img");
-        articleImage.setAttribute("src", `${article.festival_image}`);
-        articleImage.setAttribute("title", `${article.festival_title}`);
-
-        const articleInfo = document.createElement("div");
-        articleInfo.classList.add("post-child", "post-right");
-
-        const bodyTitle = document.createElement("h3");
-        bodyTitle.innerText = article.festival_title;
-        const bodyLine = document.createElement("hr");
-        const bodyDesc = document.createElement("p");
-        bodyDesc.innerText = article.festival_desc;
-        const bodyBtn = document.createElement("button");
-        bodyBtn.innerHTML = "&#x21e2";
-        bodyBtn.setAttribute("onclick", `location.href='/templates/festival_detail.html?festival_article_id=${article.pk}'`)
-
-
-        // articleBtn.setAttribute("id", article.pk);
-        // articleBtn.setAttribute("onclick", "articleDetail(this.id)");
-        articleInfo.appendChild(bodyTitle);
-        articleInfo.appendChild(bodyLine);
-        articleInfo.appendChild(bodyDesc);
-        articleInfo.appendChild(bodyBtn);
-        innerArticle.appendChild(articleImage);
-        newArticle.appendChild(innerArticle);
-        newArticle.appendChild(articleInfo);
-        listItem.appendChild(newArticle);
-        article_list.appendChild(listItem);
-    });
-
-    //전체 결과에 대한 페이징
-    var items = $(".list-wrapper .list-item");
-    var numItems = items.length;
-    var perPage = 5;
-    console.log("festival.js")
-
-    items.slice(perPage).hide();
-
-    $('#pagination-container').pagination({
-        items: numItems,
-        itemsOnPage: perPage,
-        prevText: "&laquo;",
-        nextText: "&raquo;",
-        onPageClick: function (pageNumber) {
-            var showFrom = perPage * (pageNumber - 1);
-            var showTo = showFrom + perPage;
-            items.hide().slice(showFrom, showTo).show();
+    if (articles.length > 0) {
+        for (let i=0; i < articles.length; i++) {
+            get_festivals_html(
+                articles[i].pk,
+                articles[i].festival_title,
+                articles[i].festival_image,
+                articles[i].festival_desc
+            )
         }
-    });
+    }
+
+    article_pagination();
 };
 
 //게시물 가져오기(전부)
@@ -128,6 +77,28 @@ async function searchArticle() {
         }
     }
 
+    article_pagination();
+}
+
+// 축제 검색 결과 html로 이어붙이기 (옵션 버튼 사용)
+function get_festivals_html(pk, title, image, desc) {
+    temp_html = `<div class="list-item">
+                    <div class="post">
+                        <div class="post-child post-left">
+                            <img src="${image}" title="${title}" width="200" height="400"">
+                        </div>
+                        <div class="post-child post-right">
+                            <h1>${title}</h1>
+                            <hr>
+                            <div class="desc-ellipsis">${desc}</div>
+                            <button onclick="location.href='/templates/festival_detail.html?festival_article_id=${pk}'">&#x21e2;</button>
+                        </div>
+                    </div>
+                </div>`
+    $("#article_container").append(temp_html);
+}
+
+function article_pagination() {
     //card가 새로워졌기 때문에 paging 다시 실행
     var items = $(".list-wrapper .list-item");
     var numItems = items.length;
@@ -147,25 +118,7 @@ async function searchArticle() {
             items.hide().slice(showFrom, showTo).show();
         }
     });
-}
-
-// 축제 검색 결과 html로 이어붙이기 (옵션 버튼 사용)
-function get_festivals_html(pk, title, image, desc) {
-    temp_html = `<div class="list-item">
-                    <div class="post">
-                        <div class="post-child post-left">
-                            <img src="${image}" title="${title}">
-                        </div>
-                        <div class="post-child post-right">
-                            <h1>${title}</h1>
-                            <hr>
-                            <p>${desc}</p>
-                            <button onclick="location.href='/templates/festival_detail.html?festival_article_id=${pk}'">&#x21e2;</button>
-                        </div>
-                    </div>
-                </div>`
-    $("#article_container").append(temp_html);
-}
+};
 
 // 함수 실행
 loadArticles();
