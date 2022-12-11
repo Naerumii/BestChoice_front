@@ -98,6 +98,7 @@ function get_festivals_html(pk, title, image, desc) {
     $("#article_container").append(temp_html);
 }
 
+//이어붙인 Festival_Article에 대한 페이징
 function article_pagination() {
     //card가 새로워졌기 때문에 paging 다시 실행
     var items = $(".list-wrapper .list-item");

@@ -27,13 +27,16 @@ async function loadDetailArticles(festival_article_id) {
     const period = document.getElementById("festival_period");
     const address = document.getElementById("festival_address");
     const price = document.getElementById("festival_price");
+    const recruit = document.getElementById("festival_join");
   
     title.innerText = article.festival_title;
     desc.innerText = article.festival_desc;
     period.innerText = article.festival_start+" ~ "+article.festival_end
     address.innerText = article.festival_region+" || "+article.festival_address
     price.innerText = article.festival_cost;
-  
-  }
 
-  loadDetailArticles(festival_article_id);
+    recruit.setAttribute("onclick", `location.href='/templates/create_content.html?festival_article_id=${festival_article_id}'`);
+  
+}
+
+loadDetailArticles(festival_article_id);
