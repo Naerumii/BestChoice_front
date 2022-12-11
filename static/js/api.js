@@ -1,3 +1,6 @@
+const backend_base_url = "http://127.0.0.1:8000";  //포트번호 변경해주세요
+const frontend_base_url = "http://127.0.0.1:5500";  //포트번호 변경해주세요
+
 //sign.html 기능
 //회원가입
 async function handleSignup() {
@@ -14,7 +17,7 @@ async function handleSignup() {
   
     console.log(signupData);
   
-    const response = await fetch("http://127.0.0.1:8000/users/signup/", {
+    const response = await fetch(`${backend_base_url}/users/signup/`, {
       headers: {
         "content-type": "application/json",
       },
@@ -25,7 +28,7 @@ async function handleSignup() {
     console.log(response);
   
     if (response.status == 201) {
-      window.location.replace("http://127.0.0.1:5500/templates/sign.html");
+      window.location.replace(`${frontend_base_url}/templates/sign.html`);
     } else {
       alert(response.status);
     }
@@ -38,7 +41,7 @@ async function handleSignup() {
       password: document.getElementById("signin-password1").value,
     };
   
-    const response = await fetch("http://127.0.0.1:8000/users/api/token/", {
+    const response = await fetch(`${backend_base_url}/users/api/token/`, {
       headers: {
         "content-type": "application/json",
       },
@@ -64,7 +67,7 @@ async function handleSignup() {
     );
   
     localStorage.setItem("payload", jsonPayload);
-    window.location.replace("http://127.0.0.1:5500/templates/main.html");
+    window.location.replace(`${frontend_base_url}/templates/main.html`);
   
   }
   
@@ -74,6 +77,6 @@ async function handleSignup() {
     localStorage.removeItem("refresh");
     localStorage.removeItem("payload");
     alert("로그아웃 되었습니다");
-    window.location.replace("http://127.0.0.1:5500/templates/sign.html");
+    window.location.replace(`${frontend_base_url}/templates/sign.html`);
   }
   

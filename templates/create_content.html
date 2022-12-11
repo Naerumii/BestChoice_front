@@ -32,14 +32,14 @@
                 <option>9</option>
                 <option>10</option>
             </select>
-                <text><br>축제 내용 칸</text>
+                <text><br><span id="festival_title"></span></text>
                 <p><input placeholder="제목을 입력하세요."></p>
                 <div class="place"><input placeholder="내용을 입력하세요."></div>
                 <div><p>모집 마감일 : <input type="date"></p></div>
                 <div id="btn">
-                    <button>수정하기</button>
-                    <button>등록하기</button>
-                    <button>삭제하기</button>
+                    <button id="modify_btn">수정하기</button>
+                    <button id="upload_btn">등록하기</button>
+                    <button id="delete_btn">삭제하기</button>
                 </div>
         </section>
     </article>
@@ -47,4 +47,5 @@
 <!-- Script -->
 <script src="/static/js/api.js"></script>
 <script src="/static/js/articles.js"></script>
+<script src="/static/js/create_content.js"></script>
 </html>
