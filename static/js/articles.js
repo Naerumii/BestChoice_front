@@ -1,8 +1,9 @@
 // 자동 함수 실행
 // 게시물 로드하기
 async function loadArticles() {
-    $("#article_container").empty();  //초기화 버튼을 위해 기존에 있던 card 모두 제거
-    $("input:checkbox[name='region']").prop("checked", false);  //초기화 버튼을 위해 모든 체크 해제
+    // $("#article_container").empty();  //초기화 버튼을 위해 기존에 있던 card 모두 제거
+    // $("#text1").val(''); //검색창 기존 입력 지우기
+
     articles = await getArticles();
 
     if (articles.length > 0) {
@@ -16,10 +17,26 @@ async function loadArticles() {
         }
     }
 
-    article_pagination();
+    article_pagination();  //페이징 함수 실행
 };
 
-//게시물 가져오기(전부)
+async function initArticles() {
+    $("#article_container").empty();  //초기화 버튼을 위해 기존에 있던 card 모두 제거
+    $("#text1").val(''); //검색창 기존 입력 지우기
+    $("#selSearchOption").val("A").prop("selected", true);
+
+     //옵션 체크되어있는 것 확인 -> 옵션풀기
+     let obj_length = document.getElementsByName("region").length;
+
+     for (let i=0; i<obj_length; i++) {
+         document.getElementsByName("region")[i].checked = false;
+    }
+
+    // 함수 실행
+    await loadArticles();
+}
+
+//게시물 가져오기 api (전부)
 async function getArticles() {
     const response = await fetch(`${backend_base_url}/articles/festival/`, {
         headers: {
@@ -31,9 +48,11 @@ async function getArticles() {
     return response_json;
 }
 
-//검색한 옵션에 대한 게시물 가져오기(조건)
+//검색한 지역 옵션에 대한 게시물 가져오기(조건)
 async function searchArticle() {
     $("#article_container").empty(); //기존 내용 다 지우기
+    $("#text1").val(''); //검색창 기존 입력 지우기
+    $("#selSearchOption").val("A").prop("selected", true);
 
     //옵션 체크되어있는 것 확인
     let obj_length = document.getElementsByName("region").length;
@@ -44,7 +63,6 @@ async function searchArticle() {
             search_list.push(parseInt(document.getElementsByName("region")[i].value));
         }
     }
-    console.log(search_list);
 
     //옵션 url로 변환
     let option_param = ""
@@ -53,26 +71,18 @@ async function searchArticle() {
             option_param += "param=" + search_list[i] + "&"
         }
     }
-    console.log(option_param)
+    console.log(option_param);
 
-    //back에 해당 url로 request
-    const response = await fetch(`${backend_base_url}/articles/festival/filter/`+ "?" +option_param, {
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("access"),
-        },    
-        method: "GET",
-    });
-    response_json = await response.json();
-    console.log(response_json)
+    articles = await getFilterArticles(option_param);  //조건 필터링 함수 실행
 
-    //검색 결과 각 요소에 대해 함수 실행
-    if (response_json.length > 0) {
-        for (let i=0; i < response_json.length; i++) {
+     //검색 결과 각 요소에 대해 함수 실행
+     if (articles.length > 0) {
+        for (let i=0; i < articles.length; i++) {
             get_festivals_html(
-                response_json[i].pk,
-                response_json[i].festival_title,
-                response_json[i].festival_image,
-                response_json[i].festival_desc
+                articles[i].pk,
+                articles[i].festival_title,
+                articles[i].festival_image,
+                articles[i].festival_desc
             )
         }
     }
@@ -96,6 +106,65 @@ function get_festivals_html(pk, title, image, desc) {
                     </div>
                 </div>`
     $("#article_container").append(temp_html);
+}
+
+//검색창에서 검색한 축제게시글 찾기(입력란)
+async function searchBox() {
+    let searchForm = $("#searchForm");
+    let searchCategory = searchForm.find("option:selected").val();  //A or T or C
+    let searchWord = searchForm.find("input[id='text1']").val();  //검색어
+    let search_list = [];
+
+    if (!searchWord) {
+        alert("검색어를 입력하세요");
+        return false;
+    }
+
+    $("#article_container").empty(); //기존 내용 다 지우기
+    //옵션 체크되어있는 것 확인 -> 옵션풀기
+    let obj_length = document.getElementsByName("region").length;
+ 
+    for (let i=0; i<obj_length; i++) {
+        document.getElementsByName("region")[i].checked = false;
+   }
+    search_list.push(searchCategory);
+    search_list.push(searchWord);
+
+    //옵션 url로 변환
+    let option_param = ""
+    for (let i=0; i<search_list.length; i++) {
+        if (search_list[i] != undefined) {
+            option_param += "param=" + search_list[i] + "&"
+        }
+    }
+
+    articles = await getFilterArticles(option_param);  //조건 필터링 함수 실행
+
+     //검색 결과 각 요소에 대해 함수 실행
+     if (articles.length > 0) {
+        for (let i=0; i < articles.length; i++) {
+            get_festivals_html(
+                articles[i].pk,
+                articles[i].festival_title,
+                articles[i].festival_image,
+                articles[i].festival_desc
+            )
+        }
+    }
+
+    article_pagination();  //페이징 함수 실행
+}
+
+//조건에 맞는 축제게시물 가져오기 api
+async function getFilterArticles(option_param) {
+    const response = await fetch(`${backend_base_url}/articles/festival/filter/`+ "?" +option_param, {
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("access"),
+        },    
+        method: "GET",
+    });
+    response_json = await response.json();
+    return response_json;
 }
 
 //이어붙인 Festival_Article에 대한 페이징
