@@ -103,14 +103,16 @@
                 <div class="container_checkbox1">
                     <li id='liSearchOption'>
                         <div>
-                            <select id='selSearchOption' style="width: 70px;">
-                                <option value='A'>축제</option>
-                                <option value='T'>내용</option>
-                                <option value='C'>지역</option>
-                            </select>
-                            <br>
-                            <input id='text1' style="width: 150px; margin-top: 20px;" />
-                            <input type='button' value='검색'/>
+                            <form id="searchForm">
+                                <select id='selSearchOption' style="width: 70px;">
+                                    <option value='A' selected>축제명</option>
+                                    <option value='T'>내용</option>
+                                    <option value='C'>가격</option>
+                                </select>
+                                <br>
+                                <input id='text1' style="width: 150px; margin-top: 20px;" />
+                                <input type='button' value='검색' onclick="searchBox()"/>
+                            </form>
                         </div>
                     </li>
                 </div>
@@ -119,7 +121,7 @@
                 <div class="container_checkbox1">
                     <div class="side-button">
                         <button type="button" class="btn btn-secondary" onclick="searchArticle()">적용하기</button>
-                        <button type="button" class="btn btn-outline-secondary" onclick="loadArticles()">초기화</button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="initArticles()">초기화</button>
                     </div>
                 </div>
             </div>
