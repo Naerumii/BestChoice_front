@@ -173,7 +173,8 @@ function article_pagination() {
     var items = $(".list-wrapper .list-item");
     var numItems = items.length;
     var perPage = 5;
-    console.log("festival.js")
+    console.log("festival.js");
+    console.log("여기야여기여야야야야야야")
 
     items.slice(perPage).hide();
 
