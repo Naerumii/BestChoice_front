@@ -15,12 +15,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <!-- Css -->
     <link rel="stylesheet" href="/static/css/review_f.css">
     <link rel="stylesheet" href="/static/css/post_f.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>REVIEW_DETAIL | 상세페이지</title>
 </head>
 <body>
@@ -28,7 +31,9 @@
         <article class="board-sec">
         <div id="review_container" class="box">
         <!-- 타이틀이 보이는곳 -->
+        <div id="title_box">
         <h3 id="review_title"></h3>
+        </div>
         <article class="post-box">
             <!--게시글 제목(상단)--->
             <div>    
@@ -43,18 +48,21 @@
             <!--게시글 실제 컨텐츠 --->
             <div class="post-content">
                 <img id="review_image" />
+            </div>
+            <div id="review_content" class="post-content">
                 <p id="review_desc"></p>
             </div>
-    
-            <!---공유 버튼 저장으로 변경가능--->
-            <div class="post-btn">
-            <button class="btn-rank2"><img src="https://user-images.githubusercontent.com/110369667/189028950-15d50552-c99c-4c9d-a35c-6d8527fe5f40.png" alt="like"><span>24</span></button>
-            <button class="btn-rank2"><img src="https://user-images.githubusercontent.com/110369667/189028948-f31466fc-f523-46d1-b0fa-7301b2e20fdd.png" alt="share"><span>공유</span></button>
+
+            
+            <!---게시글 수정/삭제 버튼--->
+            <div id="review_btn" class="post-btn">
+            <button onclick="updateReview()" id="update_button" class="btn-rank2"><span>수정</span></button>
+            <button onclick="deleteReview(review_id)"class="btn-rank2"><span>삭제</span></button>
             </div>
     
             <!--댓글 시작---->
             <article class="post-comment">
-            <p>댓글 {review_comment.length}개</p>
+            <p>댓글 <span id="review_comment_count"></span>개</p>
             <ul id="comment_box" class="coment-box">
                 <!--댓글 형식
                 <li class="flex-box">
@@ -74,15 +82,15 @@
             </ul>
             <!--댓글입력 폼 시작---->
             <div class="coment-writer">
-                <textarea rows="4" placeholder="댓글을 입력해주세요"></textarea>
+                <textarea id="comment_text" rows="4" placeholder="댓글을 입력해주세요"></textarea>
                 <div class="flex-box">
                 <div>
-                    <input type="checkbox" name="" value="" id="secret" class="">
+                    <!-- <input type="checkbox" name="" value="" id="secret" class="">
                     <label for="secret">
                     비밀글
-                    </label>
+                    </label> -->
                 </div>
-                <button class="btn-rank2">등록하기</button>
+                <button class="btn-rank2" onclick="writeComment()">등록하기</button>
                 </div>
             </div>
             </article>
@@ -94,6 +102,5 @@
 </body>
 <!-- Script -->
 <script src="/static/js/api.js"></script>
-<script src="/static/js/articles.js"></script>
 <script src="/static/js/review_detail.js"></script>
 </html>
