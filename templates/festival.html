@@ -51,7 +51,7 @@
                             <a class="nav-link" href="http://127.0.0.1:5500/templates/mypage.html" tabindex="-1" aria-disabled="true">MYPAGE</a>
                         </li>
                         <li class="nav-item">
-                            <a type="button" class="nav-link" href="http://127.0.0.1:5500/templates/sign.html">LOGIN</a>
+                            <a type="button" class="nav-link" href="http://127.0.0.1:5500/templates/sign.html" onclick="handleLogout()">LOGOUT</a>
                         </li>
                         
                     </ul>
@@ -74,7 +74,7 @@
                 </div>
                 <!-- 페이지네이션 -->
                 <div>
-                    <button type="button" onclick="openPopup2()"><a href="#artiarticle"><h1>모집하기</h1></a></button>
+                    <button type="button" onclick="openPopup2()"><h3>모집하기</h3></button>
                 </div>
                 <div id="article_container" class="list-wrapper">
                     <!--<div class="list-item">
@@ -103,14 +103,16 @@
                 <div class="container_checkbox1">
                     <li id='liSearchOption'>
                         <div>
-                            <select id='selSearchOption' style="width: 70px;">
-                                <option value='A'>축제</option>
-                                <option value='T'>내용</option>
-                                <option value='C'>지역</option>
-                            </select>
-                            <br>
-                            <input id='text1' style="width: 150px; margin-top: 20px;" />
-                            <input type='button' value='검색'/>
+                            <form id="searchForm">
+                                <select id='selSearchOption' style="width: 70px;">
+                                    <option value='A' selected>축제명</option>
+                                    <option value='T'>내용</option>
+                                    <option value='C'>가격</option>
+                                </select>
+                                <br>
+                                <input id='text1' style="width: 150px; margin-top: 20px;" />
+                                <input type='button' value='검색' onclick="searchBox()"/>
+                            </form>
                         </div>
                     </li>
                 </div>
@@ -119,7 +121,7 @@
                 <div class="container_checkbox1">
                     <div class="side-button">
                         <button type="button" class="btn btn-secondary" onclick="searchArticle()">적용하기</button>
-                        <button type="button" class="btn btn-outline-secondary" onclick="loadArticles()">초기화</button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="initArticles()">초기화</button>
                     </div>
                 </div>
             </div>
@@ -127,7 +129,7 @@
                     <div class="Custom_checkbox">
                         <p>원하는 지역의 축제를 확인해 보세요!</p>
                     </div>
-                    <ul>
+                    <ul id="umum">
                         <li>
                             <label class="checkbox"><input type="checkbox" name="region" value="01"><span>서울시</span></label>
                         </li>
@@ -179,6 +181,8 @@
                         <li>
                             <label class="checkbox"><input type="checkbox" name="region" value="17"><span>제주도</span></label>
                         </li>
+
+                        
                     </ul>  
                 </div>
             </div>

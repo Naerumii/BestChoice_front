@@ -46,9 +46,23 @@ border: none;
 outline: none;
 }
 
-input:focus {
-border: none;
-outline: none;
+input {
+    width: 100%;
+    padding: .6rem;
+    height: auto;
+    transition: 0.1s;
+    border: 0.9px solid #ddd;
+    outline: 0;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+input:focus, textarea:focus,
+select:focus {
+    border: 1px solid #0982f0;
+    outline: 0;
+    border: none;
+    outline: none;
 }
 
 input::placeholder {
@@ -97,14 +111,39 @@ border-bottom: 1px solid silver;
 color: Grey;
 }
 
-.place {
-text-align: left;
-width: 90%;
-height: 300px;
-border-radius: 5px;
-border: 1px solid silver;
-padding: 10px;
-margin: 20px 20px;
+
+
+.rag-title {
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+}
+
+.rag-title:focus {
+    border-color: #0982f0;
+    outline: none;
+}
+
+.rag-post {
+    resize: vertical;
+}
+
+textarea {
+    text-align: left;
+    height: 400px;
+    margin: 20px 30px;
+    width: 90%;
+    padding: 8px;
+    background: #fff;
+    color: #222;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    line-height: 1.35rem;
+    text-align: left;
+    resize: none;
 }
 
 .plus>button {
