@@ -12,9 +12,9 @@ display: -webkit-flex;
 display: flex;
 padding: 0;
 min-height: 100vh;
+min-width: 400px;
 flex-direction: column;
 text-align: center;
-background-color: mintcream;
 }
 
 .header {
@@ -201,3 +201,280 @@ footer {
     border-radius: 5px;
     box-shadow: 0 2px 10px 2px #bcbcbc;
     }
+
+
+
+    /* 마이페이지 */
+
+/*---Variables---*/
+/*---Colors---*/
+
+.ProfileCardContainer {
+    position: relative;
+    margin-left: 5%;
+    margin-top: 10%;
+    -webkit-animation-duration: 0.9s;
+    animation-duration: 0.9s;
+    -webkit-animation-name: avatar;
+    animation-name: avatar;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-transform-origin: top;
+    transform-origin: top;
+}
+
+.ProfileCardAvatar {
+    background: url("https://raw.github.com/stahlfest/Valf-Profilecard/master/avatar.jpg");
+    height: 13rem;
+    width: 13rem;
+    border-radius: 105px;
+    border: solid 1px #8c8c8c;
+    box-shadow: 0 10px 26px rgba(120, 137, 150, 0.3);
+    margin-left: 2.5rem;
+}
+
+@keyframes avatar {
+    from {
+    margin-top: -1em;
+    transform: rotateX(-70deg);
+    }
+    38% {
+    transform: rotateX(30deg);
+    }
+    50% {
+    transform: rotateX(10deg);
+    }
+    70% {
+    transform: rotateX(14deg);
+    }
+    to {
+    transform: rotateX(0deg);
+    }
+}
+@-moz-keyframes avatar {
+    from {
+    margin-top: -1em;
+    -moz-transform: rotateX(-70deg);
+    }
+    38% {
+    margin-top: 0;
+    -moz-transform: rotateX(30deg);
+    }
+    50% {
+    -moz-transform: rotateX(10deg);
+    }
+    70% {
+    -moz-transform: rotateX(14deg);
+    }
+    to {
+    -moz-transform: rotateX(0deg);
+    }
+}
+@-webkit-keyframes avatar {
+    from {
+    margin-top: -1em;
+    -webkit-transform: rotateX(-70deg);
+    }
+    38% {
+    margin-top: 0;
+    -webkit-transform: rotateX(30deg);
+    }
+    50% {
+    -webkit-transform: rotateX(10deg);
+    }
+    70% {
+    -webkit-transform: rotateX(14deg);
+    }
+    to {
+    -webkit-transform: rotateX(0deg);
+    }
+}
+.ProfileCardTop {
+    margin-top: 1.5rem;
+    width: 18rem;
+    height: 76px;
+}
+
+.ProfileCardName {
+    position: absolute;
+    width: 18rem;
+    margin-top: 2.7rem;
+    text-align: center;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-shadow: 0 -1px 0 #333;
+    letter-spacing: 0.07em;
+}
+
+.ProfileCardBox {
+    width: 18rem;
+    height: 20rem;
+    margin-top: -0.9rem;
+    background-color: #fff;
+    box-shadow: 0 10px 26px rgba(145, 150, 120, 0.3);
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+
+.ProfileCardTextTitle {
+    float: left;
+    margin-left: 30px;
+    margin-top: 30px;
+    width: 3rem;
+    list-style: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9rem;
+    line-height: 3.2rem;
+    text-align: right;
+    color: #000000;
+}
+
+.ProfileCardJob {
+    margin-bottom: 2.7em;
+}
+
+.ProfileCardText {
+    margin-left: 1rem;
+    padding-top: 2rem;
+    list-style: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9rem;
+    line-height: 3.2rem;
+    color: #000000;
+}
+
+.ProfileCardBorder {
+    
+    border-bottom: solid 1px #dacfc0;
+    width: 10rem;
+}
+
+
+/* 베스트 카드 */
+
+
+
+.boxx-container {
+    width: 17.5rem;
+    height: 100px;
+    display: inline-block;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+section {
+    background-color: #FBFBFC;
+    border: 1px solid #ECECEC;
+    padding: 0.5rem;
+    width: 17.5rem;
+    font-size: 0.75rem;
+}
+h3 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    vertical-align: top;
+    padding-left: 0.4rem;
+}
+
+ul, ol {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    line-height: 1.8;
+    display: inline-block;
+}
+
+ol li:nth-child(1)::before {
+    content: '1';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+ol li:nth-child(2)::before {
+    content: '2';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+ol li:nth-child(3)::before {
+    content: '3';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+ol li:nth-child(4)::before {
+    content: '4';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+ol li:nth-child(5)::before {
+    content: '5';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+
+
+/* 북마크 보여주는 타이틀! */
+
+.book{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.product-title{
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    position: relative;
+    color: #000000;
+    margin: 1rem 0;
+}
+.product-title::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 900px;
+    background: #000000;
+}
