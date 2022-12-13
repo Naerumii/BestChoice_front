@@ -28,6 +28,7 @@ async function loadDetailArticles(festival_article_id) {
     const address = document.getElementById("festival_address");
     const price = document.getElementById("festival_price");
     const recruit = document.getElementById("festival_join");
+    const image = document.getElementById("festival_image");
   
     title.innerText = article.festival_title;
     desc.innerText = article.festival_desc;
@@ -35,9 +36,11 @@ async function loadDetailArticles(festival_article_id) {
     address.innerText = article.festival_region+" || "+article.festival_address
     price.innerText = article.festival_cost;
 
+    image.setAttribute("src", `${article.festival_image}`)
+
     recruit.setAttribute("onclick", `location.href='/templates/create_content.html?festival_article_id=${festival_article_id}'`);
 
-    temp_html = `<i class="fa fa-bookmark-o bookmark${festival_article_id}" style="font-size:24px" onclick="article_bookmark(${festival_article_id})"></i>`
+    temp_html = `<i class="fa fa-bookmark-o bookmark${festival_article_id}" style="font-size:32px " onclick="article_bookmark(${festival_article_id})"></i>`
    
     $('#abc').append(temp_html)
 
@@ -82,7 +85,6 @@ function parseJwt(token) {
 
 // 북마크
 async function article_bookmark(festival_article_id) {
-    console.log("dfdfdf")
     const bookmarkData = {
         "bookmark_festival": festival_article_id,
     }
