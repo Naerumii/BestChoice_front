@@ -226,7 +226,8 @@ footer {
 }
 
 .ProfileCardAvatar {
-    background: url("https://raw.github.com/stahlfest/Valf-Profilecard/master/avatar.jpg");
+    background-image: url('');
+    background: none;
     height: 13rem;
     width: 13rem;
     border-radius: 105px;
