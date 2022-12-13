@@ -224,9 +224,16 @@ footer {
     -webkit-transform-origin: top;
     transform-origin: top;
 }
+.user_img{
+    background: none;
+    height: 13rem;
+    width: 13rem;
+    border-radius: 105px;
+    border: solid 1px #8c8c8c;
+    box-shadow: 0 10px 26px rgba(120, 137, 150, 0.3);
+}
 
 .ProfileCardAvatar {
-    background-image: url('');
     background: none;
     height: 13rem;
     width: 13rem;
