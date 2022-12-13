@@ -49,29 +49,45 @@ async function loadProfile(user_id) {
     phone.innerText = now_user.user_phone
     address.innerText = region
     introduce.innerText = now_user.user_introduce
-    
-    // //작성 게시글 불러오기
-    // image.appendChild(profile_img);
-    // for (let i = 0; i < now_user.article_set.length; i++) {
-    //   const myarticle = document.createElement("div");
-    //   myarticle.classList.add("gallery-item");
-    //   myarticle.setAttribute("tabindex", "0");
-    
-    //   const imageFrame = document.createElement("img");
-    //   imageFrame.classList.add("gallery-image");
-    //   imageFrame.setAttribute("src", `${backend_base_url}${now_user.article_set[i].image}`)
-    //   imageFrame.setAttribute("id", now_user.article_set[i].pk);
-    //   imageFrame.setAttribute("onclick", "articleDetail(this.id)")
-      
-    //   myarticle.appendChild(imageFrame);
-    //   gallery_container.appendChild(myarticle);
-    // }
+
+    if ((now_user.bookmark_set).length > 0) {
+      for (let i=0; i < now_user.bookmark_set.length; i++) {
+        get_bookmark_html(
+          now_user.bookmark_set[i].pk,
+          now_user.bookmark_set[i].bookmark_user,
+          now_user.bookmark_set[i].bookmark_festival,
+        )
+      }
+    }
   }
+                   
+
+async function get_bookmark_html(pk, user, festival) {
+  const oneArticle = await getArticle(festival)
+  temp_html = `<div class="col-12 col-md-6 col-lg-4 col-xl-3" id="bookmark" onclick="location.href='/templates/festival_detail.html?festival_article_id=${festival}'">
+                <a href="#" class="course">
+                <img src="${oneArticle.festival_image}" width="100%" class="course-img">
+
+                <div class="info">
+                  <h4>${oneArticle.festival_title}</h4>
+                    <div class="lecturer">
+                      <img src="https://i.postimg.cc/FKKK3PpN/image.png" width="15" height="15"><span class="name">${oneArticle.festival_region}</span>
+                    </div>
+                </div>
+                </a>
+               </div>`
+$("#bookmark_box").append(temp_html);
+}
+
+// 사용자 정보 받아오기
+async function getArticle(festival_id) {
+  const response = await fetch(`${backend_base_url}/articles/festival/${festival_id}`, {
+    method: "GET",
+  });
+  response_json = await response.json();
   
-//   function articleDetail(article_id) {
-//     console.log(article_id);
-//     const url = `${frontend_base_url}/templates/detail_page.html?id=${article_id}`;
-//     location.href = url;
-// }
+  return response_json;
+  //user model all
+}
 
   loadProfile(user_id);
