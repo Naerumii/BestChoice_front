@@ -22,6 +22,9 @@ async function getProfile(user_id) {
     //user model all
 }
 
+let region_arr = ["서울시", "부산시", "대구시", "인천시", "광주시", "대전시", "울산시", "세종시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"]
+
+
 // 받아온 json 데이터 front에 내용 붙이는 함수
 async function loadProfile(user_id) {
     console.log(user_id)
@@ -29,7 +32,7 @@ async function loadProfile(user_id) {
     console.log(now_user)
     // articles 
     //프론트엔드에서 태그 id 확인하기
-    const user_img = document.getElementById("user_image");
+    const user_img = document.getElementById("user_img");
     const author = document.getElementById("user_nickname");
     const email = document.getElementById("user_email");
     const phone = document.getElementById("user_phone");
@@ -37,11 +40,14 @@ async function loadProfile(user_id) {
     const introduce = document.getElementById("user_introduce");
     // const bookmark_set = document.getElementById("bookmark_set");
 
-    user_img.setAttribute("src", `${backend_base_url}${now_user.profile_img}`)
+    //user_address를 int화하여 리스트값에 맞게 -1계산해서 해당 리스트에 있는 지역값으로 바꿔준다.
+    region = region_arr[parseInt(now_user.user_address)-1]
+    console.log(`${backend_base_url}${now_user.user_profile_img}`)
+    user_img.setAttribute("src", `${backend_base_url}${now_user.user_profile_img}`)
     author.innerText = now_user.user_nickname
     email.innerText = now_user.email
     phone.innerText = now_user.user_phone
-    address.innerText = now_user.user_address
+    address.innerText = region
     introduce.innerText = now_user.user_introduce
     
     // //작성 게시글 불러오기
