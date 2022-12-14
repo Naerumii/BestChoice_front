@@ -4,16 +4,13 @@ const join_article_id = urlParams.get("join_article_id");
 
 // 특정 게시물 back에서 받아오는 함수
 async function getArticleDetail(join_article_id) {
-    console.log(join_article_id)
     const response = await fetch(`http://127.0.0.1:8000/articles/festival/join/${join_article_id}/`, {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
         },
         method: "GET",
     });
-    console.log(join_article_id)
     response_json = await response.json();
-    console.log(response_json);
     // 받아온 값을 json화 시키고 콘솔로그 확인
     // getArticleDetail() 안에 article_id 써주고, article_detail.js에도 getArticleDetail(article_id);실행
   
@@ -32,9 +29,8 @@ async function loadDetailArticles(join_article_id) {
     const comment_count = document.getElementById("join_comment_count");
     
     // const recruit = document.getElementById("join_detail");
-    console.log(1333)
-    festival.innerText = article.join_festival;
-    title.innerText = article.join_title;
+    festival.innerText = "축제명 : " +article.join_festival;
+    title.innerText = "제목 : " +article.join_title;
     desc.innerText = article.join_desc;
     period.innerText = article.join_period;
     count.innerText = article.join_count;

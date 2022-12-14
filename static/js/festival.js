@@ -11,7 +11,6 @@
 // var items = $(".list-wrapper .list-item");
 //     var numItems = items.length;
 //     var perPage = 5;
-//     console.log("festival.js")
 
 //     items.slice(perPage).hide();
 

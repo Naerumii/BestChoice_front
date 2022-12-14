@@ -38,7 +38,6 @@ async function getRecruited(user_id) {
     }
   );
   response_json = await response.json();
-
   return response_json;
 }
 
@@ -76,7 +75,6 @@ async function loadProfile(user_id) {
 
   //user_address를 int화하여 리스트값에 맞게 -1계산해서 해당 리스트에 있는 지역값으로 바꿔준다.
   region = region_arr[parseInt(now_user.user_address) - 1];
-  console.log(`${backend_base_url}${now_user.user_profile_img}`);
   user_img.setAttribute(
     "src",
     `${backend_base_url}${now_user.user_profile_img}`
@@ -142,43 +140,43 @@ async function get_bookmark_html(pk, user, festival) {
   $("#bookmark_box").append(temp_html);
 }
 
-let status_str = ["대기중", "승인"];
+let status_str = ["대기중", "수락", "거절"];
 
-async function get_recruit_html(id, join, status_bool, time) {
+async function get_recruit_html(id, join, status_num, time) {
   const oneArticle = await getJoin(join);
-  console.log(oneArticle.join_title);
   let status;
 
-  if (status_bool) {
-    status = status_str[1];
-  } else {
+  if (!status_num) {
     status = status_str[0];
+  } else if (status_num == 1) {
+    status = status_str[1];
+  } else if (status_num == 2) {
+    status = status_str[2];
   }
 
-  console.log(time);
   temp_html = `<li>
-                <a href="#">
+                <a href="#" class="join">
                   ${oneArticle.join_title} || ${status} </br>
                 </a>
               </li>`;
   $("#yj").append(temp_html);
 }
 
-async function get_recruited_html(id, join, status_bool, time, user) {
+async function get_recruited_html(id, join, status_num, time, user) {
   const oneArticle = await getJoin(join);
-  console.log(oneArticle.join_title);
   let status;
 
-  if (status_bool) {
-    status = status_str[1];
-  } else {
+  if (!status_num) {
     status = status_str[0];
+  } else if (status_num == 1) {
+    status = status_str[1];
+  } else if (status_num == 2) {
+    status = status_str[2];
   }
 
-  console.log(time);
   temp_html = `<li>
-                <a href="#">
-                  ${oneArticle.join_title} || ${status} || ${user}</br>
+                <a href='/templates/change_recruit.html?recruit_id=${id}'>
+                  ${oneArticle.join_title} || ${user} || ${status}
                 </a>
               </li>`;
   $("#sy").append(temp_html);

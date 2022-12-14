@@ -2,12 +2,10 @@
 async function createReview() {
     const payload = localStorage.getItem("payload");
     const parsed_payload = await JSON.parse(payload);
-    console.log(parsed_payload);
 
     review_title = document.getElementById("review_title").value;
     review_desc = document.getElementById("review_desc").value;
     image = document.getElementById("file").files[0];
-    console.log(review_title, review_desc, image)
 
     const formData = new FormData();
 

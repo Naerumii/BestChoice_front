@@ -10,7 +10,6 @@ async function getArticleDetail(festival_article_id) {
         method: "GET",
     });
     response_json = await response.json();
-    console.log(response_json);
     // 받아온 값을 json화 시키고 콘솔로그 확인
     // getArticleDetail() 안에 article_id 써주고, article_detail.js에도 getArticleDetail(article_id);실행
   
@@ -23,14 +22,12 @@ async function loadDetailArticles(festival_article_id) {
 
 
     //프론트엔드에서 태그 id 확인하기
-    console.log(1)
     const title = document.getElementById("festival_title");
     let searchForm = $("#searchForm");
     const join_count = searchForm.find("option:selected").val();
     const join_title = document.getElementById("join_title").value;
     const join_content = document.getElementById("join_content").value;
     const join_donedate = document.getElementById("join_donedate").value;
-    console.log(join_content, join_count, join_donedate, join_title)
     
     //축제타이틀 html에 넣어놓기
     title.innerText = article.festival_title;
@@ -55,7 +52,6 @@ async function createJoinArticle(festival_article_id) {
     const join_title = document.getElementById("join_title").value;
     const join_content = document.getElementById("join_content").value;
     const join_donedate = document.getElementById("join_donedate").value;
-    console.log(join_content, join_count, join_donedate, join_title)
 
     const data = {
         join_title: join_title,
