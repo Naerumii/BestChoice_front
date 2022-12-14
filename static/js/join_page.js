@@ -29,7 +29,7 @@ async function loadArticles() {
 
 function get_join_html(id, festival, author, peroid, count) {
     console.log(id, festival, author, peroid, count);
-    let temp_html =   `<li class="list_item" type="button" onclick="location.href='/templates/join_detail.html'">
+    let temp_html =   `<li class="list_item" type="button" onclick="location.href='/templates/join_detail.html?join_article_id=${id}'">
                     <ul>
                         <li>${id}</li>
                         <li class="left">${festival}</li>

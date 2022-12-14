@@ -1,6 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const join_article_id = urlParams.get("join_article_id");
 
+
 // 특정 게시물 back에서 받아오는 함수
 async function getArticleDetail(join_article_id) {
     console.log(12)
@@ -12,6 +13,7 @@ async function getArticleDetail(join_article_id) {
         },
         method: "GET",
     });
+    console.log(join_article_id)
     response_json = await response.json();
     console.log(response_json);
     // 받아온 값을 json화 시키고 콘솔로그 확인
@@ -32,11 +34,11 @@ console.log(12)
     const count = document.getElementById("join_detail_count");
     // const recruit = document.getElementById("join_detail");
     console.log(1333)
-    festival.innerText = article.join_festival;
-    title.innerText = article.join_title;
+    festival.innerText = "축제명 : " +article.join_festival;
+    title.innerText = "제목 : " +article.join_title;
     desc.innerText = article.join_desc;
-    period.innerText = article.join_period;
-    count.innerText = article.join_count;
+    period.innerText = "마감일 : " +article.join_period;
+    count.innerText = "모집인원 : " +article.join_count;
 
     // recruit.setAttribute("onclick", `location.href='/templates/create_content.html?festival_article_id=${festival_article_id}'`);
 }
