@@ -53,7 +53,6 @@ async function getReviews() {
         method: "GET",
     });
     response_json = await response.json();
-    console.log(response_json)
     return response_json;
 }
 
@@ -101,7 +100,6 @@ function article_pagination() {
     var items = $(".list-wrapper .list-item");
     var numItems = items.length;
     var perPage = 5;
-    console.log("festival.js")
 
     items.slice(perPage).hide();
 
