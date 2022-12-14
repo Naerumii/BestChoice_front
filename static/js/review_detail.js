@@ -124,7 +124,6 @@ async function patchReview(review_id, review_title, review_desc) {
     review_title: review_title,
     review_desc: review_desc,
   };
-  console.log(review_id);
   const response = await fetch(`${backend_base_url}/articles/review/${review_id}/`, {
     headers: {
       "content-type": "application/json",
@@ -164,7 +163,6 @@ async function patchReview(review_id, review_title, review_desc) {
 
 //댓글 삭제 기능
 async function commentdelete(id) {
-    console.log("하염")
     const response = await fetch(`${backend_base_url}/articles/review/${review_id}/comment/${id}/`, {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
