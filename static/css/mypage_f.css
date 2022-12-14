@@ -372,6 +372,11 @@ footer {
     margin-left: 10px;
 }
 
+.recruited, .join{
+    margin: 10px;   
+    vertical-align: middle;
+}
+
 section {
     background-color: #FBFBFC;
     border: 1px solid #ECECEC;
