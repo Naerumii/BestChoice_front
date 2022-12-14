@@ -2,18 +2,10 @@ async function loadArticles() {
     // $("#article_container").empty();  //초기화 버튼을 위해 기존에 있던 card 모두 제거
     // $("#text1").val(''); //검색창 기존 입력 지우기
 
-    console.log("1")
-    console.log("2")
     articles = await getArticles();  //Join Article들의 객체
 
-    console.log("3")
-    console.log("4")
-    console.log(articles)
     if (articles.length > 0) {
-    console.log("5")
     for (let i=0; i < articles.length; i++) {
-        console.log("6")
-        console.log(articles[i].id, articles[i].join_festival.festival_title, articles[i].join_author, articles[i].join_period, articles[i].join_count,)
         get_join_html(
             articles[i].id,
             articles[i].join_festival.festival_title,
@@ -28,7 +20,6 @@ async function loadArticles() {
 };
 
 function get_join_html(id, festival, author, peroid, count) {
-    console.log(id, festival, author, peroid, count);
     let temp_html =   `<li class="list_item" type="button" onclick="location.href='/templates/join_detail.html?join_article_id=${id}'">
                     <ul>
                         <li>${id}</li>
@@ -72,7 +63,6 @@ function article_pagination() {
     var items = $(".list-wrapper .list-item");
     var numItems = items.length;
     var perPage = 5;
-    console.log("festival.js")
 
     items.slice(perPage).hide();
 
