@@ -190,7 +190,7 @@ async function writeComment() {
     comment_text.value = "";
   }
 
-// 댓글 작성 //
+// 댓글 백엔드로 전송 //
 async function postComment(review_id, comment_text) {
     const commentData = {
       review_comment: comment_text,
@@ -233,7 +233,7 @@ function commentupdate(id) {
     comment_button.setAttribute("href", "#");
     comment_button.setAttribute("type", "button");
     comment_button.setAttribute("id", `cmp_button_${id}`);
-    comment_button.innerText = "작성";
+    comment_button.innerText = "수정";
 
 
     

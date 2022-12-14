@@ -1,8 +1,11 @@
+
+
 async function loadArticles() {
     // $("#article_container").empty();  //초기화 버튼을 위해 기존에 있던 card 모두 제거
     // $("#text1").val(''); //검색창 기존 입력 지우기
 
     console.log("1")
+    console.log("2")
     console.log("2")
     articles = await getArticles();  //Join Article들의 객체
 
@@ -11,32 +14,33 @@ async function loadArticles() {
     console.log(articles)
     if (articles.length > 0) {
     console.log("5")
-    for (let i=0; i < articles.length; i++) {
-        console.log("6")
-        console.log(articles[i].id, articles[i].join_festival.festival_title, articles[i].join_author, articles[i].join_period, articles[i].join_count,)
-        get_join_html(
-            articles[i].id,
-            articles[i].join_festival.festival_title,
-            articles[i].join_author,
-            articles[i].join_period,
-            articles[i].join_count,
-            )
-        }
+        for (let i=0; i < articles.length; i++) {
+            console.log("6")
+            console.log(articles[i].id, articles[i].join_festival.festival_title, articles[i].join_author, articles[i].join_period, articles[i].join_count, articles[i].join_hits)
+            get_join_html(
+                articles[i].id,
+                articles[i].join_festival.festival_title,
+                articles[i].join_author,
+                articles[i].join_period,
+                articles[i].join_count,
+                articles[i].join_hits,
+                )
+            }
     }
 
     // article_pagination();  //페이징 함수 실행
 };
 
-function get_join_html(id, festival, author, peroid, count) {
-    console.log(id, festival, author, peroid, count);
+async function get_join_html(id, festival, author, period, count, hits) {
+    
     let temp_html =   `<li class="list_item" type="button" onclick="location.href='/templates/join_detail.html?join_article_id=${id}'">
                     <ul>
                         <li>${id}</li>
                         <li class="left">${festival}</li>
                         <li>${author}</li>
-                        <li>${peroid}</li>
+                        <li>${period}</li>
                         <li>${count}</li>
-                        <li>999</li>
+                        <li>${hits}</li>
                     </ul>
                     </li>`
     // console.log(temp_html);
@@ -53,7 +57,7 @@ function get_join_html(id, festival, author, peroid, count) {
 
 //게시물 가져오기 api (전부)
 async function getArticles() {
-const response = await fetch(`${backend_base_url}/articles/festival/join/`, {
+const response = await fetch(`http://127.0.0.1:8000/articles/festival/join/`, {
     headers: {
         Authorization: "Bearer " + localStorage.getItem("access"),
         },    
