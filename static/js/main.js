@@ -2,14 +2,11 @@
 // 게시물 로드하기
 $(document).ready(async function loadArticles() {
     articles = await getArticles();
-    console.log(articles);
     const article_list = document.getElementById("article_container");
   
     articles.forEach((article) => {
-        console.log(article);
         const newArticle = document.createElement("div");
         newArticle.classList.add("col-12", "col-md-6", "col-lg-4", "col-xl-3");
-        console.log(article.pk);
         
         const articleLink = document.createElement("a");
         articleLink.classList.add("course");
