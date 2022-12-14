@@ -10,7 +10,6 @@ async function getArticleDetail(festival_article_id) {
         method: "GET",
     });
     response_json = await response.json();
-    console.log(response_json);
     // 받아온 값을 json화 시키고 콘솔로그 확인
     // getArticleDetail() 안에 article_id 써주고, article_detail.js에도 getArticleDetail(article_id);실행
   
@@ -45,26 +44,20 @@ async function loadDetailArticles(festival_article_id) {
     $('#abc').append(temp_html)
 
     let bookmarks = article.bookmarks
-    console.log(bookmarks)
     // 북마크
     let now_user_id = parseJwt('access').user_id
-    console.log(now_user_id)
 
     let bookmark_user_id = `${bookmarks[0].bookmark_user}`
     bookmark_user_id = parseInt(bookmark_user_id.slice(0, 3))
-    console.log(bookmark_user_id)
 
     let article_id = `${festival_article_id}`
     article_id = parseInt(article_id.slice(0, 3))
-    console.log(article_id)
 
     let bookmark_article_id = `${bookmarks[0].bookmark_festival}`
     bookmark_article_id = parseInt(bookmark_article_id.slice(0, 3))
-    console.log(bookmark_article_id)
 
     if (now_user_id == bookmark_user_id && article_id == bookmark_article_id) {
         // $(".클래스 이름").attr("class","변경 할 클래스명");
-        console.log("dfdfskhfkshfkshfk")
         $(`.bookmark${festival_article_id}`).css("color", "#FA5882");
         $(`.bookmark${festival_article_id}`).addClass("fa-bookmark");
         $(`.bookmark${festival_article_id}`).removeClass("fa-bookmark-o");
