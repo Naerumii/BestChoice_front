@@ -15,8 +15,6 @@ async function handleSignup() {
       user_address: document.getElementById("signup-address").value,
     };
   
-    console.log(signupData);
-  
     const response = await fetch(`${backend_base_url}/users/signup/`, {
       headers: {
         "content-type": "application/json",
@@ -24,8 +22,6 @@ async function handleSignup() {
       method: "POST",
       body: JSON.stringify(signupData),
     });
-  
-    console.log(response);
   
     if (response.status == 201) {
       window.location.replace(`${frontend_base_url}/templates/sign.html`);
@@ -50,7 +46,6 @@ async function handleSignup() {
     });
   
     const response_json = await response.json();
-    console.log(response_json);
   
     localStorage.setItem("access", response_json.access);
     localStorage.setItem("refresh", response_json.refresh);
