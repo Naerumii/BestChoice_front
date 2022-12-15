@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,700&display=swap');
+
+body{
+font-family: 'Noto Sans KR', sans-serif;
+font-family: 'Noto Sans', sans-serif;
+box-sizing: border-box;
+margin: 0;
+/* 아래쪽은 레이아웃용 */
+display: -webkit-flex;
+display: flex;
+padding: 0;
+min-height: 100vh;
+flex-direction: column;
+text-align: center;
+background-color: mintcream;
+}
+
+.header {
+text-align: right;
+margin: 10px;
+font-size: 16px;
+}
+
+.navbar-brand {
+font-weight: 700;
+font-size: 24px;
+}
+
+.logo{
+    height: 70px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.carousel-item {
+height: 400px;
+/*background-repeat: no-repeat;
+background-size: cover; */
+background-repeat: no-repeat;
+background-size: cover; 
+text-align: center;
+}
+
+.ma_main {
+    max-width: 100%;
+    max-height: 100%;
+    background: #fff;
+    margin: 50px auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 1px 5px 5px 0 rgba(97, 97, 97, 0.4);
+    overflow: hidden;
+}
+
+.carousel-item.item1 {
+background-image: url("https://i.postimg.cc/v8rMkZRK/image.png");
+background-position: center;
+}
+
+.carousel-item.item2 {
+background-image: url("https://i.postimg.cc/Df95N1kr/image.png");
+background-position: center;
+}
+
+.carousel-item.item3 {
+background-image: url("https://i.postimg.cc/TPr10MxM/image.png");
+background-position: center;
+}
+
+.helper {
+display: inline-block;
+height: 100%;
+vertical-align: middle;
+}
+
+.intro {
+display: inline-block;
+vertical-align: middle;
+margin-top: 70px;
+}
+
+.intro h2 {
+font-size: 28px;
+color: white;
+font-family: 'Ubuntu', sans-serif;
+font-style: italic;
+font-weight: 700;
+margin-top: 10px;
+margin-bottom: 18px;
+}
+
+.intro h3 {
+font-size: 15px;
+color: white;
+font-weight: 300;
+margin-top: 0;
+margin-bottom: 50px;
+}
+
+.intro a {
+background-color: #7BD9D9;
+border-radius: 3px;
+padding: 10px 20px;
+color: white;
+font-weight: 300;
+font-size: 12px;
+}
+
+.container {
+margin-top: 50px;
+margin-bottom: 50px;
+} 
+
+.notice {
+font-size: 15px;
+}
+
+.course {
+display: block;
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+margin-bottom: 20px;
+border-radius: 5px;
+}
+
+.course:hover {
+text-decoration: none;
+}
+
+.course .course-img {
+display: block;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.course .info {
+padding: 10px;
+}
+
+.course .info h4 {
+font-size: 16px;
+font-weight: 600;
+color: #3B3C3C;
+margin-top: 5;
+margin-bottom: 5px;
+margin-left: 3px;
+}
+
+.course .info .lecturer {
+font-size: 12px;
+font-weight: 500;
+color: #3B3C3C;
+}
+
+.course .info .lecturer img {
+vertical-align: middle;
+margin-left: 3px;
+}
+.course .info .lecturer .name {
+vertical-align: middle;
+margin-left: 5px;
+}
+
+.train{
+    margin-bottom: -40px;
+    margin-left: 30px;
+}
+
+
+
+
+
+
+/* 레이아웃 */
+/* 레이아웃 */
+/* 레이아웃 */
+
+footer {
+    font-family: 'Poppins', sans-serif;
+    background: #dddddd81;
+    width: 100%;
+    padding: 2% 0;
+    color: rgb(104, 104, 104);
+    flex: 0;
+}
+
+.holyGrail {
+    display: flex;
+    flex: 1;
+}
+
+.content {
+    flex: 1;
+}
+
+.side-nav,
+.side-bar{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    width: 300px;
+    background: #ffffff;
+}
+
+.side-nav {
+    order: -1;
+}
+
+.side-button{
+    margin-top: 20px;
+}
+
+.container_checkbox1 {
+    font-family: "Open Sans", sans-serif;
+    width: 250px;
+    margin: 50px auto 15px 50px;
+    padding-bottom: 15px;
+    
+    border: 1px solid #9c9c9c;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px 2px #bcbcbc;
+    }
+
+
+
+
+
+
+
+
+
+/* 위로가기 버튼 */
+/* 위로가기 버튼 */
+/* 위로가기 버튼 */
+
+.scroll-top {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.336);
+    /* hover effect default */
+    transform: scale(0.9);
+    transition: 0.3s ease-in-out transform;
+    /* for centering the icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.scroll-top svg {
+    width: 50%;
+    color: black;
+    pointer-events: none;
+}
+
+.scroll-top:hover {
+    transform: scale(1);
+}  
+
+
+
+
+
+
+
+
+/* 페이지 네이션 */
+/* 페이지 네이션 */
+/* 페이지 네이션 */
+
+
+.list-wrapper {
+	padding: 15px;
+	overflow: hidden;
+}
+
+.list-item {
+	
+	border: 1px solid #EEE;
+	background: #FFF;
+	margin-bottom: 10px;
+	padding: 10px;
+	box-shadow: 0px 0px 10px 0px #EEE;
+}
+
+.simple-pagination ul {
+	margin: 0 0 50px;
+	padding: 50px;
+	list-style: none;
+	text-align: center;
+}
+
+.simple-pagination li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.simple-pagination li a,
+.simple-pagination li span {
+	color: #666;
+	padding: 5px 10px;
+	text-decoration: none;
+	border: 1px solid #EEE;
+	background-color: #FFF;
+	box-shadow: 0px 0px 10px 0px #EEE;
+}
+
+.simple-pagination .current {
+	color: #FFF;
+	background-color: #FF7182;
+	border-color: #FF7182;
+}
+
+.simple-pagination .prev.current,
+.simple-pagination .next.current {
+	background: #e04e60;
+}
+
+.desc-ellipsis {
+    width:580px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}

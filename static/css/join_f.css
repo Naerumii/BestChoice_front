@@ -1,0 +1,163 @@
+.pyo{
+    font-family: 'HallymGothic-Regular';
+    line-height:2.5rem;        
+}
+ul, li{ 
+    font-family: 'HallymGothic-Regular';
+    list-style:none;
+    text-align:center;
+    padding:0;
+    margin:0;
+    padding-left: 10px;
+}
+
+#mainWrapper{
+    font-family: 'HallymGothic-Regular';
+    width: 100%;
+    min-width: 700px;
+    margin: 0 auto; /*가운데 정렬*/
+}
+
+#mainWrapper > ul > li:first-child {
+    font-family: 'HallymGothic-Regular';
+    text-align: center;
+    font-size:30px;
+    height:40px;
+    vertical-align:middle;
+    line-height:30px;
+}
+
+#ulTable {
+    margin-top:10px;
+}
+
+
+#ulTable > li:first-child > ul > li {
+    font-family: 'HallymGothic-Regular';
+    background-color:#fff;
+    font-weight:bold;
+    text-align:center;
+    border-top:0.1px solid;
+}
+
+#ulTable > li > ul {
+    
+    font-family: 'HallymGothic-Regular';
+    clear:both;
+    padding:0px auto;
+    position:relative;
+    min-width:40px;
+}
+#ulTable > li > ul > li { 
+    font-family: 'HallymGothic-Regular';
+    float:left;
+    font-size:15px;
+    border-bottom:1px solid silver;
+    vertical-align:baseline;
+}    
+
+
+#ulTable > li > ul > li:first-child                {width:10%;} /*No 열 크기*/
+#ulTable > li > ul > li:first-child +li            {width:40%;} /*축제명 열 크기*/
+#ulTable > li > ul > li:first-child +li+li         {width:10%;} /*마감일 열 크기*/
+#ulTable > li > ul > li:first-child +li+li+li      {width:10%;} /*작성자 열 크기*/
+#ulTable > li > ul > li:first-child +li+li+li+li   {width:10%;} /*조회수 열 크기*/
+#ulTable > li > ul > li:first-child +li+li+li+li+li{width:10%;} /*조회수 열 크기*/
+
+#divPaging {
+    clear:both; 
+    margin:0 auto; 
+    width:250px; 
+    height:50px;
+
+
+}
+.left:hover{ 
+cursor:pointer;
+} 
+#divPaging > div {
+    float:left;
+    width: 30px;
+    margin:0 auto;
+    text-align:center;
+}
+
+
+
+
+#liSearchOption {
+    clear:both;
+}
+#liSearchOption > div {
+    margin:0 auto; 
+    margin-top: 20px; 
+    width:auto; 
+    height:100px; 
+
+}
+
+.left {
+    text-align : left;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 페이지 네이션 */
+/* 페이지 네이션 */
+/* 페이지 네이션 */
+
+
+.list-wrapper {
+	padding: 15px;
+	overflow: hidden;
+}
+
+.list-item {
+	border: 1px solid #EEE;
+	background: #FFF;
+	margin-bottom: 10px;
+	padding: 10px;
+	box-shadow: 0px 0px 10px 0px #EEE;
+}
+
+.simple-pagination ul {
+	margin: 0;
+	padding: 60px;
+    height: 50px;
+	list-style: none;
+	text-align: center;
+}
+
+.simple-pagination li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.simple-pagination li a,
+.simple-pagination li span {
+	color: #666;
+	padding: 5px 10px;
+	text-decoration: none;
+	border: 1px solid #EEE;
+	background-color: #FFF;
+	box-shadow: 0px 0px 10px 0px #EEE;
+}
+
+.simple-pagination .current {
+	color: #FFF;
+	background-color: #FF7182;
+	border-color: #FF7182;
+}
+
+.simple-pagination .prev.current,
+.simple-pagination .next.current {
+	background: #e04e60;
+}

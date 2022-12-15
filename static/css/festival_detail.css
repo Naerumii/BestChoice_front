@@ -1,0 +1,19 @@
+* {font-family: 'Yeon Sung', cursive;}
+        h1,h4 {display: inline-block;}
+        .wrap {margin: auto;  width: 700px;}
+        h1 {font-size: 44px;}
+        p {font-size: 26px;}
+        .btn-order {display: block; margin: auto;}
+        #festival_image{
+            width: 600px;
+            height: 800px;
+            background-position: center;
+            background-size: cover;
+        }
+        .item-img {
+            margin-top: 50px;
+            width: 600px;
+            height: 800px;
+            background-position: center;
+            background-size: cover;
+            }

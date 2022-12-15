@@ -1,0 +1,121 @@
+.pyo{
+    font-family: 'HallymGothic-Regular';
+    line-height:2.5rem;        
+}
+ul, li{ 
+    font-family: 'HallymGothic-Regular';
+    list-style:none;
+    text-align:center;
+    padding:0;
+    margin:0;
+    padding-left: 10px;
+}
+
+#mainWrapper{
+    font-family: 'HallymGothic-Regular';
+    width: 100%;
+    min-width: 700px;
+    margin: 0 auto; /*가운데 정렬*/
+}
+
+#mainWrapper > ul > li:first-child {
+    font-family: 'HallymGothic-Regular';
+    text-align: center;
+    font-size:30px;
+    height:40px;
+    vertical-align:middle;
+    line-height:30px;
+}
+
+#ulTable {
+    margin-top:10px;
+}
+
+
+#ulTable > li:first-child > ul > li {
+    font-family: 'HallymGothic-Regular';
+    background-color:#fff;
+    font-weight:bold;
+    text-align:center;
+    border-top:0.1px solid;
+}
+
+#ulTable > li > ul {
+    font-family: 'HallymGothic-Regular';
+    clear:both;
+    padding:0px auto;
+    position:relative;
+    min-width:40px;
+}
+#ulTable > li > ul > li { 
+    font-family: 'HallymGothic-Regular';
+    float:left;
+    font-size:15px;
+    border-bottom:1px solid silver;
+    vertical-align:baseline;
+}    
+
+
+#ulTable > li > ul > li:first-child                {width:10%;} /*No 열 크기*/
+#ulTable > li > ul > li:first-child +li            {width:35%;} /*축제명 열 크기*/
+#ulTable > li > ul > li:first-child +li+li         {width:10%;} /*마감일 열 크기*/
+#ulTable > li > ul > li:first-child +li+li+li      {width:20%;} /*작성자 열 크기*/
+#ulTable > li > ul > li:first-child +li+li+li+li   {width:10%;} /*조회수 열 크기*/
+#ulTable > li > ul > li:first-child +li+li+li+li+li{width:10%;} /*조회수 열 크기*/
+
+#divPaging {
+    clear:both; 
+    margin:0 auto; 
+    width:250px; 
+    height:50px;
+
+
+}
+.left:hover{ 
+cursor:pointer;
+} 
+#divPaging > div {
+    float:left;
+    width: 30px;
+    margin:0 auto;
+    text-align:center;
+}
+.write-button{
+font-family: 'Noto Sans KR', sans-serif;
+margin-bottom: 50px;
+width:100px;;
+height:40px;
+border:1px solid;
+border-radius:20px;
+float:right;
+background-color:#fff; 
+}
+.write-button:hover{
+width:100px;;
+height:40px;
+border:1px solid;
+border-radius:20px;
+float:right;
+background-color:rgba(0, 0, 0, 0.363); 
+color:rgb(0, 0, 0);
+cursor:pointer;
+}
+
+
+
+
+#liSearchOption {
+    clear:both;
+}
+#liSearchOption > div {
+    margin:0 auto; 
+    margin-top: 20px; 
+    width:auto; 
+    height:100px; 
+
+}
+
+.left {
+    text-align : left;
+}
+

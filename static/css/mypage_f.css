@@ -1,0 +1,558 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,700&display=swap');
+
+body{
+font-family: 'Noto Sans KR', sans-serif;
+font-family: 'Noto Sans', sans-serif;
+box-sizing: border-box;
+margin: 0;
+/* 아래쪽은 레이아웃용 */
+display: -webkit-flex;
+display: flex;
+padding: 0;
+min-height: 100vh;
+min-width: 400px;
+flex-direction: column;
+text-align: center;
+}
+
+.header {
+text-align: right;
+margin: 10px;
+font-size: 16px;
+}
+
+.navbar-brand {
+font-weight: 700;
+font-size: 24px;
+}
+
+.logo{
+    height: 70px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.carousel-item {
+height: 400px;
+/*background-repeat: no-repeat;
+background-size: cover; */
+background-repeat: no-repeat;
+background-size: cover; 
+text-align: center;
+}
+
+.carousel-item.item1 {
+background-image: url("https://i.postimg.cc/v8rMkZRK/image.png");
+background-position: center;
+}
+
+.carousel-item.item2 {
+background-image: url("https://i.postimg.cc/Df95N1kr/image.png");
+background-position: center;
+}
+
+.carousel-item.item3 {
+background-image: url("https://i.postimg.cc/TPr10MxM/image.png");
+background-position: center;
+}
+
+.helper {
+display: inline-block;
+height: 100%;
+vertical-align: middle;
+}
+
+.intro {
+display: inline-block;
+vertical-align: middle;
+margin-top: 70px;
+}
+
+.intro h2 {
+font-size: 28px;
+color: white;
+font-family: 'Ubuntu', sans-serif;
+font-style: italic;
+font-weight: 700;
+margin-top: 10px;
+margin-bottom: 18px;
+}
+
+.intro h3 {
+font-size: 15px;
+color: white;
+font-weight: 300;
+margin-top: 0;
+margin-bottom: 50px;
+}
+
+.intro a {
+background-color: #7BD9D9;
+border-radius: 3px;
+padding: 10px 20px;
+color: white;
+font-weight: 300;
+font-size: 12px;
+}
+
+.container {
+margin-top: 50px;
+margin-bottom: 50px;
+} 
+
+.notice {
+font-size: 15px;
+}
+
+.course {
+display: block;
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+margin-bottom: 20px;
+border-radius: 5px;
+}
+
+.course:hover {
+text-decoration: none;
+}
+
+.course .course-img {
+display: block;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.course .info {
+padding: 10px;
+}
+
+.course .info h4 {
+font-size: 16px;
+font-weight: 600;
+color: #3B3C3C;
+margin-top: 5;
+margin-bottom: 5px;
+margin-left: 3px;
+}
+
+.course .info .lecturer {
+font-size: 12px;
+font-weight: 500;
+color: #3B3C3C;
+}
+
+.course .info .lecturer img {
+vertical-align: middle;
+margin-left: 3px;
+}
+.course .info .lecturer .name {
+vertical-align: middle;
+margin-left: 5px;
+}
+
+
+
+/* 레이아웃 */
+/* 레이아웃 */
+
+footer {
+    font-family: 'Poppins', sans-serif;
+    background: #dddddd81;
+    width: 100%;
+    padding: 2% 0;
+    color: rgb(104, 104, 104);
+    flex: 0;
+}
+
+.holyGrail {
+    display: flex;
+    flex: 1;
+}
+
+.content {
+    flex: 1;
+}
+
+.side-nav,
+.side-bar{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    width: 300px;
+    background: #ffffff;
+}
+
+.side-nav {
+    order: -1;
+}
+
+.side-button{
+    margin-top: 20px;
+}
+
+.container_checkbox1 {
+    font-family: "Open Sans", sans-serif;
+    width: 250px;
+    margin: 50px auto 15px 50px;
+    padding-bottom: 15px;
+    
+    border: 1px solid #9c9c9c;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px 2px #bcbcbc;
+    }
+
+
+
+    /* 마이페이지 */
+
+/*---Variables---*/
+/*---Colors---*/
+
+.ProfileCardContainer {
+    position: relative;
+    margin-left: 5%;
+    margin-top: 10%;
+    -webkit-animation-duration: 0.9s;
+    animation-duration: 0.9s;
+    -webkit-animation-name: avatar;
+    animation-name: avatar;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-transform-origin: top;
+    transform-origin: top;
+}
+.user_img{
+    background: none;
+    height: 13rem;
+    width: 13rem;
+    border-radius: 105px;
+    border: solid 1px #8c8c8c;
+    box-shadow: 0 10px 26px rgba(120, 137, 150, 0.3);
+}
+
+.ProfileCardAvatar {
+    background: none;
+    height: 13rem;
+    width: 13rem;
+    border-radius: 105px;
+    border: solid 1px #8c8c8c;
+    box-shadow: 0 10px 26px rgba(120, 137, 150, 0.3);
+    margin-left: 2.5rem;
+}
+
+@keyframes avatar {
+    from {
+    margin-top: -1em;
+    transform: rotateX(-70deg);
+    }
+    38% {
+    transform: rotateX(30deg);
+    }
+    50% {
+    transform: rotateX(10deg);
+    }
+    70% {
+    transform: rotateX(14deg);
+    }
+    to {
+    transform: rotateX(0deg);
+    }
+}
+@-moz-keyframes avatar {
+    from {
+    margin-top: -1em;
+    -moz-transform: rotateX(-70deg);
+    }
+    38% {
+    margin-top: 0;
+    -moz-transform: rotateX(30deg);
+    }
+    50% {
+    -moz-transform: rotateX(10deg);
+    }
+    70% {
+    -moz-transform: rotateX(14deg);
+    }
+    to {
+    -moz-transform: rotateX(0deg);
+    }
+}
+@-webkit-keyframes avatar {
+    from {
+    margin-top: -1em;
+    -webkit-transform: rotateX(-70deg);
+    }
+    38% {
+    margin-top: 0;
+    -webkit-transform: rotateX(30deg);
+    }
+    50% {
+    -webkit-transform: rotateX(10deg);
+    }
+    70% {
+    -webkit-transform: rotateX(14deg);
+    }
+    to {
+    -webkit-transform: rotateX(0deg);
+    }
+}
+.ProfileCardTop {
+    margin-top: 1.5rem;
+    width: 18rem;
+    height: 76px;
+}
+
+.ProfileCardName {
+    position: absolute;
+    width: 18rem;
+    margin-top: 2.7rem;
+    text-align: center;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-shadow: 0 -1px 0 #333;
+    letter-spacing: 0.07em;
+}
+
+.ProfileCardBox {
+    width: 18rem;
+    height: 20rem;
+    margin-top: -0.9rem;
+    background-color: #fff;
+    box-shadow: 0 10px 26px rgba(145, 150, 120, 0.3);
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+
+.ProfileCardTextTitle {
+    float: left;
+    margin-left: 30px;
+    margin-top: 30px;
+    width: 3rem;
+    list-style: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9rem;
+    line-height: 3.2rem;
+    text-align: right;
+    color: #000000;
+}
+
+.ProfileCardJob {
+    margin-bottom: 2.7em;
+}
+
+.ProfileCardText {
+    margin-left: 1rem;
+    padding-top: 2rem;
+    list-style: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9rem;
+    line-height: 3.2rem;
+    color: #000000;
+}
+
+.ProfileCardBorder {
+    
+    border-bottom: solid 1px #dacfc0;
+    width: 10rem;
+}
+
+
+/* 베스트 카드 */
+
+
+
+.boxx-container {
+    width: 17.5rem;
+    height: 100px;
+    display: inline-block;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.recruited, .join{
+    margin: 10px;   
+    vertical-align: middle;
+}
+
+section {
+    background-color: #FBFBFC;
+    border: 1px solid #ECECEC;
+    padding: 0.5rem;
+    width: 17.5rem;
+    font-size: 0.75rem;
+}
+h3 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    vertical-align: top;
+    padding-left: 0.4rem;
+}
+
+ul, ol {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    line-height: 1.8;
+    display: inline-block;
+}
+
+ol li:nth-child(1)::before {
+    content: '1';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+ol li:nth-child(2)::before {
+    content: '2';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+ol li:nth-child(3)::before {
+    content: '3';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+ol li:nth-child(4)::before {
+    content: '4';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+ol li:nth-child(5)::before {
+    content: '5';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+
+ol li:nth-child(6)::before {
+    content: '6';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+
+ol li:nth-child(7)::before {
+    content: '7';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+
+ol li:nth-child(8)::before {
+    content: '8';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+
+ol li:nth-child(9)::before {
+    content: '9';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+
+ol li:nth-child(10)::before {
+    content: '10';
+    background-color: #898989;
+    color: #fff;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    line-height: 1.3rem;
+    align-content: center;
+    border-radius: 3px;
+}
+
+
+/* 북마크 보여주는 타이틀! */
+
+.book{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.product-title{
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    position: relative;
+    color: #000000;
+    margin: 1rem 0;
+}
+.product-title::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 900px;
+    background: #000000;
+}

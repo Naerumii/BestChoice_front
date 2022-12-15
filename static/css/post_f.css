@@ -1,0 +1,502 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+@font-face {
+font-family: 'HallymGothic-Regular';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2') format('woff2');
+font-weight: 400;
+font-style: normal;
+}
+
+* {
+    
+font-family: 'HallymGothic-Regular';
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+outline: 0px solid red;
+}
+
+.body1 {
+font-family: 'HallymGothic-Regular';
+font-size: 1rem;
+font-weight: 400;
+line-height: 1.8rem;
+color: #111;
+text-align: center;
+word-break: keep-all;
+}
+
+h1, h2, h3 {
+font-family: 'HallymGothic-Regular', serif;
+font-weight: 700;
+}
+
+h1 {
+font-size: 3rem;
+line-height: 5rem;
+}
+
+h2 {
+font-size: 2.4rem;
+line-height: 3rem;
+}
+
+h3 {
+font-size: 1.8rem;
+line-height: 2.4rem;
+}
+
+h4, h5 {
+font-weight: 600;
+}
+
+h4 {
+font-size: 1.4rem;
+line-height: 2.2rem;
+}
+
+h5 {
+font-size: 1.2rem;
+line-height: 2rem;
+}
+
+a:link {
+color: #111;
+line-height: 2rem;
+text-decoration: none;
+}
+
+a:hover, a:focus {
+text-decoration: underline;
+}
+
+li {
+list-style: none;
+}
+
+button {
+font-size: 0.9rem;
+letter-spacing: -.02rem;
+width: 100%;
+margin: 0 auto;
+padding: .6rem;
+border: 1px solid rgba(0, 0, 0, 0.2);
+border-radius: 4px;
+transition: 0.1s;
+cursor: pointer;
+}
+
+button:hover {
+border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+button img {
+height: 20px;
+vertical-align: middle;
+}
+
+textarea {
+width: 100%;
+padding: 8px;
+background: #fff;
+color: #222;
+border: 1px solid #ddd;
+border-radius: 4px;
+font-family: 'Noto Sans KR', sans-serif;
+font-size: 1rem;
+line-height: 1.6rem;
+text-align: left;
+resize: none;
+}
+
+select {
+width: 100%;
+padding: .6rem;
+border: 1px solid #ddd;
+border-radius: 4px;
+font-size: 1rem;
+font-weight: 600;
+transition: 0.1s;
+}
+
+input {
+width: 100%;
+padding: .6rem;
+height: auto;
+transition: 0.1s;
+border: 0.9px solid #ddd;
+outline: 0;
+font-size: 1rem;
+border-radius: 4px;
+}
+
+input:focus, textarea:focus,
+select:focus {
+border: 1px solid #0982f0;
+outline: 0;
+}
+
+input[type="submit"] {
+letter-spacing: -.02rem;
+width: 45%;
+padding: .5rem;
+border: 0;
+border-radius: 4px;
+}
+
+input[type="checkbox"] {
+width: 16px;
+height: 16px;
+margin-right: 6px;
+vertical-align: baseline;
+}
+
+/*----class start----*/
+.box {
+width: 100%;
+max-width: 1000px;
+padding: 40px 20px;
+border: 1px solid #ddd;
+border-radius: 16px;
+margin: 20px auto;
+}
+
+.flex-box {
+width: 100%;
+display: flex;
+flex-direction: row;
+gap: 10px;
+align-items: center;
+vertical-align: middle;
+}
+
+.file-box {
+position: relative;
+display: inline-block;
+}
+
+/*----btns start----*/
+.btn-default {
+background: #f6f6f6;
+color: #111;
+background: #eee;
+}
+
+.btn-default:hover {
+background: #e1e1e1;
+}
+
+.btn-rank1 {
+background: #e6002e;
+color: #f6f6f6;
+}
+
+.btn-rank1:hover {
+background: #ba051c;
+}
+
+.btn-rank2 {
+background: #444;
+color: #fff;
+}
+
+.btn-rank2:hover {
+background: #222;
+}
+
+.btn-rank3 {
+background: #ddd;
+color: #888;
+}
+
+.btn-rank3:hover {
+background: #bbb;
+color: #fff;
+}
+
+
+
+/*----span 별표시----*/
+.import-text {
+font-weight: 700;
+color: #e6002e;
+}
+
+.gray-text {
+color: #888;
+}
+
+/*--------------article-----------*/
+.board-sec {
+padding: 40px 6%;
+margin: 0 auto;
+}
+
+.board-sec .box {
+width: 100%;
+max-width: 1000px;
+}
+
+.board-sec .box ul {
+padding: 30px 0;
+}
+
+.board-sec .box li:not(:last-child) {
+margin-bottom: 20px;
+}
+
+/*----소비형컨텐츠 시작----*/
+.post-box {
+width: 100%;
+padding: 40px 0px;
+}
+
+.post-box .post-head {
+width: 100%;
+margin-top: 20px;
+padding: 10px 0;
+border-top: 2px solid #ddd;
+border-bottom: double #ddd;
+display: flex;
+justify-content: space-between;
+vertical-align: middle;
+}
+
+.post-box .post-head>div {
+display: flex;
+flex-direction: row;
+gap: 20px;
+}
+
+.post-box .post-head>div span {
+margin-left: 6px;
+}
+
+.post-box .post-content {
+padding: 40px 0px;
+object-fit: cover;
+}
+
+.post-box .post-content>img {
+width: 100%;
+margin: 20px 0;
+}
+
+.post-box .post-btn {
+width: 100%;
+padding: 40px 0;
+display: flex;
+flex-wrap: nowrap;
+gap: 20px;
+justify-content: center;
+border-bottom: 2px solid #ddd;
+}
+
+.post-box .post-btn>button {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+vertical-align: middle;
+margin: 0;
+}
+
+.post-box .post-btn>button span {
+font-size: .7rem;
+display: block;
+text-align: center;
+padding-top: 4px;
+}
+
+/*----코멘트 시작----*/
+.post-box .post-comment {
+margin-top: 20px;
+text-align: left;
+}
+
+.post-box .coment-box li {
+align-items: flex-start;
+border-bottom: 1px solid #ddd;
+}
+
+.post-box .coment-box .user-text:before {
+content: "";
+background: url("https://user-images.githubusercontent.com/110369667/189028944-e6c98c9c-00fc-4191-953c-a35c0c682ccc.png")no-repeat center;
+background-size: contain;
+position: absolute;
+top: 2px;
+left: 10px;
+width: 34px;
+height: 34px;
+display: block;
+}
+
+.post-box .coment-box .user-text {
+position: relative;
+line-height: 2rem;
+width: 100%;
+padding: 0px 0px 10px 60px;
+}
+
+.post-box .coment-box .user-text>:first-child {
+font-weight: 600;
+cursor: pointer;
+}
+
+.post-box .coment-box .dropdown-btn {
+background: url("https://user-images.githubusercontent.com/110369667/189045869-e198a28e-16b4-419a-a952-0df3ce7d18f7.png")no-repeat right;
+background-size: contain;
+width: 30px;
+height: 20px;
+margin-top: 10px;
+cursor: pointer;
+position: relative;
+}
+
+.post-box .coment-box .dropdown-btn>.drop-menu {
+position: absolute;
+top: 30px;
+left: -10px;
+padding: 6px 10px;
+border-radius: 4px;
+background: #fff;
+box-shadow: 0 0 10px #ddd;
+display: none;
+}
+
+#more1.xx,
+#more2.xx {
+display: block;
+}
+
+.post-box .coment-writer>.flex-box {
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+vertical-align: middle;
+}
+
+.post-box .coment-writer div>label {
+display: inline-block;
+text-align: left;
+line-height: 1rem;
+}
+
+.post-box .coment-writer div>button {
+width: 120px;
+margin: 0 0;
+}
+
+
+.box .postlist-box {
+text-align: left;
+margin: 0 auto;
+}
+
+.postlist-box .postlist-cont {
+display: flex;
+margin-top: 40px;
+flex-direction: column;
+gap: 20px;
+}
+
+.postlist-cont .flex-box {
+border-bottom: 1px solid #ddd;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+cursor: pointer;
+}
+
+.postlist-cont>:last-child {
+border-bottom: 0px;
+}
+
+.postlist-cont>.flex-box>:nth-child(1) {
+width: 100%;
+height: 200px;
+overflow: hidden;
+}
+
+.postlist-cont>.flex-box>:nth-child(1) img {
+width: 100%;
+height: 200px;
+object-fit: cover;
+transform: scale(1);
+transition: all .2s;
+}
+
+.postlist-cont>.flex-box>:nth-child(2) {
+width: 100%;
+padding: 10px 0 20px 0;
+}
+
+.postlist-cont .flex-box:hover img {
+transform: scale(1.1);
+}
+
+/*--------- laptop start ------------*/
+@media screen and (min-width: 600px) {
+.box {
+    width: 100%;
+    max-width: 1000px;
+    padding: 40px 40px;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    margin: 20px auto;
+}
+/*-----------------*/
+.postlist-box {
+    width:100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.postlist-box .postlist-cont {
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.postlist-cont .flex-box {
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.postlist-cont>.flex-box>:nth-child(1) {
+    width: 360px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.postlist-cont>.flex-box>:nth-child(1) img {
+    width: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: all .2s;
+}
+
+.postlist-cont>.flex-box>:nth-child(2) {
+    width: 100%;
+    padding: 0px 30px 20px 30px;
+}
+
+.postlist-cont .flex-box:hover img {
+    transform: scale(1.1);
+}
+
+
+.postlist-box>button {
+    position: absolute;
+    bottom:-60px;
+    left:50%;
+    transform:translateX(-50%);
+    width:200px;
+}
+
+/*-----------------*/
+}

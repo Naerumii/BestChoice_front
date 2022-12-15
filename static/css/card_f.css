@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
+.post {
+font-family: "Lato", "Helvetica", Arial, sans-serif;
+max-width: 400px;
+max-height: 250px;
+background: #fff;
+margin: 20px auto;
+display: block;
+border-radius: 4px;
+box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.4);
+overflow: hidden;
+}
+.post h1 {
+margin: 0 0 5px;
+}
+.post hr {
+width: 150px;
+margin: 15px 0;
+border: 1px solid #eee;
+
+}
+.post p {
+margin: 15px 0;
+}
+
+.post .post-left img {
+max-width: 300px;
+max-height: 240px;
+display: block;
+object-fit: fill;
+
+}
+.post .post-right {
+text-align: left;
+padding: 60px 40px;
+border-left: 2px solid #f9f9f9;
+}
+
+@media (min-width: 768px) {
+.post {
+    max-width: 800px;
+}
+.post .post-child {
+    display: table-cell;
+    vertical-align: middle;
+}
+.post .post-right {
+    padding: 10px;
+}
+}
