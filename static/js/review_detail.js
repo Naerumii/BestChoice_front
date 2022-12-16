@@ -145,7 +145,7 @@ function editReviewCommentEvent(id) {
     
     const update_button = document.getElementById(`button_box_${id}`);
     update_button.insertBefore(comment_button, updateBtn);
-    comment_button.setAttribute("onclick", `updateReviewComment(${id})`);
+    comment_button.setAttribute("onclick", `putReviewComment(${id})`);
 }
     
 

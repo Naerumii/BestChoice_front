@@ -120,7 +120,7 @@ async function postReviewComment(review_id, comment_text) {
 
 
 //리뷰게시글 댓글 수정 api
-async function updateReviewComment(id) {    
+async function putReviewComment(id) {    
     const comment_retext = document.getElementById(`input_comment_${id}`).value;
     const commentReData = {
       review_comment: comment_retext,
