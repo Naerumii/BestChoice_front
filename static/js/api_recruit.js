@@ -12,6 +12,27 @@ async function getRecruitDetail(recruit) {
 }
 
 
+//신청게시글 생성 api
+async function postRecruit(join_article_id) {
+  const payload = localStorage.getItem("payload");
+  const parsed_payload = await JSON.parse(payload);
+
+  //테스트할 때 포트번호 변경
+  const response = await fetch(`${backend_base_url}/articles/festival/join/${join_article_id}/recruit/`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("access"),
+      },
+      method: "POST",
+    }
+  );
+
+  if (response.status == 201) {
+    alert("해당 모집글에 신청되었습니다.");
+  } else {
+    alert("이미 해당 모집글에 신청되었습니다.");
+  }
+}
+
 //신청게시글 상태 수정 api
 async function patchRecruit(recruit_id, status) {
     const response = await fetch(`${backend_base_url}/articles/festival/join/recruited/${recruit_id}/${status}/`, {

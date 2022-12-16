@@ -52,7 +52,7 @@ async function postJoin(festival_article_id) {
 }
 
 
-//특정 모집게시글 back에서 받아오는 api
+//모집게시글 상세보기 api
 async function getJoinDetail(join_article_id) {
   const response = await fetch(`http://127.0.0.1:8000/articles/festival/join/${join_article_id}/`, {
       headers: {
@@ -116,29 +116,7 @@ async function patchJoin(join_article_id, join_title, join_desc, join_count, joi
 }
 
 
-//신청게시글 생성 api
-async function postRecruit(join_article_id) {
-  const payload = localStorage.getItem("payload");
-  const parsed_payload = await JSON.parse(payload);
-
-  //테스트할 때 포트번호 변경
-  const response = await fetch(`${backend_base_url}/articles/festival/join/${join_article_id}/recruit/`, {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("access"),
-      },
-      method: "POST",
-    }
-  );
-
-  if (response.status == 201) {
-    alert("해당 모집글에 신청되었습니다.");
-  } else {
-    alert("이미 해당 모집글에 신청되었습니다.");
-  }
-}
-
-
-// 댓글 백엔드로 전송 //
+//모집게시글 댓글 생성 api
 async function postJoinComment(join_article_id, myNote) {
   const commentData = {
       comment_content: myNote,
@@ -163,7 +141,7 @@ async function postJoinComment(join_article_id, myNote) {
 }
 
 
-// 수정한 댓글 작성 버튼 클릭 시 동작하는 함수
+//모집게시글 댓글 수정 api
 async function putJoinComment(id) {    
   const comment_retext = document.getElementById(`join_input_comment_${id}`).value;
   const commentReData = {
@@ -189,7 +167,7 @@ async function putJoinComment(id) {
 }
 
 
-//댓글 삭제 기능
+//모집게시글 댓글 삭제 api
 async function deleteJoinComment(id) {
   const response = await fetch(`${backend_base_url}/articles/festival/join/${join_article_id}/comment/${id}/`, {
       headers: {
