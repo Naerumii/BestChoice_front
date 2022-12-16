@@ -1,6 +1,6 @@
 //모집게시글 가져오기 api (전부)
 async function getJoins() {
-    const response = await fetch(`http://127.0.0.1:8000/articles/festival/join/`, {
+    const response = await fetch(`${backend_base_url}/joins/`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access"),
         },
@@ -33,7 +33,7 @@ async function postJoin(festival_article_id) {
   }
 
 
-  const response = await fetch(`http://127.0.0.1:8000/articles/festival/${festival_article_id}/createjoin/`, {
+  const response = await fetch(`${backend_base_url}/joins/${festival_article_id}/createjoin/`, {
 
       headers: {
           "content-type": "application/json",
@@ -45,7 +45,7 @@ async function postJoin(festival_article_id) {
 
   if (response.status == 200) {
       alert("게시물 등록");
-      window.location.replace("http://127.0.0.1:5500/templates/festival_page.html");
+      window.location.replace(`${frontend_base_url}/templates/festival_page.html`);
   } else {
       alert(response.status)
   }
@@ -54,7 +54,7 @@ async function postJoin(festival_article_id) {
 
 //모집게시글 상세보기 api
 async function getJoinDetail(join_article_id) {
-  const response = await fetch(`http://127.0.0.1:8000/articles/festival/join/${join_article_id}/`, {
+  const response = await fetch(`${backend_base_url}/joins/${join_article_id}/`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("access"),
       },
@@ -68,7 +68,7 @@ async function getJoinDetail(join_article_id) {
 
 //모집게시글 삭제 api
 async function deleteJoin(join_article_id) {
-  const response = await fetch(`${backend_base_url}/articles/festival/join/${join_article_id}/`, {
+  const response = await fetch(`${backend_base_url}/joins/${join_article_id}/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("access"),
@@ -94,7 +94,7 @@ async function patchJoin(join_article_id, join_title, join_desc, join_count, joi
     join_count: join_count,
     join_period: join_period,
   };
-  const response = await fetch(`${backend_base_url}/articles/festival/join/${join_article_id}/`, {
+  const response = await fetch(`${backend_base_url}/joins/${join_article_id}/`, {
       headers: {
         "content-type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("access"),
@@ -122,7 +122,7 @@ async function postJoinComment(join_article_id, myNote) {
       comment_content: myNote,
   };
   const response = await fetch(
-  `${backend_base_url}/articles/festival/join/${join_article_id}/comment/`,
+  `${backend_base_url}/joins/${join_article_id}/comment/`,
   {
       headers: {
       "content-type": "application/json",
@@ -147,7 +147,7 @@ async function putJoinComment(id) {
   const commentReData = {
       comment_content: comment_retext,
   }   
-  const response = await fetch(`${backend_base_url}/articles/festival/join/${join_article_id}/comment/${id}/`, {
+  const response = await fetch(`${backend_base_url}/joins/${join_article_id}/comment/${id}/`, {
           headers: {
               "content-type": "application/json",
               Authorization: "Bearer " + localStorage.getItem("access"),
@@ -169,7 +169,7 @@ async function putJoinComment(id) {
 
 //모집게시글 댓글 삭제 api
 async function deleteJoinComment(id) {
-  const response = await fetch(`${backend_base_url}/articles/festival/join/${join_article_id}/comment/${id}/`, {
+  const response = await fetch(`${backend_base_url}/joins/${join_article_id}/comment/${id}/`, {
       headers: {
           Authorization: "Bearer " + localStorage.getItem("access"),
       },    
