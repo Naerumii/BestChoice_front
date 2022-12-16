@@ -1,6 +1,6 @@
 //축제게시물 가져오기 api (전부)
 async function getFestivals() {
-    const response = await fetch(`${backend_base_url}/articles/festival/`, {
+    const response = await fetch(`${backend_base_url}/festivals/`, {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
         },    
@@ -13,7 +13,7 @@ async function getFestivals() {
 
 //축제게시글 상세보기 api
 async function getFestivalDetail(festival_article_id) {
-    const response = await fetch(`${backend_base_url}/articles/festival/${festival_article_id}/`, {
+    const response = await fetch(`${backend_base_url}/festivals/${festival_article_id}/`, {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
         },
@@ -27,7 +27,7 @@ async function getFestivalDetail(festival_article_id) {
 
 //추천 축제게시물 가져오기 api
 async function getFestivalRecommend() {
-    const response = await fetch(`${backend_base_url}/articles/recommend/`, {
+    const response = await fetch(`${backend_base_url}/festivals/recommend/`, {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
         },    
@@ -39,7 +39,7 @@ async function getFestivalRecommend() {
 
 //조건에 맞는 축제게시물 가져오기 api
 async function getFestivalFilter(option_param) {
-    const response = await fetch(`${backend_base_url}/articles/festival/filter/`+ "?" +option_param, {
+    const response = await fetch(`${backend_base_url}/festivals/filter/`+ "?" +option_param, {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
         },    
@@ -55,7 +55,7 @@ async function postFestivalBookmark(festival_article_id) {
     const bookmarkData = {
         "bookmark_festival": festival_article_id,
     }
-    const response = await fetch(`${backend_base_url}/articles/festival/${festival_article_id}/bookmark/`, {
+    const response = await fetch(`${backend_base_url}/festivals/${festival_article_id}/bookmark/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

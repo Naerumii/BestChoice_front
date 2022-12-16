@@ -1,6 +1,6 @@
 //리뷰게시글 가져오기 api(전부)
 async function getReviews() {
-    const response = await fetch(`${backend_base_url}/articles/review/`, {
+    const response = await fetch(`${backend_base_url}/reviews/`, {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
         },    
@@ -12,7 +12,7 @@ async function getReviews() {
 
 //리뷰게시글 상세보기 api
 async function getReviewDetail(review_id) {
-    const response = await fetch(`${backend_base_url}/articles/review/${review_id}/`, {
+    const response = await fetch(`${backend_base_url}/reviews/${review_id}/`, {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
         },
@@ -35,7 +35,7 @@ async function postReview() {
   formData.append("review_title", review_title);
   formData.append("review_desc", review_desc);
   formData.append("image", image);
-  const response = await fetch("http://127.0.0.1:8000/articles/review/", {
+  const response = await fetch(`${backend_base_url}/reviews/`, {
       headers: {
           Authorization: "Bearer " + localStorage.getItem("access"),
       },
@@ -45,7 +45,7 @@ async function postReview() {
 
   if (response.status == 200) {
       alert("게시물 등록");
-      opener.location.reload("http://127.0.0.1:5500/templates/review.html");
+      opener.location.reload(`${frontend_base_url}/templates/review.html`);
       window.close();
   } else {
       alert(response.status)
@@ -58,7 +58,7 @@ async function patchReview(review_id, review_title, review_desc) {
       review_title: review_title,
       review_desc: review_desc,
     };
-    const response = await fetch(`${backend_base_url}/articles/review/${review_id}/`, {
+    const response = await fetch(`${backend_base_url}/reviews/${review_id}/`, {
       headers: {
         "content-type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("access"),
@@ -79,7 +79,7 @@ async function patchReview(review_id, review_title, review_desc) {
 
 //리뷰게시물 삭제하는 api
 async function deleteReview(review_id) {
-    const response = await fetch(`${backend_base_url}/articles/review/${review_id}/`, {
+    const response = await fetch(`${backend_base_url}/reviews/${review_id}/`, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + localStorage.getItem("access")
@@ -101,7 +101,7 @@ async function postReviewComment(review_id, comment_text) {
     const commentData = {
       review_comment: comment_text,
     };
-    const response = await fetch(`${backend_base_url}/articles/review/${review_id}/comment/`, {
+    const response = await fetch(`${backend_base_url}/reviews/${review_id}/comment/`, {
         headers: {
           "content-type": "application/json",
           Authorization: "Bearer " + localStorage.getItem("access"),
@@ -125,7 +125,7 @@ async function putReviewComment(id) {
     const commentReData = {
       review_comment: comment_retext,
     }   
-    const response = await fetch(`${backend_base_url}/articles/review/${review_id}/comment/${id}/`, {
+    const response = await fetch(`${backend_base_url}/reviews/${review_id}/comment/${id}/`, {
         headers: {
             "content-type": "application/json",
             Authorization: "Bearer " + localStorage.getItem("access"),
@@ -147,7 +147,7 @@ async function putReviewComment(id) {
 
 //리뷰게시글 댓글 삭제 api
 async function deleteReviewComment(id) {
-    const response = await fetch(`${backend_base_url}/articles/review/${review_id}/comment/${id}/`, {
+    const response = await fetch(`${backend_base_url}/reviews/${review_id}/comment/${id}/`, {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
         },    

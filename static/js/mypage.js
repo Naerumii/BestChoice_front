@@ -72,12 +72,13 @@ async function loadProfile(user_id) {
   //my어쩌구에 들어가는거
   if (results.length > 0) {
     for (let i = 0; i < results.length; i++) {
+      other_user = await getProfile(results[i].recruit_user);
       get_recruited_html(
         results[i].id,
         results[i].recruit_join,
         results[i].recruit_status,
         results[i].recruit_time,
-        now_user.user_nickname
+        other_user.user_nickname
       );
     }
   }
