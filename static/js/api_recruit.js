@@ -35,7 +35,7 @@ async function postRecruit(join_article_id) {
 
 //신청게시글 상태 수정 api
 async function patchRecruit(recruit_id, status) {
-    const response = await fetch(`${backend_base_url}/recruits/${recruit_id}/${status}/`, {
+    const response = await fetch(`${backend_base_url}/recruits/recruited/${recruit_id}/${status}/`, {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
         },  
