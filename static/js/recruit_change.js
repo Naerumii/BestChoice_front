@@ -1,7 +1,3 @@
-const backend_base_url = "http://127.0.0.1:8000";  //포트번호 변경해주세요
-const frontend_base_url = "http://127.0.0.1:5500";  //포트번호 변경해주세요
-
-
 const urlParams = new URLSearchParams(window.location.search);
 const recruit_id = urlParams.get("recruit_id");
 
@@ -23,20 +19,6 @@ async function getJoin(join) {
     return response_json;
   }
 
-  async function getRecruit(recruit) {
-    const response = await fetch(
-      `${backend_base_url}/articles/festival/join/recruit/${recruit}`,
-      {
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("access"),
-        },  
-        method: "GET",
-      }
-    );
-    response_json = await response.json();
-    
-    return response_json;
-  }
 
   // 사용자 프로필 정보 받아오기
 async function getProfile(user_id) {
@@ -50,23 +32,12 @@ async function getProfile(user_id) {
     return response_json;
   }
 
-    // 사용자 프로필 정보 받아오기
-async function patchRecruit(recruit_id, status) {
-    const response = await fetch(`${backend_base_url}/articles/festival/join/recruited/${recruit_id}/${status}/`, {
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("access"),
-        },  
-      method: "PATCH",
-    });
-    response_json = await response.json();
-    return response_json;
-  }
 
-  // 받아온 json 데이터 front에 내용 붙이는 함수
+// 받아온 json 데이터 front에 내용 붙이는 함수
 async function loadRecruit(recruit_id) {
-    results = await getRecruit(recruit_id);
+    results = await getRecruitDetail(recruit_id);
     
-    joins = await getJoin(results.recruit_join);
+    joins = await getJoinDetail(results.recruit_join);
     author = await getProfile(results.recruit_user);
   
     const user = document.getElementById("recruit_user");

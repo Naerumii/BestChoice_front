@@ -8,7 +8,7 @@
     <!-- <script src="script.js"></script> -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <!-- Css -->
-    <link rel="stylesheet" href="/static/css/change_recruit.css">
+    <link rel="stylesheet" href="/static/css/create_content_f.css">
     <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&display=swap"> -->
@@ -19,19 +19,22 @@
 </head>
 <body>
     <article class="board">
-        <h1>Recruit</h1>
+        <h1>REVIEW</h1>
         <section>
-            <h3>신청목록</h3>
-                <div class="place"><p id="review_desc">신청자 닉네임&nbsp&nbsp&nbsp: &nbsp&nbsp&nbsp<span id="recruit_user"></span></div>
-                <div class="place"><p id="review_desc">신청한 모집게시글&nbsp&nbsp&nbsp: &nbsp&nbsp&nbsp<span id="recruit_join"></span></div>
-                <div class="place"><p id="review_desc">신청 상태&nbsp&nbsp&nbsp: &nbsp&nbsp&nbsp<span id="recruit_status"></span></div>
+            <h3>리뷰 작성하기</h3>
+                <p><input placeholder="제목을 입력하세요." id="review_title"></p>
+                <div class="place"><input id="review_desc" placeholder="내용을 입력하세요."></div>
+                <div>
+                    <input type="file" id="file" style="margin-right: 8rem; margin-bottom: 10px; box-sizing: border-box;">
+                </div>
                 <div id="btn">
-                    <button type="button" onclick="changeStatus(1)">수락</button>
-                    <button type="button" onclick="changeStatus(2)">거절</button>
+                    <button type="button" onclick="writeReviewEvent()">등록하기</button>
                 </div>
         </section>
     </article>
 </body>
 <!-- Script -->
-<script src="/static/js/change_recruit.js"></script>
+<script src="/static/js/api.js"></script>
+<script src="/static/js/api_review.js"></script>
+<script src="/static/js/review_create.js"></script>
 </html>

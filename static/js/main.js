@@ -1,7 +1,7 @@
 // 자동 함수 실행
 // 게시물 로드하기
 $(document).ready(async function loadArticles() {
-    articles = await getArticles();
+    articles = await getFestivalRecommend();
     const article_list = document.getElementById("article_container");
   
     articles.forEach((article) => {
@@ -35,10 +35,6 @@ $(document).ready(async function loadArticles() {
         FooterStr.classList.add("name");
         FooterStr.innerText = article.festival_region
 
-
-        // articleBtn.setAttribute("id", article.pk);
-        // articleBtn.setAttribute("onclick", "articleDetail(this.id)");
-
         bodyAddress.appendChild(bodyFooter);
         bodyAddress.appendChild(FooterStr);
         articleBody.appendChild(bodyTitle);
@@ -49,15 +45,3 @@ $(document).ready(async function loadArticles() {
         article_list.appendChild(newArticle);
     });
 });
-
-//게시물 가져오기(전부)
-async function getArticles() {
-    const response = await fetch(`${backend_base_url}/articles/recommend/`, {
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("access"),
-        },    
-        method: "GET",
-    });
-    response_json = await response.json();
-    return response_json;
-}
