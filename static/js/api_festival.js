@@ -25,7 +25,7 @@ async function getFestivalDetail(festival_article_id) {
 }
 
 
-//추천 축제게시물 가져오기
+//추천 축제게시물 가져오기 api
 async function getFestivalRecommend() {
     const response = await fetch(`${backend_base_url}/articles/recommend/`, {
         headers: {

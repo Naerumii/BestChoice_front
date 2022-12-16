@@ -58,13 +58,7 @@ async function searchArticle() {
       }
   }
 
-  //옵션 url로 변환
-  let option_param = ""
-  for (let i=0; i<search_list.length; i++) {
-      if (search_list[i] != undefined) {
-          option_param += "param=" + search_list[i] + "&"
-      }
-  }
+  let option_param = changeOptionUrl(search_list);
 
   articles = await getFestivalFilter(option_param);  //조건 필터링 함수 실행
 
@@ -106,13 +100,7 @@ async function searchBox() {
   search_list.push(searchCategory);
   search_list.push(searchWord);
 
-  //옵션 url로 변환
-  let option_param = ""
-  for (let i=0; i<search_list.length; i++) {
-      if (search_list[i] != undefined) {
-          option_param += "param=" + search_list[i] + "&"
-      }
-  }
+  let option_param = changeOptionUrl(search_list);
 
   articles = await getFestivalFilter(option_param);  //조건 필터링 함수 실행
 

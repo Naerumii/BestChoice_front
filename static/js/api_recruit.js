@@ -1,4 +1,4 @@
-//신청게시글 조회 api
+//신청게시글 상세보기 api
 async function getRecruitDetail(recruit) {
     const response = await fetch(`${backend_base_url}/articles/festival/join/recruit/${recruit}`, {
         headers: {
@@ -46,7 +46,7 @@ async function patchRecruit(recruit_id, status) {
 }
 
 
-// 내가 생성한 모집게시글에 대한 recruit 정보 받아오기
+// 내가 생성한 모집게시글에 대한 recruit 정보 받아오기 api(My 모집하기 항목을 위해 존재)
 async function getRecruited(user_id) {
     const response = await fetch(
       `${backend_base_url}/articles/festival/join/recruited/`,

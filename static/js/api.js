@@ -12,3 +12,16 @@ function parseJwt(token) {
 
     return JSON.parse(jsonPayload);
 };
+
+
+//옵션 url 변환 함수//
+function changeOptionUrl(search_list){
+    let option_param = ""
+    for (let i=0; i<search_list.length; i++) {
+        if (search_list[i] != undefined) {
+            option_param += "param=" + search_list[i] + "&"
+        }
+    }
+
+    return option_param
+}
