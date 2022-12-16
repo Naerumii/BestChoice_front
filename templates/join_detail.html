@@ -34,15 +34,15 @@
             </div>
             
             <div>
-                <button id="join_update" onclick="joinupdate()">수정하기</button>
+                <button id="join_update" onclick="editJoinEvent()">수정하기</button>
             </div>
 
             <div>
-                <button id="join_delete" onclick="joindelete(join_article_id)">삭제하기</button>
+                <button id="join_delete" onclick="deleteJoin(join_article_id)">삭제하기</button>
             </div>
 
             <div>
-                <button id="join_recruit" onclick="createRecruit(join_article_id)">신청하기</button>
+                <button id="join_recruit" onclick="postRecruit(join_article_id)">신청하기</button>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
                 <div id="noteCommentBox">
                     <div class="feed-item">
                         <textarea placeholder="댓글을 입력하세요" wrap="off" id="myNote"></textarea>
-                        <button class="button-12" id="send" type="button" onclick="writeComment()">
+                        <button class="button-12" id="send" type="button" onclick="writeJoinCommentEvent()">
                             댓글 등록
                         </button>
                     </div>
@@ -61,21 +61,6 @@
                 <article class="post-comment2">
                 <p>댓글 <span id="join_comment_count"></span>개</p>
                 <ul id="comment_box" class="coment-box2">
-                    <!--댓글 형식
-                    <li class="flex-box">
-                    <div class="user-text">
-                        <p id="review_comment_user"></p>
-                        <p id="review_comment"></p>
-                        <small id="review_date" class="gray-text"></small>
-                    </div>
-                    <div class="dropdown-btn">
-                        <div class="drop-menu" id="more1">
-                        <a href="#">수정</a>
-                        <button type="button" onclick="commentdelete()">삭제</button>
-                        </div>
-                        <a href="#">삭제</button>
-                    </div>
-                    </li>-->
                 </ul>
                 </article>
             </div>
@@ -83,8 +68,8 @@
     </div>
 </body>
 <!-- Script -->
-<script src="/static/js/join_detail.js"></script>
-<script src="/static/js/comment.js"></script>
 <script src="/static/js/api.js"></script>
-<!-- <script src="/static/js/articles.js"></script> -->
+<script src="/static/js/api_festival.js"></script>
+<script src="/static/js/api_join.js"></script>
+<script src="/static/js/join_detail.js"></script>
 </html>
