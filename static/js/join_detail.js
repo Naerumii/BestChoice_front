@@ -1,10 +1,13 @@
 const urlParams = new URLSearchParams(window.location.search);
 const join_article_id = urlParams.get("join_article_id");
-
+const user_id = parseJwt("access").user_id;
 
 // back에서 받아온 json 데이터 front에 내용 붙이는 함수
 async function loadDetailArticles(join_article_id) {
   article = await getJoinDetail(join_article_id);
+  nowuser = await getProfile(user_id)
+  console.log(nowuser)
+  console.log(article)
   //프론트엔드에서 태그 id 확인하기
   const festival = document.getElementById("join_detail_festival");
   const title = document.getElementById("join_detail_title");
@@ -13,12 +16,23 @@ async function loadDetailArticles(join_article_id) {
   const count = document.getElementById("join_detail_count");
   const comment_count = document.getElementById("join_comment_count");
 
+  const btnModify = document.getElementById("join_update");
+  const btnDelete = document.getElementById("join_delete");
+  const btnApply = document.getElementById("join_recruit");
+
   festival.innerText = article.join_festival;
   title.innerText = article.join_title;
   desc.innerText = article.join_desc;
   period.innerText = article.join_period;
   count.innerText = article.join_count;
   comment_count.innerText = article.comments.length;
+
+  if (nowuser.user_nickname!=article.join_author) {  //user의 user_nickname 필드를 unique로 설정할 것!!!
+    btnModify.style.visibility = "hidden";
+    btnDelete.style.visibility = "hidden";
+  } else {
+    btnApply.style.visibility = "hidden";
+  }
 
 
   //댓글 불러오기
