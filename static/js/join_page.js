@@ -1,3 +1,5 @@
+const join_status_str = ["마감", "진행중"]
+
 async function loadArticles() {
   // $("#article_container").empty();  //초기화 버튼을 위해 기존에 있던 card 모두 제거
   // $("#text1").val(''); //검색창 기존 입력 지우기
@@ -8,11 +10,13 @@ async function loadArticles() {
     for (let i = 0; i < articles.length; i++) {
       get_join_html(
         articles[i].id,
+        i+1,
         articles[i].join_festival.festival_title,
         articles[i].join_author,
         articles[i].join_period,
         articles[i].join_count,
-        articles[i].join_hits
+        articles[i].join_hits,
+        articles[i].join_status,
       );
     }
   }
@@ -21,14 +25,22 @@ async function loadArticles() {
 }
 
 //
-async function get_join_html(id, festival, author, period, count, hits) {
+async function get_join_html(id, num, festival, author, period, count, hits, status) {
+  let status_str;
+  if (status) {
+    status_str = join_status_str[1];
+  } else {
+    status_str = join_status_str[0];
+  }
+
   let temp_html = `<li class="list_item" type="button" onclick="location.href='/templates/join_detail.html?join_article_id=${id}'">
                     <ul>
-                        <li>${id}</li>
+                        <li>${num}</li>
                         <li class="left">${festival}</li>
                         <li>${author}</li>
                         <li>${period}</li>
                         <li>${count}</li>
+                        <li>${status_str}</li>
                         <li>${hits}</li>
                     </ul>
                     </li>`;
