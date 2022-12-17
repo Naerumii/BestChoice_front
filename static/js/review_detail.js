@@ -1,27 +1,38 @@
 const urlParams = new URLSearchParams(window.location.search);
 const review_id = urlParams.get("review_id");
+const user_id = parseJwt("access").user_id;
 
 
 //리뷰게시글 front에 붙이는 함수
 async function loadDetailReview(review_id) {
     review = await getReviewDetail(review_id);  //리뷰게시글 상세 api 호출
+    const nowuser = await getProfile(user_id)
 
     //프론트엔드에서 태그 id 확인하기
     const title = document.getElementById("review_title");
     const desc = document.getElementById("review_desc");
     const created_at = document.getElementById("review_created_at");
+    const writer = document.getElementById("review_user");
     const date = review.review_created_at.split("T")[0]
     const image = document.getElementById("review_image");
     const count = document.getElementById("review_count");
     const comment_count = document.getElementById("review_comment_count");
     
+    const btnModify = document.getElementById("update_button");
+    const btnDelete = document.getElementById("delete_button");
+
     title.innerText = review.review_title;
     desc.innerText = review.review_desc;
+    writer.innerText = review.review_author;
     created_at.innerText = date;
     image.setAttribute("src", `${backend_base_url}${review.image}`);
     count.innerText = review.count;
     comment_count.innerText = review.review_comment.length;
 
+    if(nowuser.user_nickname!=review.review_author) {  //user의 user_nickname 필드를 unique로 설정할 것!!!
+      btnModify.style.visibility = "hidden";
+      btnDelete.style.visibility = "hidden";
+    }
 
     //댓글 불러오기
     $("#comment_box").empty();  //초기화 버튼을 위해 기존에 있던 card 모두 제거
@@ -33,6 +44,7 @@ async function loadDetailReview(review_id) {
                 review.review_comment[i].review_comment,
                 review.review_comment[i].review_comment_created_at,
                 review.review_comment[i].id,
+                nowuser.user_nickname
             )
         }
     }
@@ -40,7 +52,9 @@ async function loadDetailReview(review_id) {
 
 
 //리뷰게시물 댓글 html로 붙이기
-function get_review_comment_html(user, comment, created_at, id) {
+function get_review_comment_html(user, comment, created_at, id, nickname) {
+  console.log(user)
+  if (user==nickname) {
     temp_html = `<li class="flex-box">
                     <div class="user-text">
                         <p id="review_comment_user">${user}</p>
@@ -53,7 +67,18 @@ function get_review_comment_html(user, comment, created_at, id) {
                         <a href="#" id="update_button_${id}" type="button" onclick="editReviewCommentEvent(${id})">수정</a>
                         <a href="#" type="button" onclick="deleteReviewComment(${id})">삭제</a>
                     </div>
-                    </li>`
+                  </li>`
+  } else {
+    temp_html = `<li class="flex-box">
+                    <div class="user-text">
+                        <p id="review_comment_user">${user}</p>
+                        <div id="comment_box_${id}">
+                          <p id="review_comment_${id}">${comment}</p>
+                        </div>
+                        <small id="review_date" class="gray-text">${created_at.split("T")[0]} ${created_at.split("T")[1].split(".")[0]}</small>
+                    </div>
+                  </li>`
+  }
     $("#comment_box").append(temp_html);
 }
 
