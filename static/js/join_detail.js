@@ -27,7 +27,11 @@ async function loadDetailArticles(join_article_id) {
   count.innerText = article.join_count;
   comment_count.innerText = article.comments.length;
 
-  if (nowuser.user_nickname!=article.join_author) {  //user의 user_nickname 필드를 unique로 설정할 것!!!
+  if (article.join_status == false) {
+    btnModify.style.visibility = "hidden";
+    btnDelete.style.visibility = "hidden";
+    btnApply.style.visibility = "hidden";
+  } else if (nowuser.user_nickname!=article.join_author) {  //user의 user_nickname 필드를 unique로 설정할 것!!!
     btnModify.style.visibility = "hidden";
     btnDelete.style.visibility = "hidden";
   } else {
