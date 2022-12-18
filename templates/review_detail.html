@@ -38,7 +38,7 @@
             <!-- 게시글 제목(상단) -->
             <div>    
                 <div class="post-head">
-                    <p>작성일<span id="review_created_at"></span></p>
+                    <p>작성자 <span id="review_user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성일 <span id="review_created_at"></span></p>
                     <div>
                         <p>조회수<span id="review_count" class="gray-text"></span></p>
                     </div>
@@ -56,7 +56,7 @@
             <!-- 게시글 수정/삭제 버튼 -->
             <div id="review_btn" class="post-btn">
             <button onclick="editReviewEvent()" id="update_button" class="btn-rank2"><span>수정</span></button>
-            <button onclick="deleteReview(review_id)"class="btn-rank2"><span>삭제</span></button> <!--바로 리뷰게시글 삭제 api-->
+            <button onclick="deleteReview(review_id)" id="delete_button" class="btn-rank2"><span>삭제</span></button> <!--바로 리뷰게시글 삭제 api-->
             </div>
 
             <!-- 댓글 시작 -->
@@ -84,5 +84,6 @@
 <!-- Script -->
 <script src="/static/js/api.js"></script>
 <script src="/static/js/api_review.js"></script>
+<script src="/static/js/api_profile.js"></script>
 <script src="/static/js/review_detail.js"></script>
 </html>

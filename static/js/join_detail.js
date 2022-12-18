@@ -1,10 +1,12 @@
 const urlParams = new URLSearchParams(window.location.search);
 const join_article_id = urlParams.get("join_article_id");
-
+const user_id = parseJwt("access").user_id;
 
 // back에서 받아온 json 데이터 front에 내용 붙이는 함수
 async function loadDetailArticles(join_article_id) {
   article = await getJoinDetail(join_article_id);
+  const nowuser = await getProfile(user_id)
+  
   //프론트엔드에서 태그 id 확인하기
   const festival = document.getElementById("join_detail_festival");
   const title = document.getElementById("join_detail_title");
@@ -13,12 +15,27 @@ async function loadDetailArticles(join_article_id) {
   const count = document.getElementById("join_detail_count");
   const comment_count = document.getElementById("join_comment_count");
 
+  const btnModify = document.getElementById("join_update");
+  const btnDelete = document.getElementById("join_delete");
+  const btnApply = document.getElementById("join_recruit");
+
   festival.innerText = article.join_festival;
   title.innerText = article.join_title;
   desc.innerText = article.join_desc;
   period.innerText = article.join_period;
   count.innerText = article.join_count;
   comment_count.innerText = article.comments.length;
+
+  if (article.join_status == false) {
+    btnModify.style.visibility = "hidden";
+    btnDelete.style.visibility = "hidden";
+    btnApply.style.visibility = "hidden";
+  } else if (nowuser.user_nickname!=article.join_author) {  //user의 user_nickname 필드를 unique로 설정할 것!!!
+    btnModify.style.visibility = "hidden";
+    btnDelete.style.visibility = "hidden";
+  } else {
+    btnApply.style.visibility = "hidden";
+  }
 
 
   //댓글 불러오기
@@ -30,15 +47,17 @@ async function loadDetailArticles(join_article_id) {
         article.comments[i].comment_user,
         article.comments[i].comment_content,
         article.comments[i].comment_created_at,
-        article.comments[i].id
+        article.comments[i].id,
+        nowuser.user_nickname
       );
     }
   }
 }
 
 
-function get_join_comment_html(user, comment, created_at, id) {
-  temp_html = `<li class="flex-box">
+function get_join_comment_html(user, comment, created_at, id, nickname) {
+  if (user==nickname) {
+    temp_html = `<li class="flex-box">
                         <div class="user-text">
                             <p id="join_comment_user">${user}</p>
                             <div id="join_comment_box_${id}">
@@ -52,7 +71,20 @@ function get_join_comment_html(user, comment, created_at, id) {
                             <a href="#" id="join_update_button_${id}" type="button" onclick="editJoinCommentEvent(${id})">수정</a>
                             <a href="#" type="button" onclick="deleteJoinComment(${id})">삭제</a>
                         </div>
-                        </li>`;
+                  </li>`;
+  } else {
+    temp_html = `<li class="flex-box">
+                        <div class="user-text">
+                            <p id="join_comment_user">${user}</p>
+                            <div id="join_comment_box_${id}">
+                                <p id="join_comment_${id}">${comment}</p>
+                            </div>
+                            <small id="join_date" class="gray-text">${
+                              created_at.split("T")[0]
+                            } ${created_at.split("T")[1].split(".")[0]}</small>
+                        </div>
+                  </li>`;
+  }
   $("#comment_box").append(temp_html);
 }
 
