@@ -8,7 +8,7 @@ async function handleSignup() {
       password2: document.getElementById("signup-password2").value,
       user_address: document.getElementById("signup-address").value,
     };
-    
+
     const nickname = signupData.user_nickname
     const password = signupData.user_password1
     const password2 = signupData.user_password2
