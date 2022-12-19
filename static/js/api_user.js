@@ -8,6 +8,25 @@ async function handleSignup() {
       password2: document.getElementById("signup-password2").value,
       user_address: document.getElementById("signup-address").value,
     };
+    
+    const nickname = signupData.user_nickname
+    const password = signupData.user_password1
+    const password2 = signupData.user_password2
+    const email = signupData.email  
+
+    if (nickname == '') {
+      alert("아이디를 입력해주세요.");
+    }
+    else if (password == '' || password2 == '') {
+      alert("비밀번호와 비밀번호 확인을 입력해주세요.");
+    }
+    else if (password != password2) {
+      alert("비밀번호 확인이 잘못되었습니다.");
+    }
+    else if (email == '') {
+    alert("이메일을 입력해주세요.");
+    }
+
   
     const response = await fetch(`${backend_base_url}/users/signup/`, {
       headers: {
@@ -16,11 +35,14 @@ async function handleSignup() {
       method: "POST",
       body: JSON.stringify(signupData),
     });
-  
+    
+    response_json = await response.json()
+
     if (response.status == 201) {
+      alert(response_json.message)
       window.location.replace(`${frontend_base_url}/templates/sign.html`);
     } else {
-      alert(response.status);
+      alert(response_json.message)
     }
 }
 
@@ -41,7 +63,7 @@ async function handleSignin() {
     });
   
     const response_json = await response.json();
-  
+    if(response_json.detail == undefined) {
     localStorage.setItem("access", response_json.access);
     localStorage.setItem("refresh", response_json.refresh);
   
@@ -57,7 +79,11 @@ async function handleSignin() {
     );
   
     localStorage.setItem("payload", jsonPayload);
+    alert("원하는 축제를 찾아보세요!")
     window.location.replace(`${frontend_base_url}/templates/main.html`);
+    } else {
+        alert("로그인 정보가 잘못되었습니다.")
+    }
 }
   
 
