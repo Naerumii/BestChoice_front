@@ -1,27 +1,12 @@
 const urlParams = new URLSearchParams(window.location.search);
 const join_article_id = urlParams.get("join_article_id");
-
-// 특정 게시물 back에서 받아오는 함수
-async function getArticleDetail(join_article_id) {
-  const response = await fetch(
-    `http://127.0.0.1:8000/articles/festival/join/${join_article_id}/`,
-    {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("access"),
-      },
-      method: "GET",
-    }
-  );
-  response_json = await response.json();
-  // 받아온 값을 json화 시키고 콘솔로그 확인
-  // getArticleDetail() 안에 article_id 써주고, article_detail.js에도 getArticleDetail(article_id);실행
-
-  return response_json;
-}
+const user_id = parseJwt("access").user_id;
 
 // back에서 받아온 json 데이터 front에 내용 붙이는 함수
 async function loadDetailArticles(join_article_id) {
-  article = await getArticleDetail(join_article_id);
+  article = await getJoinDetail(join_article_id);
+  const nowuser = await getProfile(user_id)
+  
   //프론트엔드에서 태그 id 확인하기
   const festival = document.getElementById("join_detail_festival");
   const title = document.getElementById("join_detail_title");
@@ -30,7 +15,10 @@ async function loadDetailArticles(join_article_id) {
   const count = document.getElementById("join_detail_count");
   const comment_count = document.getElementById("join_comment_count");
 
-  // const recruit = document.getElementById("join_detail");
+  const btnModify = document.getElementById("join_update");
+  const btnDelete = document.getElementById("join_delete");
+  const btnApply = document.getElementById("join_recruit");
+
   festival.innerText = article.join_festival;
   title.innerText = article.join_title;
   desc.innerText = article.join_desc;
@@ -38,7 +26,17 @@ async function loadDetailArticles(join_article_id) {
   count.innerText = article.join_count;
   comment_count.innerText = article.comments.length;
 
-  // recruit.setAttribute("onclick", `location.href='/templates/create_content.html?festival_article_id=${festival_article_id}'`);
+  if (article.join_status == false) {
+    btnModify.style.visibility = "hidden";
+    btnDelete.style.visibility = "hidden";
+    btnApply.style.visibility = "hidden";
+  } else if (nowuser.user_nickname!=article.join_author) {  //user의 user_nickname 필드를 unique로 설정할 것!!!
+    btnModify.style.visibility = "hidden";
+    btnDelete.style.visibility = "hidden";
+  } else {
+    btnApply.style.visibility = "hidden";
+  }
+
 
   //댓글 불러오기
   $("#comment_box").empty(); //초기화 버튼을 위해 기존에 있던 card 모두 제거
@@ -49,14 +47,17 @@ async function loadDetailArticles(join_article_id) {
         article.comments[i].comment_user,
         article.comments[i].comment_content,
         article.comments[i].comment_created_at,
-        article.comments[i].id
+        article.comments[i].id,
+        nowuser.user_nickname
       );
     }
   }
 }
 
-function get_join_comment_html(user, comment, created_at, id) {
-  temp_html = `<li class="flex-box">
+
+function get_join_comment_html(user, comment, created_at, id, nickname) {
+  if (user==nickname) {
+    temp_html = `<li class="flex-box">
                         <div class="user-text">
                             <p id="join_comment_user">${user}</p>
                             <div id="join_comment_box_${id}">
@@ -67,35 +68,29 @@ function get_join_comment_html(user, comment, created_at, id) {
                             } ${created_at.split("T")[1].split(".")[0]}</small>
                         </div>
                         <div id="join_button_box_${id}">
-                            <a href="#" id="join_update_button_${id}" type="button" onclick="commentupdate(${id})">수정</a>
-                            <a href="#" type="button" onclick="delete_comment(${id})">삭제</a>
+                            <a href="#" id="join_update_button_${id}" type="button" onclick="editJoinCommentEvent(${id})">수정</a>
+                            <a href="#" type="button" onclick="deleteJoinComment(${id})">삭제</a>
                         </div>
-                        </li>`;
+                  </li>`;
+  } else {
+    temp_html = `<li class="flex-box">
+                        <div class="user-text">
+                            <p id="join_comment_user">${user}</p>
+                            <div id="join_comment_box_${id}">
+                                <p id="join_comment_${id}">${comment}</p>
+                            </div>
+                            <small id="join_date" class="gray-text">${
+                              created_at.split("T")[0]
+                            } ${created_at.split("T")[1].split(".")[0]}</small>
+                        </div>
+                  </li>`;
+  }
   $("#comment_box").append(temp_html);
 }
 
-async function joindelete(join_article_id) {
-  const response = await fetch(
-    `${backend_base_url}/articles/festival/join/${join_article_id}/`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("access"),
-      },
-      method: "DELETE",
-    }
-  );
 
-  if (response.status == 204) {
-    alert("게시물이 삭제되었습니다.");
-    window.location.replace(`${frontend_base_url}/templates/join_page.html`);
-  } else {
-    alert("게시물 작성자만 삭제 가능합니다.");
-  }
-}
-
-// 게시글 수정하기 버튼 클릭 시 동작하는 함수
-function joinupdate() {
+//모집게시글 수정하기 버튼 클릭 시 동작하는 함수
+function editJoinEvent() {
   const join_title = document.getElementById("join_detail_title");
   const join_desc = document.getElementById("join_detail_desc");
   const join_count = document.getElementById("join_detail_count");
@@ -173,11 +168,11 @@ function joinupdate() {
   body4.insertBefore(period_update, join_period);
 
   const update_button = document.getElementById("join_update"); //업데이트 버튼 요소 가져오기
-  update_button.setAttribute("onclick", "update_Join()"); //클릭시 update_Review 함수 실행
+  update_button.setAttribute("onclick", "appendJoinHtml()"); //클릭시 update_Review 함수 실행
 }
 
 // 리뷰 수정한 내용을 다시 front에 붙여주는 함수
-async function update_Join() {
+async function appendJoinHtml() {
   let title_update = document.getElementById("title_update");
   let desc_update = document.getElementById("desc_update");
   let count_update = document.getElementById("count_update");
@@ -213,66 +208,42 @@ async function update_Join() {
   loadDetailArticles(join_article_id); // 다시 한 번. 맨 위의 함수 실행
 }
 
-//게시글 수정 내용 back에 보내 저장하는 메서드
-async function patchJoin(
-  join_article_id,
-  join_title,
-  join_desc,
-  join_count,
-  join_period
-) {
-  const JoinData = {
-    join_title: join_title,
-    join_desc: join_desc,
-    join_count: join_count,
-    join_period: join_period,
-  };
-  const response = await fetch(
-    `${backend_base_url}/articles/festival/join/${join_article_id}/`,
-    {
-      headers: {
-        "content-type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("access"),
-      },
-      method: "PATCH",
-      body: JSON.stringify(JoinData),
-    }
-  );
 
-  if (response.status == 200) {
-    response_json = await response.json();
-    alert("게시물이 수정되었습니다.");
-    window.location.reload(
-      `${frontend_base_url}/templates/join_detail.html?join_article_id=${join_article_id}`
-    );
-  } else {
-    alert(response.status);
-  }
+async function writeJoinCommentEvent() {
+  const myNote = document.getElementById("myNote");
+  const comment = await postJoinComment(join_article_id, myNote.value);
+  loadDetailArticles(join_article_id);
+  myNote.value = "";
 }
+
+
+// 댓글 수정하기 버튼 클릭 시 동작하는 함수
+function editJoinCommentEvent(id) {
+  const comment = document.getElementById(`join_comment_${id}`);
+  const updateBtn = document.getElementById(`join_update_button_${id}`);
+  comment.style.visibility = "hidden";
+  updateBtn.style.visibility = "hidden";
+
+  const input_comment = document.createElement("textarea"); // 수정할 수 있는 입력창만들기
+  input_comment.setAttribute("id", `join_input_comment_${id}`);
+  input_comment.classList.add("join_input_comment_style");
+  input_comment.innerText = comment.innerHTML; // 안하면 공란처리됨
+  
+  const insertcomment = document.getElementById(`join_comment_box_${id}`);
+  insertcomment.insertBefore(input_comment, comment); //기존 부분을 입력란으로 교체
+
+  const comment_button = document.createElement("a"); //수정 버튼 자리에 작성 버튼 생성
+  comment_button.setAttribute("href", "#");
+  comment_button.setAttribute("type", "button");
+  comment_button.setAttribute("id", `join_cmp_button_${id}`);
+  comment_button.innerText = "수정";
+
+
+  
+  const update_button = document.getElementById(`join_button_box_${id}`);
+  update_button.insertBefore(comment_button, updateBtn);
+  comment_button.setAttribute("onclick", `putJoinComment(${id})`);
+}
+
 
 loadDetailArticles(join_article_id);
-
-// 모집 게시글 참여 신청
-async function createRecruit(join_article_id) {
-  const payload = localStorage.getItem("payload");
-  const parsed_payload = await JSON.parse(payload);
-  console.log(parsed_payload);
-
-  //테스트할 때 포트번호 변경
-  const response = await fetch(
-    `${backend_base_url}/articles/festival/join/${join_article_id}/recruit/`,
-    {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("access"),
-      },
-      method: "POST",
-      // body: formData,
-    }
-  );
-
-  if (response.status == 201) {
-    alert("해당 모집글에 신청되었습니다.");
-  } else {
-    alert("이미 해당 모집글에 신청되었습니다.");
-  }
-}

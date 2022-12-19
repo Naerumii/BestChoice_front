@@ -29,19 +29,16 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img class="logo" src="/static/img/Logo.png" alt="Logo"></a>
                 <div class="header">
-                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button> -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="http://127.0.0.1:5500/templates/main.html">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://127.0.0.1:5500/templates/festival.html">FESTIVAL</a>
+                            <a class="nav-link" href="http://127.0.0.1:5500/templates/festival_page.html">FESTIVAL</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://127.0.0.1:5500/templates/review.html" tabindex="-1" aria-disabled="true">REVIEW</a>
+                            <a class="nav-link" href="http://127.0.0.1:5500/templates/review_page.html" tabindex="-1" aria-disabled="true">REVIEW</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="http://127.0.0.1:5500/templates/mypage.html" tabindex="-1" aria-disabled="true">MYPAGE</a>
@@ -59,19 +56,6 @@
         <div class="box">
             <h3>게시판 목록</h3> <button type="button" onclick="openPopup1()" style="width: 100px; border-radius: 7px; font-size: 15px; margin-left: 800px;">리뷰쓰기</button>
             <div id="postlist-box">
-            <!-- <div class="postlist-cont" id="p_wrapper">
-                <section class="flex-box" id="p_item">
-                    <div>
-                        <img src="https://user-images.githubusercontent.com/110369667/189028942-06515b1d-2619-4bb2-b6b7-2705153ad3cf.jpg" alt="">
-                    </div>
-                    <div>
-                        <h4>빅데이터를 통해 들여다 본 '혼밥'문화</h4>
-                        <p>혼밥(혼자 먹는 밥), 혼술(혼자 먹는 술) 등, 나 혼자 즐기는 식사가 익숙한 문화로 자리잡은 요즘입니다. 빅데이터를 통해 들여다 본 대한민국 혼밥 문화는 어떤 모습일까요?</p>
-                        <small class="gray-text">ID 1 | 6시간 전</small>
-                        <button type="button">확인하기</button>
-                    </div>
-                </section>
-            </div> -->
             </div>
             <div id="pagination-container"></div>
         </div>
@@ -81,6 +65,7 @@
     <footer>footer</footer>
 </body>
 <!-- Script -->
-<script src="/static/js/review.js"></script>
-<script src="/static/js/review_detail.js"></script>
+<script src="/static/js/api.js"></script>
+<script src="/static/js/api_review.js"></script>
+<script src="/static/js/review_page.js"></script>
 </html>

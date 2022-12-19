@@ -36,17 +36,6 @@ async function initArticles() {
     await loadArticles();
 }
 
-//게시물 가져오기 api (전부)
-async function getArticles() {
-    const response = await fetch(`${backend_base_url}/articles/festival/`, {
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("access"),
-        },    
-        method: "GET",
-    });
-    response_json = await response.json();
-    return response_json;
-}
 
 //검색한 지역 옵션에 대한 게시물 가져오기(조건)
 async function searchArticle() {
@@ -154,17 +143,6 @@ async function searchBox() {
     article_pagination();  //페이징 함수 실행
 }
 
-//조건에 맞는 축제게시물 가져오기 api
-async function getFilterArticles(option_param) {
-    const response = await fetch(`${backend_base_url}/articles/festival/filter/`+ "?" +option_param, {
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("access"),
-        },    
-        method: "GET",
-    });
-    response_json = await response.json();
-    return response_json;
-}
 
 //이어붙인 Festival_Article에 대한 페이징
 function article_pagination() {
