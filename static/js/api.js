@@ -1,4 +1,5 @@
 const backend_base_url = "http://127.0.0.1:8000";  //포트번호 변경해주세요
+// const backend_base_url = "http://13.209.85.231"
 const frontend_base_url = "http://127.0.0.1:5500";  //포트번호 변경해주세요
 
 // 로그인한 user.id 찾는 함수 //
