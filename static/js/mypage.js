@@ -143,5 +143,8 @@ async function get_recruited_html(id, join, status_num, time, user) {
   $("#sy").append(temp_html);
 }
 
+function profileedit(){
+  location.href="edit.html"
+}
 
 loadProfile(user_id);
