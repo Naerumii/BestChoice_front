@@ -27,7 +27,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img class="logo" src="/static/img/Logo.png" alt="Logo"></a>
+                <a class="navbar-brand" href="http://127.0.0.1:5500/templates/main.html"><img class="logo" src="/static/img/Logo.png" alt="Logo"></a>
                 <div class="header">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -55,14 +55,27 @@
     <div>
         <div class="box">
             <h3>게시판 목록</h3> <button type="button" onclick="openPopup1()" style="width: 100px; border-radius: 7px; font-size: 15px; margin-left: 800px;">리뷰쓰기</button>
-            <div id="postlist-box">
+            <div id="postlist-box" class="list-wrapper">
             </div>
             <div id="pagination-container"></div>
         </div>
         <nav class="side-nav"></nav>
         <aside class="side-bar"></aside>
     </div>
-    <footer>footer</footer>
+    <footer>
+        <nav class="footernav">
+            || <a href='https://docs.google.com/forms/d/e/1FAIpQLSfXXajKuSp5Mm2G0r0D_Vf622If6TM8g5Amf0fgR9Bxt6xbHQ/viewform' target='_blank'>설문조사</a> ||
+            <a href='https://github.com/Naerumii/BestChoice' target='_blank'>Github</a> ||
+        </nav>
+        <p>
+            <span>운영진 : 대표이사 : 이승연 | 팀원 : 이효정 정태희 정유준 송창주</span><br/>
+            <span>고객센터 운영시간 : 평일 / 오전 9시 ~ 오후 9시</span><br/>
+            <span>Company : (주)Yabbymeng</span><br/>
+            <span>Email : winkite@gmail.com</span><br/>
+            <span>Copyright 2022. Yabbymeng. All Rights Reserved.</span><br/>
+            <span>With the Sparta Coding Club!</span>
+        </p>
+    </footer>
 </body>
 <!-- Script -->
 <script src="/static/js/api.js"></script>

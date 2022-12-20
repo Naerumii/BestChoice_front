@@ -45,9 +45,9 @@ function get_reviews_html(id, review_author, review_title, review_desc, image) {
 //이어붙인 Review_Article에 대한 페이징
 function article_pagination() {
     //card가 새로워졌기 때문에 paging 다시 실행
-    var items = $(".list-wrapper .list-item");
+    var items = $(".list-wrapper .postlist-cont");
     var numItems = items.length;
-    var perPage = 5;
+    var perPage = 1;
 
     items.slice(perPage).hide();
 
