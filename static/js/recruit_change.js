@@ -65,14 +65,8 @@ async function loadRecruit(recruit_id) {
         alert("이상한 값이네요.")
     } else {
         results = await patchRecruit(recruit_id, status);
-        console.log(results)
-        if (results=="신청상태가 수락으로 변경되었습니다.") {
-            alert("신청 수락하였습니다.")
-            window.location.replace(`${frontend_base_url}/templates/mypage.html`)
-        } else if (results== "신청상태가 거절로 변경되었습니다.") {
-            alert("신청 거부하였습니다.")
-            window.location.replace(`${frontend_base_url}/templates/mypage.html`)
-        }
+        alert(results.message)
+        window.location.replace(`${frontend_base_url}/templates/mypage.html`)
     }
   }
 
