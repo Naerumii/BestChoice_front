@@ -184,7 +184,35 @@ footer {
     padding: 2% 0;
     color: rgb(104, 104, 104);
     flex: 0;
-}
+    color: #808080;
+    font-size: 13px;
+    float: left;
+    }
+    
+    
+    footer a {
+    display: inline-block;
+    margin: 0 0px 10px 0px;
+    color: #808080; 
+    font-size: 13px;
+    }
+    
+    footer a:visited {
+    color: #808080;
+    }
+    
+    footer p {
+    margin-top: 0; margin-bottom: 0;   
+    }
+    
+    footer p span {
+    display: inline-block;
+    margin-left: 40px;
+    }
+    
+    .footernav{
+        margin-left: 40px;
+    }
 
 .holyGrail {
     display: flex;

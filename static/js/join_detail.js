@@ -57,23 +57,28 @@ async function loadDetailArticles(join_article_id) {
 
 function get_join_comment_html(user, comment, created_at, id, nickname) {
   if (user==nickname) {
-    temp_html = `<li class="flex-box">
+    temp_html = `<br>
+                  <li class="flex-box">
                         <div class="user-text">
-                            <p id="join_comment_user">${user}</p>
+                            <hr>
+                            <p id="join_comment_user"><strong>${user}</strong></p>
+                            <hr>
                             <div id="join_comment_box_${id}">
                                 <p id="join_comment_${id}">${comment}</p>
                             </div>
+                            
                             <small id="join_date" class="gray-text">${
                               created_at.split("T")[0]
                             } ${created_at.split("T")[1].split(".")[0]}</small>
                         </div>
-                        <div id="join_button_box_${id}">
+                        <div id="join_button_box_${id}" class="user-text2">
                             <a href="#" id="join_update_button_${id}" type="button" onclick="editJoinCommentEvent(${id})">수정</a>
                             <a href="#" type="button" onclick="deleteJoinComment(${id})">삭제</a>
                         </div>
                   </li>`;
   } else {
-    temp_html = `<li class="flex-box">
+    temp_html = `<br>
+                  <li class="flex-box">
                         <div class="user-text">
                             <p id="join_comment_user">${user}</p>
                             <div id="join_comment_box_${id}">

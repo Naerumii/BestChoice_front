@@ -28,6 +28,7 @@ async function loadProfile(user_id) {
   now_user = await getProfile(user_id);
   results = await getRecruited(user_id);
 
+  console.log(results)
   const user_img = document.getElementById("user_img");
   const author = document.getElementById("user_nickname");
   const email = document.getElementById("user_email");

@@ -14,6 +14,7 @@ async function loadArticles() {
         articles[i].join_festival.festival_title,
         articles[i].join_author,
         articles[i].join_period,
+        articles[i].join_nowcount,
         articles[i].join_count,
         articles[i].join_hits,
         articles[i].join_status,
@@ -25,7 +26,7 @@ async function loadArticles() {
 }
 
 //
-async function get_join_html(id, num, festival, author, period, count, hits, status) {
+async function get_join_html(id, num, festival, author, period, nowcount, count, hits, status) {
   let status_str;
   if (status) {
     status_str = join_status_str[1];
@@ -39,7 +40,7 @@ async function get_join_html(id, num, festival, author, period, count, hits, sta
                         <li class="left">${festival}</li>
                         <li>${author}</li>
                         <li>${period}</li>
-                        <li>${count}</li>
+                        <li>${nowcount}/${count}</li>
                         <li>${status_str}</li>
                         <li>${hits}</li>
                     </ul>
@@ -51,7 +52,7 @@ async function get_join_html(id, num, festival, author, period, count, hits, sta
 //이어붙인 Join_Article에 대한 페이징
 function article_pagination() {
   //card가 새로워졌기 때문에 paging 다시 실행
-  var items = $(".list-wrapper .list-item");
+  var items = $(".list_wrapper .list_item");
   var numItems = items.length;
   var perPage = 8;
 
