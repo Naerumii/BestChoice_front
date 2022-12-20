@@ -52,7 +52,7 @@ async function get_join_html(id, num, festival, author, period, nowcount, count,
 //이어붙인 Join_Article에 대한 페이징
 function article_pagination() {
   //card가 새로워졌기 때문에 paging 다시 실행
-  var items = $(".list-wrapper .list-item");
+  var items = $(".list_wrapper .list_item");
   var numItems = items.length;
   var perPage = 8;
 
