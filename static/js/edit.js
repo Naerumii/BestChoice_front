@@ -36,7 +36,7 @@ async function ProfileChangeput(){
     const image = document.getElementById('file').files[0]
 
     //휴대폰 전화번호 형식 확인 정규표현식(11자리만 가능)
-    let patternPhone = /01[016789][^0][0-9]{3}[0-9]{4}/;
+    let patternPhone = /01[016789][^0][0-9]{3}[0-9]{4}$/;
 
     if(!patternPhone.test(phone)) {
         alert('핸드폰 번호를 확인 해주세요!');
