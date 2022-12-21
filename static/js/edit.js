@@ -16,9 +16,20 @@ async function ProfileChange(){
 
     document.getElementById("nickname").value = `${response_json.user_nickname}`
     document.getElementById("phone").value = `0${response_json.user_phone}`
-    document.getElementById("address").value = `${response_json.user_address}`
-    document.getElementById("introduce").value = `${response_json.user_introduce}`
 
+    if (Math.floor(response_json.user_address/10) == 0) {
+        let address_str = '0'+String(response_json.user_address);
+        document.getElementById("address").value = address_str;
+    } else {
+        document.getElementById("address").value = String(`${response_json.user_address}`);
+    }
+
+    if (response_json.user_introduce==null){
+        let introduce_str = "";
+        document.getElementById("introduce").value = introduce_str;
+    } else {
+        document.getElementById("introduce").value = `${response_json.user_introduce}`
+    }
 }
 
 //수정
@@ -62,6 +73,13 @@ async function ProfileChangeput(){
 
 //50글자 수 제한
 $(document).ready(function() {
+    $('#introduce_cnt').hide();
+
+    $('#introduce').on('focus', function() {
+        $('#introduce_cnt').show();
+        $('#introduce_cnt').html("("+$(this).val().length+" / 50)");
+    });
+
     $('#introduce').on('keyup', function() {
         $('#introduce_cnt').html("("+$(this).val().length+" / 50)");
  

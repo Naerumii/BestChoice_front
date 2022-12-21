@@ -49,7 +49,7 @@ async function handleSignup() {
     } 
 
     //휴대폰 전화번호 형식 확인 정규표현식(11자리만 가능)
-    var patternPhone = /01[016789][^0][0-9]{3}[0-9]{4}/;
+    var patternPhone = /01[016789][^0][0-9]{3}[0-9]{4}$/;
 
     if(!patternPhone.test(signupData.user_phone)) {
         alert('핸드폰 번호를 확인 해주세요!');
