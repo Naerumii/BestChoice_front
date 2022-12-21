@@ -67,11 +67,17 @@ async function postFestivalBookmark(festival_article_id) {
     // response_json = await response.json()
 
     if (response.status == 200) {
-        alert("북마크가 되었습니다!")
-        window.location.reload()
-        return response
+        swal("북마크 되었습니다!", "", "success").then((value) => {
+            if (value) {
+                window.location.reload()
+                return response
+            }
+          });
     } else if(response.status == 204) {
-        alert("북마크가 취소되었습니다!")
-        window.location.reload()
+        swal("북마크 취소되었습니다!", "", "warning").then((value) => {
+            if (value) {
+                window.location.reload()
+            }
+    });
     }
 }

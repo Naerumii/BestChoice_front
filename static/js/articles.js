@@ -104,7 +104,7 @@ async function searchBox() {
     let search_list = [];
 
     if (!searchWord) {
-        alert("검색어를 입력하세요");
+        swal("검색어를 입력하세요", "", "info");
         return false;
     }
 
