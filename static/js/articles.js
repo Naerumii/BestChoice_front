@@ -89,7 +89,7 @@ function get_festivals_html(pk, title, image, desc) {
                             <h1>${title}</h1>
                             <hr>
                             <div class="desc-ellipsis">${desc}</div>
-                            <button onclick="location.href='/templates/festival_detail.html?festival_article_id=${pk}'">&#x21e2;</button>
+                            <button onclick="location.href='./festival_detail.html?festival_article_id=${pk}'">&#x21e2;</button>
                         </div>
                     </div>
                 </div>`

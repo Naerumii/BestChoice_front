@@ -69,7 +69,7 @@ async function handleSignup() {
 
     if (response.status == 201) {
       swal(response_json.message)
-      window.location.replace(`${frontend_base_url}/templates/sign.html`);
+      window.location.replace(`${frontend_base_url}/sign.html`);
     } else {
       swal(response_json.message)
     }
@@ -110,7 +110,7 @@ async function handleSignin() {
     localStorage.setItem("payload", jsonPayload);
     swal("환영합니다.", "원하는 축제를 찾아보세요!").then((value) => {
       if (value) {
-        window.location.replace(`${frontend_base_url}/templates/main.html`);
+        window.location.replace(`${frontend_base_url}/main.html`);
       }
     });
     } else {
@@ -127,7 +127,7 @@ async function handleLogout() {
     localStorage.removeItem("payload");
     swal("로그아웃 되었습니다").then((value) => {
       if (value) {
-        window.location.replace(`${frontend_base_url}/templates/sign.html`);
+        window.location.replace(`${frontend_base_url}/sign.html`);
       }
     });
 }

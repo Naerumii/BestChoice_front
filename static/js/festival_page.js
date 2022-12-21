@@ -1,6 +1,6 @@
 //모집하기 버튼 클릭 시 열리는 팝업창
 function openPopup2(){
-  window.open("http://127.0.0.1:5500/templates/join_page.html", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=1200, height=750, left=600, top=100" );
+  window.open("./join_page.html", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=1200, height=750, left=600, top=100" );
 }
   
 
@@ -131,7 +131,7 @@ function get_festivals_html(pk, title, image, desc) {
                             <h1>${title}</h1>
                             <hr>
                             <div class="desc-ellipsis">${desc}</div>
-                            <button onclick="location.href='/templates/festival_detail.html?festival_article_id=${pk}'">&#x21e2;</button>
+                            <button onclick="location.href='./festival_detail.html?festival_article_id=${pk}'">&#x21e2;</button>
                         </div>
                     </div>
                 </div>`

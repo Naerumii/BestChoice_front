@@ -46,7 +46,7 @@ async function postJoin(festival_article_id) {
   if (response.status == 200) {
       swal("게시글이 등록됐습니다.", "", "success").then((value) => {
         if (value) {
-          window.location.replace(`${frontend_base_url}/templates/festival_page.html`);
+          window.location.replace(`${frontend_base_url}/festival_page.html`);
         }
       });
   } else {
@@ -83,7 +83,7 @@ async function deleteJoin(join_article_id) {
   if (response.status == 204) {
     swal("게시물이 삭제되었습니다.", "", "info").then((value) => {
       if (value) {
-        window.location.replace(`${frontend_base_url}/templates/join_page.html`);
+        window.location.replace(`${frontend_base_url}/join_page.html`);
       }
     });
   } else {
@@ -115,7 +115,7 @@ async function patchJoin(join_article_id, join_title, join_desc, join_count, joi
     swal("게시물이 수정되었습니다.", "", "success").then((value) => {
       if (value) {
         window.location.reload(
-          `${frontend_base_url}/templates/join_detail.html?join_article_id=${join_article_id}`
+          `${frontend_base_url}/join_detail.html?join_article_id=${join_article_id}`
         );
       }
     });
@@ -169,7 +169,7 @@ async function putJoinComment(id) {
           swal("댓글이 수정되었습니다.").then((value) => {
             if (value) {
               window.location.reload(
-                `${frontend_base_url}/templates/join_detail.html?id=${join_article_id}`
+                `${frontend_base_url}/join_detail.html?id=${join_article_id}`
               );
             }
           });
@@ -192,7 +192,7 @@ async function deleteJoinComment(id) {
       swal("댓글이 삭제되었습니다.").then((value) => {
         if (value) {
           window.location.reload(
-            `${frontend_base_url}/templates/join_detail.html?id=${join_article_id}`
+            `${frontend_base_url}/join_detail.html?id=${join_article_id}`
         );
         }
       });

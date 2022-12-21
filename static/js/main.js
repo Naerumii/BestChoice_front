@@ -10,7 +10,7 @@ $(document).ready(async function loadArticles() {
         
         const articleLink = document.createElement("a");
         articleLink.classList.add("course");
-        articleLink.setAttribute("href", `/templates/festival_detail.html?festival_article_id=${article.pk}`)
+        articleLink.setAttribute("href", `./festival_detail.html?festival_article_id=${article.pk}`)
 
         const articleImage = document.createElement("img");
         articleImage.classList.add("course-img")
