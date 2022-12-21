@@ -100,7 +100,7 @@ async function get_bookmark_html(pk, user, festival) {
                     </div>
                 </div>
                 </a>
-               </div>`;
+                </div>`;
   $("#bookmark_box").append(temp_html);
 }
 
