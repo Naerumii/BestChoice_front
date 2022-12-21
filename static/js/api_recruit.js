@@ -27,9 +27,9 @@ async function postRecruit(join_article_id) {
   );
 
   if (response.status == 201) {
-    alert("해당 모집글에 신청되었습니다.");
+    swal("해당 모집글에 신청되었습니다.", "", "success");
   } else {
-    alert("이미 해당 모집글에 신청되었습니다.");
+    swal("이미 해당 모집글에 신청되었습니다.", "", "warning");
   }
 }
 

@@ -17,34 +17,35 @@ async function handleSignup() {
     const address = parseInt(signupData.user_address)
 
     if (email == '') {
-      alert("이메일을 입력해주세요.");
+      swal("이메일을 입력해주세요.", "", "info");
       return 0;
     }
     else if (nickname == '') {
-      alert("닉네임을 입력해주세요.");
+      swal("닉네임을 입력해주세요.", "", "info");
       return 0;
     }
     else if (phone == '') {
-      alert("번호를 입력해주세요.");
+      swal("번호를 입력해주세요.", "", "info");
       return 0;
     } 
     else if (password == '' || password2 == '') {
-      alert("비밀번호와 비밀번호 확인을 입력해주세요.");
+      swal("비밀번호를 입력해주세요.", "", "info");
       return 0;
     }
     else if (password != password2) {
-      alert("비밀번호 확인이 잘못되었습니다.");
+      swal("비밀번호가 일치하지 않습니다.", "", "warning");
       return 0;
     }
     else if (address == 0) {
-      alert("지역을 선택해주세요!");
+      swal("지역을 선택해주세요!", "", "info");
       return 0;
     }
 
     //이메일 형식 확인 정규표현식
     let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
     if (regex.test(signupData.email) == false) {
-      alert("올바른 이메일 형식이 아닙니다!")
+  
+      swal("올바른 이메일 형식이 아닙니다!", "", "warning");
       return 0;
     } 
 
@@ -52,7 +53,7 @@ async function handleSignup() {
     var patternPhone = /01[016789][^0][0-9]{3}[0-9]{4}$/;
 
     if(!patternPhone.test(signupData.user_phone)) {
-        alert('핸드폰 번호를 확인 해주세요!');
+        swal("핸드폰 번호를 확인 해주세요!", "", "warning");
         return 0;
     }
   
@@ -67,10 +68,10 @@ async function handleSignup() {
     response_json = await response.json()
 
     if (response.status == 201) {
-      alert(response_json.message)
+      swal(response_json.message)
       window.location.replace(`${frontend_base_url}/templates/sign.html`);
     } else {
-      alert(response_json.message)
+      swal(response_json.message)
     }
 }
 
@@ -107,10 +108,14 @@ async function handleSignin() {
     );
   
     localStorage.setItem("payload", jsonPayload);
-    alert("원하는 축제를 찾아보세요!")
-    window.location.replace(`${frontend_base_url}/templates/main.html`);
+    swal("환영합니다.", "원하는 축제를 찾아보세요!").then((value) => {
+      if (value) {
+        window.location.replace(`${frontend_base_url}/templates/main.html`);
+      }
+    });
     } else {
-        alert("로그인 정보가 잘못되었습니다.")
+        swal("로그인 정보가 잘못되었습니다.", "", "warning");
+      
     }
 }
   
@@ -120,6 +125,9 @@ async function handleLogout() {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
     localStorage.removeItem("payload");
-    alert("로그아웃 되었습니다");
-    window.location.replace(`${frontend_base_url}/templates/sign.html`);
-  }
+    swal("로그아웃 되었습니다").then((value) => {
+      if (value) {
+        window.location.replace(`${frontend_base_url}/templates/sign.html`);
+      }
+    });
+}

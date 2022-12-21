@@ -44,10 +44,13 @@ async function postJoin(festival_article_id) {
   });
 
   if (response.status == 200) {
-      alert("게시물 등록");
-      window.location.replace(`${frontend_base_url}/templates/festival_page.html`);
+      swal("게시글이 등록됐습니다.", "", "success").then((value) => {
+        if (value) {
+          window.location.replace(`${frontend_base_url}/templates/festival_page.html`);
+        }
+      });
   } else {
-      alert(response.status)
+      swal(response.status)
   }
 }
 
@@ -78,10 +81,13 @@ async function deleteJoin(join_article_id) {
   );
 
   if (response.status == 204) {
-    alert("게시물이 삭제되었습니다.");
-    window.location.replace(`${frontend_base_url}/templates/join_page.html`);
+    swal("게시물이 삭제되었습니다.", "", "info").then((value) => {
+      if (value) {
+        window.location.replace(`${frontend_base_url}/templates/join_page.html`);
+      }
+    });
   } else {
-    alert("게시물 작성자만 삭제 가능합니다.");
+    swal("게시물 작성자만 삭제 가능합니다.", "", "error");
   }
 }
 
@@ -106,12 +112,15 @@ async function patchJoin(join_article_id, join_title, join_desc, join_count, joi
 
   if (response.status == 200) {
     response_json = await response.json();
-    alert("게시물이 수정되었습니다.");
-    window.location.reload(
-      `${frontend_base_url}/templates/join_detail.html?join_article_id=${join_article_id}`
-    );
+    swal("게시물이 수정되었습니다.", "", "success").then((value) => {
+      if (value) {
+        window.location.reload(
+          `${frontend_base_url}/templates/join_detail.html?join_article_id=${join_article_id}`
+        );
+      }
+    });
   } else {
-    alert(response.status);
+    swal(response.status);
   }
 }
 
@@ -136,7 +145,7 @@ async function postJoinComment(join_article_id, myNote) {
   if (response.status == 200) {
   return response;
   } else {
-  alert("댓글을 입력하세요");
+  swal("댓글을 입력하세요");
   }
 }
 
@@ -157,12 +166,15 @@ async function putJoinComment(id) {
       });
   
       if (response.status == 200) {
-          alert("댓글이 수정되었습니다.")
-          window.location.reload(
-              `${frontend_base_url}/templates/join_detail.html?id=${join_article_id}`
-          );
+          swal("댓글이 수정되었습니다.").then((value) => {
+            if (value) {
+              window.location.reload(
+                `${frontend_base_url}/templates/join_detail.html?id=${join_article_id}`
+              );
+            }
+          });
       } else {
-          alert("권한이 없습니다.");
+          swal("댓글 작성자만 수정 가능합니다");
       }
 }
 
@@ -177,11 +189,14 @@ async function deleteJoinComment(id) {
   });
 
   if (response.status == 204) {
-      alert("댓글이 삭제되었습니다.")
-      window.location.reload(
-          `${frontend_base_url}/templates/join_detail.html?id=${join_article_id}`
-      );
+      swal("댓글이 삭제되었습니다.").then((value) => {
+        if (value) {
+          window.location.reload(
+            `${frontend_base_url}/templates/join_detail.html?id=${join_article_id}`
+        );
+        }
+      });
   } else {
-      alert("댓글 작성자만 삭제 가능합니다.");
+      swal("댓글 작성자만 삭제 가능합니다.");
   }
 }
