@@ -44,7 +44,7 @@ async function loadProfile(user_id) {
   );
   author.innerText = now_user.user_nickname;
   email.innerText = now_user.email;
-  phone.innerText = now_user.user_phone;
+  phone.innerText = "0" + String(now_user.user_phone);
   address.innerText = region;
   introduce.innerText = now_user.user_introduce;
 
@@ -144,8 +144,8 @@ async function get_recruited_html(id, join, status_num, time, user) {
   $("#sy").append(temp_html);
 }
 
-function profileedit(){
-  location.href="edit.html"
+function openPopup1(){
+  window.open("http://127.0.0.1:5500/templates/mypage-patch.html", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=850, left=700, top=250" );
 }
 
 loadProfile(user_id);
