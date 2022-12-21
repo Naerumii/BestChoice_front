@@ -1,50 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
     <!-- Script -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-latest.js"
+    ></script>
     <!-- Css -->
-    <link rel="stylesheet" href="/static/css/create_content_f.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&display=swap">
+    <link rel="stylesheet" href="/static/css/create_content_f.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Oswald&display=swap"
+    />
     <title>게시글 작성하기</title>
-</head>
-<body>
+  </head>
+  <body>
     <article class="board">
-        <h1>board</h1>
-        <section>
-            <h3>글 작성하기</h3>
-            <select id="searchForm">
-                <option selected>모집인원</option>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-                <option value='6'>6</option>
-                <option value='7'>7</option>
-                <option value='8'>8</option>
-                <option value='9'>9</option>
-                <option value='10'>10</option>
-            </select>
-                <text><br><span id="festival_title"></span></text>
-                <p><input id="join_title" type="text" class="rag-title" placeholder="제목을 입력하세요."></p>
-                <textarea rows="12" class="rag-post" id="join_content" placeholder="내용을 입력하세요."></textarea>
-                <div><p>모집 마감일 : <input id="join_donedate" type="date"></p></div>
-                <div id="btn">
-                    <button id="modify_btn">수정하기</button>
-                    <button id="upload_btn">등록하기</button>
-                    <button id="delete_btn">삭제하기</button>
-                </div>
-        </section>
+      <h1>board</h1>
+      <section>
+        <h3>글 작성하기</h3>
+        <select id="searchForm">
+          <option selected>모집인원</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <text><br /><span id="festival_title"></span></text>
+        <p>
+          <input
+            id="join_title"
+            type="text"
+            class="rag-title"
+            placeholder="제목을 입력하세요."
+          />
+        </p>
+        <textarea
+          rows="12"
+          class="rag-post"
+          id="join_content"
+          placeholder="내용을 입력하세요."
+        ></textarea>
+        <div>
+          <p>모집 마감일 : <input id="join_donedate" type="date" /></p>
+        </div>
+        <div id="btn">
+          <button id="modify_btn">수정하기</button>
+          <button id="upload_btn">등록하기</button>
+          <button id="delete_btn">삭제하기</button>
+        </div>
+      </section>
     </article>
-</body>
-<!-- Script -->
-<script src="/static/js/api.js"></script>
-<script src="/static/js/api_festival.js"></script>
-<script src="/static/js/api_join.js"></script>
-<script src="/static/js/join_create.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </body>
+  <!-- Script -->
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/api_festival.js"></script>
+  <script src="/static/js/api_join.js"></script>
+  <script src="/static/js/join_create.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </html>
