@@ -47,7 +47,7 @@ function article_pagination() {
     //card가 새로워졌기 때문에 paging 다시 실행
     var items = $(".list-wrapper .postlist-cont");
     var numItems = items.length;
-    var perPage = 1;
+    var perPage = 5;
 
     items.slice(perPage).hide();
 

@@ -22,9 +22,9 @@
         <h1>MYPAGE</h1>
         <section>
             <h3>마이페이지</h3>
-                <span> 닉네임 : </span><p><input id="mypage_nickname" type="text" class="rag-title"></p>
-                <span> 번  호 : </span><p><input id="mypage_phone" type="text" class="rag-title"></p>
-                <span> 지  역 : </span><p><select class="form-control" name="job" id="signup-address">
+                <span> 닉네임 : </span><p><input id="nickname" type="text" class="rag-title"></p>
+                <span> 번  호 : </span><p><input id="phone" type="text" class="rag-title"></p>
+                <span> 지  역 : </span><p><select class="form-control" name="job" id="address">
                     <option value="00">지역선택</option>
                     <option value="01">서울시</option>
                     <option value="02">부산시</option>
@@ -45,20 +45,21 @@
                     <option value="17">제주도</option>
                 </select></p>
                 <span>자기소개</span>
-                <div class="place"><textarea rows="12" class="rag-post" id="mypage_desc" placeholder="내용을 입력하세요."></textarea></div>
+                <div class="place"><textarea rows="12" class="rag-post" id="introduce" placeholder="내용을 입력하세요."></textarea></div>
+                <div id = "introduce_cnt">(0/50)</div>
                 
                 <div>
                     <text style="float: left; margin-left: 10px;">프로필 이미지 : </text>
                     <input type="file" id="file" style="margin-right: 15px; margin-left: 10px; width: 400px; float: right; margin-bottom: 10px; box-sizing: border-box;">
                 </div>
                 <div id="btn">
-                    <button type="button" onclick="writeReviewEvent()">등록하기</button>
+                    <button type="button" onclick="ProfileChangeput()">등록하기</button>
                 </div>
         </section>
     </article>
 </body>
 <!-- Script -->
 <script src="/static/js/api.js"></script>
-<script src="/static/js/api_review.js"></script>
-<script src="/static/js/review_create.js"></script>
+<script src="/static/js/api_profile.js"></script>
+<script src="/static/js/edit.js"></script>
 </html>
