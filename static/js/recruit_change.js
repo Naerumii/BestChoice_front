@@ -67,7 +67,7 @@ async function loadRecruit(recruit_id) {
         results = await patchRecruit(recruit_id, status);
         swal(results.message).then((value) => {
           if (value) {
-            window.location.replace(`${frontend_base_url}/templates/mypage.html`)
+            window.location.replace(`${frontend_base_url}/mypage.html`)
               return response
           }
         });

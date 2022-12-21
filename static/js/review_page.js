@@ -1,6 +1,6 @@
 // 리뷰쓰기 팝업창
 function openPopup1(){
-    window.open("http://127.0.0.1:5500/templates/review_create.html", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=850, left=700, top=250" );
+    window.open("./review_create.html", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=850, left=700, top=250" );
 }
 
 
@@ -35,7 +35,7 @@ function get_reviews_html(id, review_author, review_title, review_desc, image) {
                             <h4>${review_title}</h4>
                             <p>${review_desc}</p>
                             <small class="gray-text">${review_author}</small>
-                            <button onclick="location.href='/templates/review_detail.html?review_id=${id}'">확인하기</button>
+                            <button onclick="location.href='./review_detail.html?review_id=${id}'">확인하기</button>
                         </div>
                     </section>
                 </div>`

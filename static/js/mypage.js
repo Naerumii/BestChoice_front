@@ -89,7 +89,7 @@ async function loadProfile(user_id) {
 
 async function get_bookmark_html(pk, user, festival) {
   const oneArticle = await getFestivalDetail(festival);
-  temp_html = `<div class="col-12 col-md-6 col-lg-4 col-xl-3" id="bookmark" onclick="location.href='/templates/festival_detail.html?festival_article_id=${festival}'">
+  temp_html = `<div class="col-12 col-md-6 col-lg-4 col-xl-3" id="bookmark" onclick="location.href='./festival_detail.html?festival_article_id=${festival}'">
                 <a href="#" class="course">
                 <img src="${oneArticle.festival_image}" width="100%" class="course-img">
 
@@ -100,7 +100,7 @@ async function get_bookmark_html(pk, user, festival) {
                     </div>
                 </div>
                 </a>
-               </div>`;
+                </div>`;
   $("#bookmark_box").append(temp_html);
 }
 
@@ -137,7 +137,7 @@ async function get_recruited_html(id, join, status_num, time, user) {
   }
 
   temp_html = `<li>
-                <a href='/templates/recruit_change.html?recruit_id=${id}'>
+                <a href='./recruit_change.html?recruit_id=${id}'>
                   ${oneArticle.join_title} || ${user} || ${status}
                 </a>
               </li>`;
@@ -145,7 +145,7 @@ async function get_recruited_html(id, join, status_num, time, user) {
 }
 
 function openPopup1(){
-  window.open("http://127.0.0.1:5500/templates/mypage-patch.html", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=850, left=700, top=250" );
+  window.open("./mypage-patch.html", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=850, left=700, top=250" );
 }
 
 loadProfile(user_id);
