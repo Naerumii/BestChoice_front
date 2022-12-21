@@ -9,28 +9,13 @@ async function handleSignup() {
       user_address: document.getElementById("signup-address").value,
     };
 
-    //이메일 형식 확인 정규표현식
-    let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
-    if (regex.test(signupData.email) == false) {
-      alert("올바른 이메일 형식이 아닙니다!")
-      return 0;
-    } 
-
-    //휴대폰 전화번호 형식 확인 정규표현식(11자리만 가능)
-    var patternPhone = /01[016789][^0][0-9]{3}[0-9]{4}/;
-
-    if(!patternPhone.test(signupData.user_phone)) {
-        alert('핸드폰 번호를 확인 해주세요!');
-        return 0;
-    }
-
     const email = signupData.email
     const nickname = signupData.user_nickname
     const phone = signupData.user_phone
     const password = signupData.password
     const password2 = signupData.password2
     const address = parseInt(signupData.user_address)
-  
+
     if (email == '') {
       alert("이메일을 입력해주세요.");
       return 0;
@@ -56,6 +41,20 @@ async function handleSignup() {
       return 0;
     }
 
+    //이메일 형식 확인 정규표현식
+    let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+    if (regex.test(signupData.email) == false) {
+      alert("올바른 이메일 형식이 아닙니다!")
+      return 0;
+    } 
+
+    //휴대폰 전화번호 형식 확인 정규표현식(11자리만 가능)
+    var patternPhone = /01[016789][^0][0-9]{3}[0-9]{4}/;
+
+    if(!patternPhone.test(signupData.user_phone)) {
+        alert('핸드폰 번호를 확인 해주세요!');
+        return 0;
+    }
   
     const response = await fetch(`${backend_base_url}/users/signup/`, {
       headers: {
