@@ -37,10 +37,10 @@ async function handleSignup() {
   }
 
   //이메일 형식 확인 정규표현식
-  let regex = new RegExp(
+  let regex_email = new RegExp(
     "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
   );
-  if (regex.test(signupData.email) == false) {
+  if (regex_email.test(signupData.email) == false) {
     swal("올바른 이메일 형식이 아닙니다!", "", "warning");
     return 0;
   }
@@ -50,6 +50,14 @@ async function handleSignup() {
 
   if (!patternPhone.test(signupData.user_phone)) {
     swal("핸드폰 번호를 확인 해주세요!", "", "warning");
+    return 0;
+  }
+
+  //비밀번호 형식 확인 정규표현식(비밀번호 유효성 검사: 최소 한개의 영문자 + 최소 한개의 숫자 + 최소 8자)
+  let regex_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+  if(!regex_password.test(signupData.password)) {
+    swal("올바른 비밀번호 형식이 아닙니다!", "", "warning");
     return 0;
   }
 
