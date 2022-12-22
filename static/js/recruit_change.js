@@ -62,11 +62,15 @@ async function loadRecruit(recruit_id) {
 
   async function changeStatus(status) {
     if (status>2 || status<1) {
-        alert("이상한 값이네요.")
+        swal("신청 상태를 확인해주세요.", "", "warning")
     } else {
         results = await patchRecruit(recruit_id, status);
-        alert(results.message)
-        window.location.replace(`${frontend_base_url}/templates/mypage.html`)
+        swal(results.message).then((value) => {
+          if (value) {
+            window.location.replace(`${frontend_base_url}/mypage.html`)
+              return response
+          }
+        });
     }
   }
 

@@ -34,7 +34,7 @@ async function get_join_html(id, num, festival, author, period, nowcount, count,
     status_str = join_status_str[0];
   }
 
-  let temp_html = `<li class="list_item" type="button" onclick="location.href='/templates/join_detail.html?join_article_id=${id}'">
+  let temp_html = `<li class="list_item" type="button" onclick="location.href='./join_detail.html?join_article_id=${id}'">
                     <ul>
                         <li>${num}</li>
                         <li class="left">${festival}</li>

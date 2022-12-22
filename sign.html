@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <!-- Script -->
+    <!-- Css -->
+    <link rel="stylesheet" href="/static/css/sign_f.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+    />
+    <link rel="short icon" href="#" />
+    <title>회원가입 | 로그인</title>
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <div class="user signinBx">
+          <div class="imgBx"><img src="/static/img/firesign.gif" alt="" /></div>
+          <div class="formBx">
+            <form action="" onsubmit="return false;">
+              <h2>Sign In</h2>
+              <input
+                type="email"
+                name="email"
+                id="signin-email"
+                placeholder="Email"
+              />
+              <input
+                type="password"
+                name="password1"
+                id="signin-password1"
+                placeholder="Password"
+              />
+              <input
+                type="button"
+                name=""
+                onclick="handleSignin();"
+                value="Login"
+              />
+              <p class="signup">
+                Don't have an account ?
+                <a href="#" onclick="toggleForm();">Sign Up</a>
+              </p>
+            </form>
+          </div>
+        </div>
+        <div class="user signupBx">
+          <div class="formBx">
+            <form action="" onsubmit="return false;">
+              <h2>Create an account</h2>
+              <input
+                type="email"
+                name="email"
+                id="signup-email"
+                class="form-control is-invalid"
+                placeholder="name@example.com"
+              />
+              <input
+                type="text"
+                name="nickname"
+                id="signup-nickname"
+                placeholder="NickName"
+              />
+              <input
+                type="text"
+                name="phone"
+                id="signup-phone"
+                placeholder="Phone Number"
+              />
+              <input
+                type="password"
+                name="password1"
+                id="signup-password1"
+                placeholder="Password : 8자리 이상 영어와 숫자"
+              />
+              <input
+                type="password"
+                name="password2"
+                id="signup-password2"
+                placeholder="Password Check"
+              />
+              <select class="form-control" name="job" id="signup-address">
+                <option value="00" selected>지역선택</option>
+                <option value="01">서울시</option>
+                <option value="02">부산시</option>
+                <option value="03">대구시</option>
+                <option value="04">인천시</option>
+                <option value="05">광주시</option>
+                <option value="06">대전시</option>
+                <option value="07">울산시</option>
+                <option value="08">세종시</option>
+                <option value="09">경기도</option>
+                <option value="10">강원도</option>
+                <option value="11">충청북도</option>
+                <option value="12">충청남도</option>
+                <option value="13">전라북도</option>
+                <option value="14">전라남도</option>
+                <option value="15">경상북도</option>
+                <option value="16">경상남도</option>
+                <option value="17">제주도</option>
+              </select>
+              <input
+                type="button"
+                name=""
+                onclick="handleSignup();"
+                value="Sign Up"
+              />
+              <p class="signup">
+                Already have an account ?
+                <a href="#" onclick="toggleForm();">Sign in</a>
+              </p>
+            </form>
+          </div>
+          <div class="imgBx">
+            <img src="/static/img/firelogin.gif" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <!-- Script -->
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/api_user.js"></script>
+  <script src="/static/js/sign.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</html>

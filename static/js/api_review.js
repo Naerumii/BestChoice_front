@@ -44,11 +44,14 @@ async function postReview() {
   });
 
   if (response.status == 200) {
-      alert("게시물 등록");
-      opener.location.reload(`${frontend_base_url}/templates/review.html`);
-      window.close();
+      swal("게시글이 등록됐습니다.", "", "success").then((value) => {
+        if (value) {
+          opener.location.reload(`${frontend_base_url}/review.html`);
+          window.close();
+        }
+      });
   } else {
-      alert(response.status)
+      swal(response.status)
   }
 }
 
@@ -69,10 +72,10 @@ async function patchReview(review_id, review_title, review_desc) {
   
     if (response.status == 200) {
       response_json = await response.json();
-      alert("게시물이 수정되었습니다.")
+      swal("게시물이 수정되었습니다.", "", "success");
       return response_json;
     } else {
-      alert("게시물 작성자만 수정 가능합니다.")
+      swal("게시물 작성자만 수정 가능합니다.", "", "warning");
     }
 }
 
@@ -88,10 +91,13 @@ async function deleteReview(review_id) {
     })
   
     if (response.status == 204) {
-      alert("게시물이 삭제되었습니다.")
-      window.location.replace(`${frontend_base_url}/templates/review_page.html`)
+      swal("게시물이 삭제되었습니다.", "", "info").then((value) => {
+        if (value) {
+          window.location.replace(`${frontend_base_url}/review_page.html`)
+        }
+      });
     } else {
-      alert("게시물 작성자만 삭제 가능합니다.")
+      swal("게시물 작성자만 삭제 가능합니다.", "", "error");
     }
 }
 
@@ -114,7 +120,7 @@ async function postReviewComment(review_id, comment_text) {
     if (response.status == 200) {
       return response;
     } else {
-      alert(response.status);
+      swal(response.status);
     }
 }
 
@@ -135,12 +141,15 @@ async function putReviewComment(id) {
     });
     
     if (response.status == 200) {
-        alert("댓글이 수정되었습니다.")
-        window.location.reload(
-        `${frontend_base_url}/templates/review_detail.html?id=${review_id}`
-        );
+        swal("댓글이 수정되었습니다.").then((value) => {
+          if (value) {
+            window.location.reload(
+              `${frontend_base_url}/review_detail.html?id=${review_id}`
+              );
+          }
+        });
     } else {
-        alert(response.status);
+        swal(response.status);
     }
 }
 
@@ -155,11 +164,14 @@ async function deleteReviewComment(id) {
     });
 
     if (response.status == 204) {
-        alert("댓글이 삭제되었습니다.")
-        window.location.reload(
-            `${frontend_base_url}/templates/review_detail.html?id=${review_id}`
-        );
+        swal("댓글이 삭제되었습니다.").then((value) => {
+          if (value) {
+            window.location.reload(
+                `${frontend_base_url}/review_detail.html?id=${review_id}`
+              );
+          }
+        })
     } else {
-        alert(response.status);
+        swal(response.status);
     }
 }

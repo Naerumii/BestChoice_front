@@ -50,7 +50,7 @@ async function ProfileChangeput(){
     let patternPhone = /01[016789][^0][0-9]{3}[0-9]{4}$/;
 
     if(!patternPhone.test(phone)) {
-        alert('핸드폰 번호를 확인 해주세요!');
+        swal("핸드폰 번호를 확인 해주세요!", "", "warning");
         return 0;
     }
 
@@ -62,11 +62,11 @@ async function ProfileChangeput(){
     }
 
     if (response.status == 200) {
-        alert("수정되었습니다!")
+        swal("수정되었습니다!", "", "success");
         opener.parent.location.reload();
         window.close();
       } else {
-        alert("오류 발생!!!!!!")
+        swal("회원정보가 잘못되었습니다.", "", "warning");
         return 0;
       }
 }

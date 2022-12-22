@@ -23,7 +23,7 @@ async function loadDetailArticles(festival_article_id) {
 
     image.setAttribute("src", `${article.festival_image}`)
 
-    recruit.setAttribute("onclick", `location.href='/templates/join_create.html?festival_article_id=${festival_article_id}'`);
+    recruit.setAttribute("onclick", `location.href='./join_create.html?festival_article_id=${festival_article_id}'`);
 
     temp_html = `<i class="fa fa-bookmark-o bookmark${festival_article_id}" style="font-size:50px; float: right;" onclick="postFestivalBookmark(${festival_article_id})"></i>`
    
