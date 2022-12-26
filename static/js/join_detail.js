@@ -97,10 +97,10 @@ function editJoinEvent() {
   const join_title = document.getElementById("join_detail_title");
   const join_desc = document.getElementById("join_detail_desc");
   const join_count = document.getElementById("join_detail_count");
-  const pre_count = join_count.innerText;  
+  const pre_count = join_count.innerText;
   const join_period = document.getElementById("join_detail_period");
-  const pre_period = join_period.innerText; 
-  
+  const pre_period = join_period.innerText;
+
   join_title.style.visibility = "hidden";
   join_desc.style.visibility = "hidden";
   join_count.style.visibility = "hidden";
@@ -162,12 +162,12 @@ function editJoinEvent() {
   count_update.appendChild(option9);
   count_update.appendChild(option10);
   count_update.setAttribute("id", "count_update");
-  count_update.value = String(pre_count); 
+  count_update.value = String(pre_count);
 
   const period_update = document.createElement("input");
   period_update.setAttribute("type", "date");
   period_update.setAttribute("id", "period_update");
-  period_update.value = pre_period; 
+  period_update.value = pre_period;
 
   const body1 = document.getElementById("update_title");
   const body2 = document.getElementById("update_desc");

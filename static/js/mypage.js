@@ -1,6 +1,3 @@
-const user_id = parseJwt("access").user_id;
-
-
 let region_arr = [
   "서울시",
   "부산시",
@@ -24,11 +21,23 @@ let region_arr = [
 let status_str = ["대기중", "수락", "거절"];
 
 // 받아온 json 데이터 front에 내용 붙이는 함수
-async function loadProfile(user_id) {
+async function loadProfile() {
+  //로그인 체크
+  var token = localStorage.getItem("access");
+  if (!token) {
+    swal("로그인하십시오").then((value) => {
+      if (value) {
+        window.location.replace(`${frontend_base_url}/sign.html`);
+      }
+    });
+  }
+
+  const user_id = parseJwt("access").user_id;
+
   now_user = await getProfile(user_id);
   results = await getRecruited(user_id);
 
-  console.log(results)
+  console.log(results);
   const user_img = document.getElementById("user_img");
   const author = document.getElementById("user_nickname");
   const email = document.getElementById("user_email");
@@ -83,9 +92,7 @@ async function loadProfile(user_id) {
       );
     }
   }
-} 
-  
-
+}
 
 async function get_bookmark_html(pk, user, festival) {
   const oneArticle = await getFestivalDetail(festival);
@@ -144,8 +151,12 @@ async function get_recruited_html(id, join, status_num, time, user) {
   $("#sy").append(temp_html);
 }
 
-function openPopup1(){
-  window.open("./mypage-patch.html", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=850, left=700, top=250" );
+function openPopup1() {
+  window.open(
+    "./mypage-patch.html",
+    "new",
+    "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=850, left=700, top=250"
+  );
 }
 
-loadProfile(user_id);
+loadProfile();
