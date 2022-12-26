@@ -1,65 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/festival_detail.css">
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/festival_detail.css" />
     <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/0c764fa4c5.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/0c764fa4c5.js"
+      crossorigin="anonymous"
+    ></script>
     <title>FESTIVAL_DETAIL | 축제 상세보기</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="wrap">
-        <div class="item-img">
-            <img id="festival_image" />
+      <div class="item-img">
+        <img id="festival_image" />
+      </div>
+      <p></p>
+      <div style="flex-flow: wrap">
+        <div id="abc" class="icons">
+          <h1 id="festival_title"></h1>
         </div>
-        <p></p>
-        <div style="flex-flow: wrap;">
-            <div id="abc" class="icons" >
-                <h1 id="festival_title"></h1>
-            </div>
+      </div>
+      <div class="wrap2">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">축제설명</span>
+          </div>
+          <p
+            id="festival_desc"
+            type="text"
+            class="form-control"
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+          >
+            이 양초는 사실 특별한 힘을 가지고 있어요. 양초를 켜고 소원을 빌면
+            짜자잔 뭐든지 이뤄지게 된답니다. 하나 사가세요! 대나무 향이 아주
+            좋아요
+          </p>
         </div>
-        <div class="wrap2">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">축제설명</span>
-                </div>
-                <p id="festival_desc" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">이 양초는 사실 특별한 힘을 가지고 있어요. 양초를 켜고 소원을 빌면 짜자잔 뭐든지 이뤄지게 된답니다. 하나 사가세요! 대나무 향이 아주 좋아요</p>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">축제기간</span>
-                </div>
-                <p id="festival_period" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"></p>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">주소</span>
-                </div>
-                <p id="festival_address" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"></p>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">요금</span>
-                </div>
-                <p id="festival_price" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"></p>
-            </div>
-            <div>
-                <button id="festival_join" type="submit" class="btn btn-primary btn-order">모집하기</button>
-            </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">축제기간</span>
+          </div>
+          <p
+            id="festival_period"
+            type="text"
+            class="form-control"
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+          ></p>
         </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">주소</span>
+          </div>
+          <p
+            id="festival_address"
+            type="text"
+            class="form-control"
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+          ></p>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">요금</span>
+          </div>
+          <p
+            id="festival_price"
+            type="text"
+            class="form-control"
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+          ></p>
+        </div>
+        <div>
+          <button
+            id="festival_join"
+            type="submit"
+            class="btn btn-primary btn-order"
+          >
+            모집하기
+          </button>
+        </div>
+      </div>
     </div>
-</body>
-<script src="/static/js/api.js"></script>
-<script src="/static/js/api_festival.js"></script>
-<script src="/static/js/festival_detail.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </body>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/api_festival.js"></script>
+  <script src="/static/js/festival_detail.js"></script>
 </html>
