@@ -35,6 +35,21 @@ async function postReview() {
   formData.append("review_title", review_title);
   formData.append("review_desc", review_desc);
   formData.append("image", image);
+
+  if (review_title == "") {
+    swal("제목을 작성해주세요!", "", "warning");
+    return 0;
+  } else if (review_title.length > 20) {
+    swal("제목 글자 수를 초과했습니다!", "", "warning");
+    return 0;
+  } else if (review_desc == "") {
+    swal("내용을 작성해주세요!", "", "warning");
+    return 0;
+  } else if (image == null) {
+    swal("이미지를 추가해주세요!", "", "warning");
+    return 0;
+  }
+
   const response = await fetch(`${backend_base_url}/reviews/`, {
       headers: {
           Authorization: "Bearer " + localStorage.getItem("access"),
