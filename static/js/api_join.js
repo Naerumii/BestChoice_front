@@ -25,11 +25,29 @@ async function postJoin(festival_article_id) {
   const join_content = document.getElementById("join_content").value;
   const join_donedate = document.getElementById("join_donedate").value;
 
+  
   const data = {
       join_title: join_title,
       join_count: join_count,
       join_desc: join_content,
       join_period: join_donedate,
+  }
+
+  if (join_count == 0) {
+    swal("모집인원을 정해주세요!", "", "warning");
+    return 0;
+  } else if (join_title == "") {
+    swal("제목을 작성해주세요!", "", "warning");
+    return 0;
+  } else if (join_title.length > 20) {
+    swal("제목 글자 수를 초과했습니다!", "", "warning");
+    return 0;
+  } else if (join_content == "") {
+    swal("내용을 작성해주세요!", "", "warning");
+    return 0;
+  } else if (join_donedate == 0) {
+    swal("모집 마감일을 설정해주세요!", "", "warning");
+    return 0;
   }
 
 
@@ -49,7 +67,7 @@ async function postJoin(festival_article_id) {
           window.location.replace(`${frontend_base_url}/festival_page.html`);
         }
       });
-  } else {
+    } else {
       swal(response.status)
   }
 }
@@ -94,6 +112,7 @@ async function deleteJoin(join_article_id) {
 
 //모집게시글 수정 api
 async function patchJoin(join_article_id, join_title, join_desc, join_count, join_period) {
+  
   const JoinData = {
     join_title: join_title,
     join_desc: join_desc,

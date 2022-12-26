@@ -5,8 +5,8 @@ const user_id = parseJwt("access").user_id;
 // back에서 받아온 json 데이터 front에 내용 붙이는 함수
 async function loadDetailArticles(join_article_id) {
   article = await getJoinDetail(join_article_id);
-  const nowuser = await getProfile(user_id)
-  
+  const nowuser = await getProfile(user_id);
+
   //프론트엔드에서 태그 id 확인하기
   const festival = document.getElementById("join_detail_festival");
   const title = document.getElementById("join_detail_title");
@@ -30,13 +30,13 @@ async function loadDetailArticles(join_article_id) {
     btnModify.style.visibility = "hidden";
     btnDelete.style.visibility = "hidden";
     btnApply.style.visibility = "hidden";
-  } else if (nowuser.user_nickname!=article.join_author) {  //user의 user_nickname 필드를 unique로 설정할 것!!!
+  } else if (nowuser.user_nickname != article.join_author) {
+    //user의 user_nickname 필드를 unique로 설정할 것!!!
     btnModify.style.visibility = "hidden";
     btnDelete.style.visibility = "hidden";
   } else {
     btnApply.style.visibility = "hidden";
   }
-
 
   //댓글 불러오기
   $("#comment_box").empty(); //초기화 버튼을 위해 기존에 있던 card 모두 제거
@@ -54,9 +54,8 @@ async function loadDetailArticles(join_article_id) {
   }
 }
 
-
 function get_join_comment_html(user, comment, created_at, id, nickname) {
-  if (user==nickname) {
+  if (user == nickname) {
     temp_html = `<br>
                   <li class="flex-box">
                         <div class="user-text">
@@ -72,8 +71,8 @@ function get_join_comment_html(user, comment, created_at, id, nickname) {
                             } ${created_at.split("T")[1].split(".")[0]}</small>
                         </div>
                         <div id="join_button_box_${id}" class="user-text2">
-                            <a href="#" id="join_update_button_${id}" type="button" onclick="editJoinCommentEvent(${id})">수정</a>
-                            <a href="#" type="button" onclick="deleteJoinComment(${id})">삭제</a>
+                            <a id="join_update_button_${id}" type="button" onclick="editJoinCommentEvent(${id})">수정</a>
+                            <a type="button" onclick="deleteJoinComment(${id})">삭제</a>
                         </div>
                   </li>`;
   } else {
@@ -93,13 +92,15 @@ function get_join_comment_html(user, comment, created_at, id, nickname) {
   $("#comment_box").append(temp_html);
 }
 
-
 //모집게시글 수정하기 버튼 클릭 시 동작하는 함수
 function editJoinEvent() {
   const join_title = document.getElementById("join_detail_title");
   const join_desc = document.getElementById("join_detail_desc");
   const join_count = document.getElementById("join_detail_count");
+  const pre_count = join_count.innerText;  
   const join_period = document.getElementById("join_detail_period");
+  const pre_period = join_period.innerText; 
+  
   join_title.style.visibility = "hidden";
   join_desc.style.visibility = "hidden";
   join_count.style.visibility = "hidden";
@@ -107,16 +108,19 @@ function editJoinEvent() {
 
   const title_update = document.createElement("textarea"); // 수정할 수 있는 입력창만들기
   title_update.setAttribute("id", "title_update");
+  title_update.setAttribute("style", "resize: none;");
   title_update.classList.add("title_update_style"); // title 수정 입력창의 class -> detail.page.css에서 꾸미면 됨
   title_update.innerText = join_title.innerHTML; // 원래 있던 값 일단 보여주기, 안하면 공란처리됨
 
   const desc_update = document.createElement("textarea"); // 수정할 수 있는 입력창만들기 title,content 둘다 해줘야함. 안그러면 안생김
   desc_update.setAttribute("id", "desc_update");
+  desc_update.setAttribute("style", "resize: none;");
   desc_update.classList.add("input_desc_style"); // content 수정 입력창의 class -> detail.page.css에서 꾸미면 됨
   desc_update.innerText = join_desc.innerHTML; // 안하면 공란처리됨
   desc_update.rows = 3;
 
   const count_update = document.createElement("select");
+
   option1 = document.createElement("option");
   option1.setAttribute("value", "1");
   option1.innerText = "1";
@@ -158,10 +162,12 @@ function editJoinEvent() {
   count_update.appendChild(option9);
   count_update.appendChild(option10);
   count_update.setAttribute("id", "count_update");
+  count_update.value = String(pre_count); 
 
   const period_update = document.createElement("input");
   period_update.setAttribute("type", "date");
   period_update.setAttribute("id", "period_update");
+  period_update.value = pre_period; 
 
   const body1 = document.getElementById("update_title");
   const body2 = document.getElementById("update_desc");
@@ -182,6 +188,23 @@ async function appendJoinHtml() {
   let desc_update = document.getElementById("desc_update");
   let count_update = document.getElementById("count_update");
   let period_update = document.getElementById("period_update");
+
+  if (count_update.value == 0) {
+    swal("모집인원을 정해주세요!", "", "warning");
+    return 0;
+  } else if (title_update.value == "") {
+    swal("제목을 작성해주세요!", "", "warning");
+    return 0;
+  } else if (title_update.value.length > 20) {
+    swal("제목 글자 수를 초과했습니다!", "", "warning");
+    return 0;
+  } else if (desc_update.value == "") {
+    swal("내용을 작성해주세요!", "", "warning");
+    return 0;
+  } else if (period_update.value == 0) {
+    swal("모집 마감일을 설정해주세요!", "", "warning");
+    return 0;
+  }
 
   const re_join = await patchJoin(
     join_article_id,
@@ -213,14 +236,12 @@ async function appendJoinHtml() {
   loadDetailArticles(join_article_id); // 다시 한 번. 맨 위의 함수 실행
 }
 
-
 async function writeJoinCommentEvent() {
   const myNote = document.getElementById("myNote");
   const comment = await postJoinComment(join_article_id, myNote.value);
   loadDetailArticles(join_article_id);
   myNote.value = "";
 }
-
 
 // 댓글 수정하기 버튼 클릭 시 동작하는 함수
 function editJoinCommentEvent(id) {
@@ -231,9 +252,10 @@ function editJoinCommentEvent(id) {
 
   const input_comment = document.createElement("textarea"); // 수정할 수 있는 입력창만들기
   input_comment.setAttribute("id", `join_input_comment_${id}`);
+  input_comment.setAttribute("style", "resize: none;");
   input_comment.classList.add("join_input_comment_style");
   input_comment.innerText = comment.innerHTML; // 안하면 공란처리됨
-  
+
   const insertcomment = document.getElementById(`join_comment_box_${id}`);
   insertcomment.insertBefore(input_comment, comment); //기존 부분을 입력란으로 교체
 
@@ -243,12 +265,9 @@ function editJoinCommentEvent(id) {
   comment_button.setAttribute("id", `join_cmp_button_${id}`);
   comment_button.innerText = "수정";
 
-
-  
   const update_button = document.getElementById(`join_button_box_${id}`);
   update_button.insertBefore(comment_button, updateBtn);
   comment_button.setAttribute("onclick", `putJoinComment(${id})`);
 }
-
 
 loadDetailArticles(join_article_id);
