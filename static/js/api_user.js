@@ -56,7 +56,7 @@ async function handleSignup() {
   //비밀번호 형식 확인 정규표현식(비밀번호 유효성 검사: 최소 한개의 영문자 + 최소 한개의 숫자 + 최소 8자)
   let regex_password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-  if(!regex_password.test(signupData.password)) {
+  if (!regex_password.test(signupData.password)) {
     swal("올바른 비밀번호 형식이 아닙니다!", "", "warning");
     return 0;
   }
