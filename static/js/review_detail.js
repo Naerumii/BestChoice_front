@@ -64,8 +64,8 @@ function get_review_comment_html(user, comment, created_at, id, nickname) {
                         <small id="review_date" class="gray-text">${created_at.split("T")[0]} ${created_at.split("T")[1].split(".")[0]}</small>
                     </div>
                     <div id="button_box_${id}">
-                        <a href="#" id="update_button_${id}" type="button" onclick="editReviewCommentEvent(${id})">수정</a>
-                        <a href="#" type="button" onclick="deleteReviewComment(${id})">삭제</a>
+                        <a id="update_button_${id}" type="button" onclick="editReviewCommentEvent(${id})">수정</a>
+                        <a type="button" onclick="deleteReviewComment(${id})">삭제</a>
                     </div>
                   </li>`
   } else {
@@ -92,11 +92,13 @@ function editReviewEvent() {
 
   const input_title = document.createElement("textarea"); // 수정할 수 있는 입력창만들기
   input_title.setAttribute("id", "input_title");
+  input_title.setAttribute("style", "resize: none;");
   input_title.classList.add("input_title_style"); // title 수정 입력창의 class -> detail.page.css에서 꾸미면 됨
   input_title.innerText = review_title.innerHTML; // 원래 있던 값 일단 보여주기, 안하면 공란처리됨
 
   const input_desc = document.createElement("textarea"); // 수정할 수 있는 입력창만들기 title,content 둘다 해줘야함. 안그러면 안생김
   input_desc.setAttribute("id", "input_desc");
+  input_desc.setAttribute("style", "resize: none;");
   input_desc.classList.add("input_desc_style"); // content 수정 입력창의 class -> detail.page.css에서 꾸미면 됨
   input_desc.innerText = review_desc.innerHTML; // 안하면 공란처리됨
   input_desc.rows = 3;
@@ -153,6 +155,7 @@ function editReviewCommentEvent(id) {
     updateBtn.style.visibility = "hidden";
 
     const input_comment = document.createElement("textarea"); // 수정할 수 있는 입력창만들기
+    input_comment.setAttribute("style", "resize: none;");
     input_comment.setAttribute("id", `input_comment_${id}`);
     input_comment.classList.add("input_comment_style");
     input_comment.innerText = comment.innerHTML; // 안하면 공란처리됨
