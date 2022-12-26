@@ -112,6 +112,7 @@ async function deleteJoin(join_article_id) {
 
 //모집게시글 수정 api
 async function patchJoin(join_article_id, join_title, join_desc, join_count, join_period) {
+  
   const JoinData = {
     join_title: join_title,
     join_desc: join_desc,

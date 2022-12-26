@@ -1,6 +1,6 @@
 //신청게시글 상세보기 api
 async function getRecruitDetail(recruit) {
-    const response = await fetch(`${backend_base_url}/recruits/recruit/${recruit}`, {
+    const response = await fetch(`${backend_base_url}/recruits/recruit/${recruit}/`, {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
         },  

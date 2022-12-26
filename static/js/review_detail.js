@@ -118,6 +118,18 @@ async function appendReviewHtml() {
   let input_title = document.getElementById("input_title");
   let input_desc = document.getElementById("input_desc");
 
+  
+  if (input_title.value == "") {
+    swal("제목을 작성해주세요!", "", "warning");
+    return 0;
+  } else if (input_title.value.length > 20) {
+    swal("제목 글자 수를 초과했습니다!", "", "warning");
+    return 0;
+  } else if (input_desc.value == "") {
+    swal("내용을 작성해주세요!", "", "warning");
+    return 0;
+  } 
+  
   const re_review = await patchReview(
     review_id,
     input_title.value,

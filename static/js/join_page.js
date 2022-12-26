@@ -37,7 +37,7 @@ async function get_join_html(id, num, festival, author, period, nowcount, count,
   let temp_html = `<li class="list_item" type="button" onclick="location.href='./join_detail.html?join_article_id=${id}'">
                     <ul>
                         <li>${num}</li>
-                        <li class="left">${festival}</li>
+                        <li class="left" style="overflow: hidden; text-overflow:ellipsis; white-space:nowrap;">${festival}</li>
                         <li>${author}</li>
                         <li>${period}</li>
                         <li>${nowcount}/${count}</li>

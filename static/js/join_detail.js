@@ -97,7 +97,10 @@ function editJoinEvent() {
   const join_title = document.getElementById("join_detail_title");
   const join_desc = document.getElementById("join_detail_desc");
   const join_count = document.getElementById("join_detail_count");
+  const pre_count = join_count.innerText;  
   const join_period = document.getElementById("join_detail_period");
+  const pre_period = join_period.innerText; 
+  
   join_title.style.visibility = "hidden";
   join_desc.style.visibility = "hidden";
   join_count.style.visibility = "hidden";
@@ -117,6 +120,7 @@ function editJoinEvent() {
   desc_update.rows = 3;
 
   const count_update = document.createElement("select");
+
   option1 = document.createElement("option");
   option1.setAttribute("value", "1");
   option1.innerText = "1";
@@ -158,10 +162,12 @@ function editJoinEvent() {
   count_update.appendChild(option9);
   count_update.appendChild(option10);
   count_update.setAttribute("id", "count_update");
+  count_update.value = String(pre_count); 
 
   const period_update = document.createElement("input");
   period_update.setAttribute("type", "date");
   period_update.setAttribute("id", "period_update");
+  period_update.value = pre_period; 
 
   const body1 = document.getElementById("update_title");
   const body2 = document.getElementById("update_desc");
@@ -182,6 +188,23 @@ async function appendJoinHtml() {
   let desc_update = document.getElementById("desc_update");
   let count_update = document.getElementById("count_update");
   let period_update = document.getElementById("period_update");
+
+  if (count_update.value == 0) {
+    swal("모집인원을 정해주세요!", "", "warning");
+    return 0;
+  } else if (title_update.value == "") {
+    swal("제목을 작성해주세요!", "", "warning");
+    return 0;
+  } else if (title_update.value.length > 20) {
+    swal("제목 글자 수를 초과했습니다!", "", "warning");
+    return 0;
+  } else if (desc_update.value == "") {
+    swal("내용을 작성해주세요!", "", "warning");
+    return 0;
+  } else if (period_update.value == 0) {
+    swal("모집 마감일을 설정해주세요!", "", "warning");
+    return 0;
+  }
 
   const re_join = await patchJoin(
     join_article_id,
