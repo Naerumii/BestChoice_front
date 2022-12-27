@@ -25,3 +25,12 @@ async function loadDetailArticles(festival_article_id) {
 }
 
 loadDetailArticles(festival_article_id);
+
+// 모집 일자를 오늘 이전 날짜는 선택 불가능하게 설정
+var now_utc = Date.now() // 지금 날짜를 밀리초로 반환
+// getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
+var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
+// etTimezoneOffset()을 이용해 UTC기준 시간과 여기 시간의 차이를 빼야 한다.
+var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+// join_donedate에 오늘 날짜를 min값으로 설정하기
+document.getElementById("join_donedate").setAttribute("min", today);
