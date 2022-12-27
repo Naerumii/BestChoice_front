@@ -82,6 +82,14 @@ async function handleSignup() {
   }
 }
 
+function enterkey() {
+  if (window.event.keyCode == 13) {
+
+       // 엔터키가 눌렸을 때 실행할 내용
+       handleSignin();
+  }
+}
+
 //로그인
 async function handleSignin() {
   const signinData = {
@@ -114,7 +122,7 @@ async function handleSignin() {
     );
 
     localStorage.setItem("payload", jsonPayload);
-    swal("환영합니다.", "원하는 축제를 찾아보세요!").then((value) => {
+    swal("원하는 축제를 찾아보세요!", "모집 게시판을 통해 축제에 함께 갈 사람들을 모집해보세요.").then((value) => {
       if (value) {
         window.location.replace(`${frontend_base_url}/main.html`);
       }

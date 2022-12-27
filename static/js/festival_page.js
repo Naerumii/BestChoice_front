@@ -87,6 +87,14 @@ async function searchArticle() {
   article_pagination();
 }
 
+function searchkey() {
+    if (window.event.keyCode == 13) {
+
+         // 엔터키가 눌렸을 때 실행할 내용
+         searchBox();
+    }
+  }
+
 //검색창에서 검색한 축제게시글 찾기(입력란)
 async function searchBox() {
   let searchForm = $("#searchForm");
@@ -95,7 +103,7 @@ async function searchBox() {
   let search_list = [];
 
   if (!searchWord) {
-    swal("검색어를 입력하세요");
+    swal("검색어를 입력하세요")
     return false;
   }
 
