@@ -91,15 +91,15 @@
                 <div class="container_checkbox1">
                     <li id='liSearchOption'>
                         <div>
-                            <form id="searchForm">
+                            <form id="searchForm" onsubmit="return false;" >
                                 <select id='selSearchOption' style="width: 70px;">
                                     <option value='A' selected>축제명</option>
                                     <option value='T'>내용</option>
                                     <option value='C'>가격</option>
                                 </select>
                                 <br>
-                                <input id='text1' style="width: 150px; margin-top: 20px;" />
-                                <input type='button' value='검색' onclick="searchBox()"/>
+                                <input id='text1' style="width: 150px; margin-top: 20px;" onkeyup="searchkey()"/>
+                                <input type='button' value='검색' onclick="searchBox();"/>
                             </form>
                         </div>
                     </li>
