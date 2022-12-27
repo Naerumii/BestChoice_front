@@ -40,7 +40,7 @@ async function loadReviews() {
 // 리뷰 리스트 html로 이어붙이기
 function get_reviews_html(id, review_author, review_title, review_desc, image) {
   temp_html = `<div class="postlist-cont" id="p_wrapper">
-                    <section class="flex-box" id="p_item">
+                    <section onclick="location.href='./review_detail.html?review_id=${id}'" class="flex-box" id="p_item">
                         <div>
                             <img src="${backend_base_url}${image}" alt="">
                         </div>
@@ -48,7 +48,6 @@ function get_reviews_html(id, review_author, review_title, review_desc, image) {
                             <h4>${review_title}</h4>
                             <p>${review_desc}</p>
                             <small class="gray-text">${review_author}</small>
-                            <button onclick="location.href='./review_detail.html?review_id=${id}'">확인하기</button>
                         </div>
                     </section>
                 </div>`;
