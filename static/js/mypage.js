@@ -1,46 +1,3 @@
-// 로그인한 user.id 찾는 함수 //
-function parseJwt(token) {
-  var base64Url = localStorage.getItem("access").split(".")[1];
-  var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  var jsonPayload = decodeURIComponent(
-    window
-      .atob(base64)
-      .split("")
-      .map(function (c) {
-        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-      })
-      .join("")
-  );
-  return JSON.parse(jsonPayload);
-}
-
-const user_id = parseJwt("access").user_id;
-
-// 사용자 프로필 정보 받아오기
-async function getProfile(user_id) {
-  const response = await fetch(`${backend_base_url}/users/${user_id}/`, {
-    method: "GET",
-  });
-  response_json = await response.json();
-
-  return response_json;
-}
-
-// 내가 생성한 모집게시글에 대한 recruit 정보 받아오기
-async function getRecruited(user_id) {
-  const response = await fetch(
-    `${backend_base_url}/articles/festival/join/recruited/`,
-    {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("access"),
-      },
-      method: "GET",
-    }
-  );
-  response_json = await response.json();
-  return response_json;
-}
-
 let region_arr = [
   "서울시",
   "부산시",
@@ -61,11 +18,26 @@ let region_arr = [
   "제주도",
 ];
 
+let status_str = ["대기중", "수락", "거절"];
+
 // 받아온 json 데이터 front에 내용 붙이는 함수
-async function loadProfile(user_id) {
+async function loadProfile() {
+  //로그인 체크
+  var token = localStorage.getItem("access");
+  if (!token) {
+    swal("로그인하십시오").then((value) => {
+      if (value) {
+        window.location.replace(`${frontend_base_url}/sign.html`);
+      }
+    });
+  }
+
+  const user_id = parseJwt("access").user_id;
+
   now_user = await getProfile(user_id);
   results = await getRecruited(user_id);
 
+  console.log(results);
   const user_img = document.getElementById("user_img");
   const author = document.getElementById("user_nickname");
   const email = document.getElementById("user_email");
@@ -81,7 +53,7 @@ async function loadProfile(user_id) {
   );
   author.innerText = now_user.user_nickname;
   email.innerText = now_user.email;
-  phone.innerText = now_user.user_phone;
+  phone.innerText = "0" + String(now_user.user_phone);
   address.innerText = region;
   introduce.innerText = now_user.user_introduce;
 
@@ -110,22 +82,21 @@ async function loadProfile(user_id) {
   //my어쩌구에 들어가는거
   if (results.length > 0) {
     for (let i = 0; i < results.length; i++) {
+      other_user = await getProfile(results[i].recruit_user);
       get_recruited_html(
         results[i].id,
         results[i].recruit_join,
         results[i].recruit_status,
         results[i].recruit_time,
-        now_user.user_nickname
+        other_user.user_nickname
       );
     }
   }
-} 
-  
-
+}
 
 async function get_bookmark_html(pk, user, festival) {
-  const oneArticle = await getArticle(festival);
-  temp_html = `<div class="col-12 col-md-6 col-lg-4 col-xl-3" id="bookmark" onclick="location.href='/templates/festival_detail.html?festival_article_id=${festival}'">
+  const oneArticle = await getFestivalDetail(festival);
+  temp_html = `<div class="col-12 col-md-6 col-lg-4 col-xl-3" id="bookmark" onclick="location.href='./festival_detail.html?festival_article_id=${festival}'">
                 <a href="#" class="course">
                 <img src="${oneArticle.festival_image}" width="100%" class="course-img">
 
@@ -136,14 +107,12 @@ async function get_bookmark_html(pk, user, festival) {
                     </div>
                 </div>
                 </a>
-               </div>`;
+                </div>`;
   $("#bookmark_box").append(temp_html);
 }
 
-let status_str = ["대기중", "수락", "거절"];
-
 async function get_recruit_html(id, join, status_num, time) {
-  const oneArticle = await getJoin(join);
+  const oneArticle = await getJoinDetail(join);
   let status;
 
   if (!status_num) {
@@ -163,7 +132,7 @@ async function get_recruit_html(id, join, status_num, time) {
 }
 
 async function get_recruited_html(id, join, status_num, time, user) {
-  const oneArticle = await getJoin(join);
+  const oneArticle = await getJoinDetail(join);
   let status;
 
   if (!status_num) {
@@ -175,39 +144,19 @@ async function get_recruited_html(id, join, status_num, time, user) {
   }
 
   temp_html = `<li>
-                <a href='/templates/change_recruit.html?recruit_id=${id}'>
+                <a href='./recruit_change.html?recruit_id=${id}'>
                   ${oneArticle.join_title} || ${user} || ${status}
                 </a>
               </li>`;
   $("#sy").append(temp_html);
 }
 
-// 북마크한 축제게시글번호(bookmark_festival: 7)를 통해서 축제게시글 정보 받아오기(역참조)
-async function getArticle(festival_id) {
-  const response = await fetch(
-    `${backend_base_url}/articles/festival/${festival_id}`,
-    {
-      method: "GET",
-    }
+function openPopup1() {
+  window.open(
+    "./mypage-patch.html",
+    "new",
+    "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=850, left=700, top=250"
   );
-  response_json = await response.json();
-
-  return response_json;
 }
 
-// 신청게시글을 통해서 모집게시글 번호를 알아냈다.(recruit_join: 8) 이걸 통해서 join title을 얻고 싶다.
-// Join Article 객체를 가져와야 함
-async function getJoin(join) {
-  const response = await fetch(
-    `${backend_base_url}/articles/festival/join/${join}`,
-    {
-      method: "GET",
-    }
-  );
-  response_json = await response.json();
-
-  return response_json;
-}
-
-
-loadProfile(user_id);
+loadProfile();

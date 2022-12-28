@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <!-- Script -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-latest.js"
+    ></script>
+    <!-- Css -->
+    <link rel="stylesheet" href="/static/css/change_recruit.css" />
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&display=swap"> -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap"
+    />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
+    <title>게시글 작성하기</title>
+  </head>
+  <body>
+    <article class="board">
+      <h1>Recruit</h1>
+      <section>
+        <h3>신청목록</h3>
+        <div class="place">
+          <p id="review_desc">
+            신청자 닉네임&nbsp&nbsp&nbsp: &nbsp&nbsp&nbsp<span
+              id="recruit_user"
+            ></span>
+          </p>
+        </div>
+        <div class="place">
+          <p id="review_desc">
+            신청한 모집게시글&nbsp&nbsp&nbsp: &nbsp&nbsp&nbsp<span
+              id="recruit_join"
+            ></span>
+          </p>
+        </div>
+        <div class="place">
+          <p id="review_desc">
+            신청 상태&nbsp&nbsp&nbsp: &nbsp&nbsp&nbsp<span
+              id="recruit_status"
+            ></span>
+          </p>
+        </div>
+        <div id="btn">
+          <button type="button" onclick="changeStatus(1)">수락</button>
+          <button type="button" onclick="changeStatus(2)">거절</button>
+        </div>
+      </section>
+    </article>
+  </body>
+  <!-- Script -->
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/api_join.js"></script>
+  <script src="/static/js/api_recruit.js"></script>
+  <script src="/static/js/recruit_change.js"></script>
+</html>

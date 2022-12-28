@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <!-- Script -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
@@ -31,7 +33,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img class="logo" src="/static/img/Logo.png" alt="Logo"></a>
+                <a class="navbar-brand" href="./main.html"><img class="logo" src="/static/img/Logo.png" alt="Logo"></a>
                 <div class="header">
                 <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -39,19 +41,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="http://127.0.0.1:5500/templates/main.html">HOME</a>
+                            <a class="nav-link" aria-current="page" href="./main.html">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://127.0.0.1:5500/templates/festival.html">FESTIVAL</a>
+                            <a class="nav-link" href="./festival_page.html">FESTIVAL</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://127.0.0.1:5500/templates/review.html" tabindex="-1" aria-disabled="true">REVIEW</a>
+                            <a class="nav-link" href="./review_page.html" tabindex="-1" aria-disabled="true">REVIEW</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://127.0.0.1:5500/templates/mypage.html" tabindex="-1" aria-disabled="true">MYPAGE</a>
+                            <a class="nav-link" href="./mypage.html" tabindex="-1" aria-disabled="true">MYPAGE</a>
                         </li>
                         <li class="nav-item">
-                            <a type="button" class="nav-link" href="http://127.0.0.1:5500/templates/sign.html" onclick="handleLogout()">LOGOUT</a>
+                            <a type="button" class="nav-link" onclick="handleLogout()">LOGOUT</a>
                         </li>
                         
                     </ul>
@@ -74,22 +76,9 @@
                 </div>
                 <!-- 페이지네이션 -->
                 <div>
-                    <button type="button" onclick="openPopup2()"><h3>모집하기</h3></button>
+                    <button type="button"  class="btn btn-secondary btn-lg" onclick="openPopup2()"><h3>모집 게시판</h3></button>
                 </div>
                 <div id="article_container" class="list-wrapper">
-                    <!--<div class="list-item">
-                        <div class="post">
-                            <div class="post-child post-left">
-                                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAyMTRfMjE2%2FMDAxNjQ0ODI4NDQ1Njgw.65Fv1fQNCWmJFhD57j7rDPvu7o2olcjLryIityUFRBIg.bjhNujTkUy6-dqHsdSy9kE8FyP3EvkNRUX0wduWRl54g.JPEG.kyss7700%2F20220214%25A3%25DF121511.jpg&type=sc960_832" title="This is a placeholder image">
-                            </div>
-                            <div class="post-child post-right">
-                                <h1>Post title</h1>
-                                <hr>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
-                                <button>&#x21e2;</button>
-                            </div>
-                        </div>
-                    </div>-->
                 </div>
                 <div id="pagination-container"></div>
             </div>
@@ -103,14 +92,14 @@
                 <div class="container_checkbox1">
                     <li id='liSearchOption'>
                         <div>
-                            <form id="searchForm">
+                            <form id="searchForm" onsubmit="return false;">
                                 <select id='selSearchOption' style="width: 70px;">
                                     <option value='A' selected>축제명</option>
                                     <option value='T'>내용</option>
                                     <option value='C'>가격</option>
                                 </select>
                                 <br>
-                                <input id='text1' style="width: 150px; margin-top: 20px;" />
+                                <input id='text1' style="width: 150px; margin-top: 20px;" onkeyup="searchkey()"/>
                                 <input type='button' value='검색' onclick="searchBox()"/>
                             </form>
                         </div>
@@ -188,15 +177,24 @@
             </div>
         </nav>
     </div>
-    <div class="scroll-top">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11l7-7 7 7M5 19l7-7 7 7" />
-        </svg>
-    </div>
-    <footer>footer</footer>
+    <footer>
+        <nav class="footernav">
+            || <a href='https://docs.google.com/forms/d/e/1FAIpQLSfXXajKuSp5Mm2G0r0D_Vf622If6TM8g5Amf0fgR9Bxt6xbHQ/viewform' target='_blank'>설문조사</a> ||
+            <a href='https://github.com/Naerumii/BestChoice' target='_blank'>Github</a> ||
+        </nav>
+        <p>
+            <span>운영진 : 대표이사 : 이승연 | 팀원 : 이효정 정태희 정유준 송창주</span><br/>
+            <span>고객센터 운영시간 : 평일 / 오전 9시 ~ 오후 9시</span><br/>
+            <span>Company : (주)Yabbymeng</span><br/>
+            <span>Email : winkite@gmail.com</span><br/>
+            <span>Copyright 2022. Yabbymeng. All Rights Reserved.</span><br/>
+            <span>With the Sparta Coding Club!</span>
+        </p>
+    </footer>
 </body>
 <!-- Script -->
 <script src="/static/js/api.js"></script>
-<script src="/static/js/articles.js"></script>
-<script src="/static/js/festival.js"></script>
+<script src="/static/js/api_user.js"></script>
+<script src="/static/js/api_festival.js"></script>
+<script src="/static/js/festival_page.js"></script>
 </html>

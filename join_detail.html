@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <!-- Script -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Css -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,700"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/join_detail.css" />
+    <link rel="stylesheet" href="/static/css/comment.css" />
+    <title>JOIN_DETAIL | 모집 상세보기</title>
+  </head>
+  <body>
+    <div class="card-wrapper">
+      <div class="card">
+        <!-- card right -->
+        <div class="product-content">
+          <a class="close-button" href="./join_page.html">Back</a>
+          <h2 class="product-title" id="update_festival">
+            <span id="join_detail_festival"></span>
+          </h2>
+          <h3 id="update_title" class="title-title">
+            제목 : <span id="join_detail_title"></span>
+          </h3>
+        </div>
+
+        <div class="product-price">
+          <p id="update_count" class="last-price">
+            모집인원 : <span id="join_detail_count"></span>
+          </p>
+          <p id="update_period" class="new-price">
+            마감일 : <span id="join_detail_period"></span>
+          </p>
+        </div>
+
+        <div class="product-detail">
+          <h3>Content</h3>
+          <div id="update_desc" style="padding: 10px">
+            <text
+              class="form-control"
+              id="join_detail_desc"
+              style="height: 100px; padding: 10px"
+            ></text>
+          </div>
+        </div>
+
+        <div>
+          <button
+            id="join_update"
+            class="btn btn-secondary btn-sm"
+            onclick="editJoinEvent()"
+          >
+            수정하기
+          </button>
+        </div>
+
+        <div>
+          <button
+            id="join_delete"
+            class="btn btn-secondary btn-sm"
+            onclick="deleteJoin(join_article_id)"
+          >
+            삭제하기
+          </button>
+        </div>
+
+        <div>
+          <button
+            id="join_recruit"
+            class="btn btn-secondary btn-sm"
+            onclick="postRecruit(join_article_id)"
+          >
+            신청하기
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <section id="content3">
+        <div id="noteFeed">
+          <h1 class="hhh">comment</h1>
+          <div id="noteCommentBox">
+            <div class="feed-item">
+              <textarea
+                placeholder="댓글을 입력하세요"
+                wrap="off"
+                id="myNote"
+              ></textarea>
+              <button
+                class="btn btn-secondary btn-sm"
+                id="send"
+                type="button"
+                onclick="writeJoinCommentEvent()"
+              >
+                댓글 등록
+              </button>
+            </div>
+          </div>
+          <article class="post-comment">
+            <p>|| 댓글 <span id="join_comment_count"></span>개 ||</p>
+            <ul id="comment_box" class="coment-box"></ul>
+          </article>
+        </div>
+      </section>
+    </div>
+  </body>
+  <!-- Script -->
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/api_festival.js"></script>
+  <script src="/static/js/api_profile.js"></script>
+  <script src="/static/js/api_join.js"></script>
+  <script src="/static/js/api_recruit.js"></script>
+  <script src="/static/js/join_detail.js"></script>
+</html>

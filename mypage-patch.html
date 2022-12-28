@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <!-- Script -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-latest.js"
+    ></script>
+    <!-- Css -->
+    <link rel="stylesheet" href="/static/css/mypage_create_content_f.css" />
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&display=swap"> -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap"
+    />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
+    <title>게시글 작성하기</title>
+  </head>
+  <body>
+    <article class="board">
+      <h1>MYPAGE</h1>
+      <section>
+        <h3>마이페이지</h3>
+        <span> 닉네임 : </span>
+        <p><input id="nickname" type="text" class="rag-title" /></p>
+        <span> 번 호 : </span>
+        <p><input id="phone" type="text" class="rag-title" /></p>
+        <span> 지 역 : </span>
+        <p>
+          <select class="form-control" name="job" id="address">
+            <option value="00">지역선택</option>
+            <option value="01">서울시</option>
+            <option value="02">부산시</option>
+            <option value="03">대구시</option>
+            <option value="04">인천시</option>
+            <option value="05">광주시</option>
+            <option value="06">대전시</option>
+            <option value="07">울산시</option>
+            <option value="08">세종시</option>
+            <option value="09">경기도</option>
+            <option value="10">강원도</option>
+            <option value="11">충청북도</option>
+            <option value="12">충청남도</option>
+            <option value="13">전라북도</option>
+            <option value="14">전라남도</option>
+            <option value="15">경상북도</option>
+            <option value="16">경상남도</option>
+            <option value="17">제주도</option>
+          </select>
+        </p>
+        <span>자기소개</span>
+        <div class="place">
+          <textarea
+            rows="12"
+            class="rag-post"
+            id="introduce"
+            style="resize: none"
+            placeholder="내용을 입력하세요."
+          ></textarea>
+        </div>
+        <div id="introduce_cnt">(0/50)</div>
+
+        <div>
+          <text style="float: left; margin-left: 10px">프로필 이미지 : </text>
+          <input
+            type="file"
+            id="file"
+            style="
+              margin-right: 15px;
+              margin-left: 10px;
+              width: 400px;
+              float: right;
+              margin-bottom: 10px;
+              box-sizing: border-box;
+            "
+          />
+        </div>
+        <div id="btn">
+          <button type="button" onclick="ProfileChangeput()">등록하기</button>
+        </div>
+      </section>
+    </article>
+  </body>
+  <!-- Script -->
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/api_profile.js"></script>
+  <script src="/static/js/edit.js"></script>
+</html>

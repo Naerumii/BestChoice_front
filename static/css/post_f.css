@@ -10,7 +10,7 @@ font-style: normal;
 
 * {
     
-font-family: 'HallymGothic-Regular';
+font-family: 'Noto Sans', sans-serif;
 margin: 0;
 padding: 0;
 box-sizing: border-box;
@@ -255,7 +255,7 @@ padding: 40px 0px;
 .post-box .post-head {
 width: 100%;
 margin-top: 20px;
-padding: 10px 0;
+padding-top: 20px;
 border-top: 2px solid #ddd;
 border-bottom: double #ddd;
 display: flex;
@@ -305,7 +305,6 @@ margin: 0;
 font-size: .7rem;
 display: block;
 text-align: center;
-padding-top: 4px;
 }
 
 /*----코멘트 시작----*/
@@ -319,9 +318,10 @@ align-items: flex-start;
 border-bottom: 1px solid #ddd;
 }
 
+/* 댓글 유저이미지 */
 .post-box .coment-box .user-text:before {
 content: "";
-background: url("https://user-images.githubusercontent.com/110369667/189028944-e6c98c9c-00fc-4191-953c-a35c0c682ccc.png")no-repeat center;
+background: url("/static/img/Logo.png")no-repeat center;
 background-size: contain;
 position: absolute;
 top: 2px;
@@ -341,27 +341,6 @@ padding: 0px 0px 10px 60px;
 .post-box .coment-box .user-text>:first-child {
 font-weight: 600;
 cursor: pointer;
-}
-
-.post-box .coment-box .dropdown-btn {
-background: url("https://user-images.githubusercontent.com/110369667/189045869-e198a28e-16b4-419a-a952-0df3ce7d18f7.png")no-repeat right;
-background-size: contain;
-width: 30px;
-height: 20px;
-margin-top: 10px;
-cursor: pointer;
-position: relative;
-}
-
-.post-box .coment-box .dropdown-btn>.drop-menu {
-position: absolute;
-top: 30px;
-left: -10px;
-padding: 6px 10px;
-border-radius: 4px;
-background: #fff;
-box-shadow: 0 0 10px #ddd;
-display: none;
 }
 
 #more1.xx,
